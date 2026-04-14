@@ -1,29 +1,47 @@
 export default {
 
-  // 🔹 General login check (use on all pages)
+  // 🔹 SAFE login check
   checkAuth: () => {
 
-    if (!appsmith.store.user) {
+    const user = appsmith.store.user;
+
+    // 🟡 STORE NOT READY YET → DO NOTHING
+    if (user === undefined) {
+      return false;
+    }
+
+    // 🔴 NOT LOGGED IN
+    if (user === null) {
       showAlert("Please login", "warning");
       navigateTo("Login");
       return false;
     }
 
+    // 🟢 LOGGED IN
     return true;
   },
 
-  // 🔹 Admin-only check (use on Admin page)
+  // 🔹 SAFE admin check
   checkAdmin: () => {
 
-    if (!appsmith.store.user) {
+    const user = appsmith.store.user;
+
+    // 🟡 WAIT FOR STORE
+    if (user === undefined) {
+      return false;
+    }
+
+    // 🔴 NOT LOGGED IN
+    if (!user) {
       showAlert("Please login", "warning");
       navigateTo("Login");
       return false;
     }
 
-    if (!appsmith.store.user.isAdmin) {
+    // 🔴 NOT ADMIN
+    if (!user.isAdmin) {
       showAlert("Access denied", "error");
-      navigateTo("Main"); // change if your main page name differs
+      navigateTo("Home"); // safer than Main unless you renamed it
       return false;
     }
 
