@@ -1,0 +1,129 @@
+BEGIN TRY
+    BEGIN TRANSACTION;
+
+    DECLARE @PO NVARCHAR(250) = '{{ appsmith.store.fullPO.header.MicrossSalesOrderReference }}';
+
+    -- 🔴 Duplicate check
+    IF EXISTS (
+        SELECT 1 
+        FROM dbo.PurchaseOrderHeader 
+        WHERE MicrossSalesOrderReference = @PO
+    )
+    BEGIN
+        THROW 50000, 'Micross Sales Order Reference already exists', 1;
+    END
+
+    -- 🔹 HEADER
+INSERT INTO dbo.PurchaseOrderHeader (
+    CustomerDivision,
+    CustomerPurchaseOrderNumber,
+    DateRecieved,
+    TotalOrderValue,
+    MicrossQuotationReference,
+    MicrossSalesOrderReference,
+    LastBuildDate,
+    OCRCheckComplete,
+    BidExpiryDateOrDetailsOfReQuote,
+    SubmittedBy,
+    MicrossEntity,
+    SubmittedDate,
+    Currency
+)
+VALUES (
+    '{{ appsmith.store.fullPO.header.CustomerDivision }}',
+    '{{ appsmith.store.fullPO.header.CustomerPurchaseOrderNumber }}',
+    {{ appsmith.store.fullPO.header.DateRecieved ? `'${appsmith.store.fullPO.header.DateRecieved}'` : 'NULL' }},
+    {{ appsmith.store.fullPO.header.TotalOrderValue || 'NULL' }},
+    '{{ appsmith.store.fullPO.header.MicrossQuotationReference || '' }}',
+    @PO,
+    {{ appsmith.store.fullPO.header.LastBuildDate ? `'${appsmith.store.fullPO.header.LastBuildDate}'` : 'NULL' }},
+    {{ appsmith.store.fullPO.header.OCRCheckComplete ? `'${appsmith.store.fullPO.header.OCRCheckComplete}'` : 'NULL' }},
+    {{ appsmith.store.fullPO.header.BidExpiryDateOrDetailsOfReQuote ? `'${appsmith.store.fullPO.header.BidExpiryDateOrDetailsOfReQuote}'` : 'NULL' }},
+    '{{ appsmith.store.fullPO.header.SubmittedBy }}',
+    '{{ appsmith.store.fullPO.header.MicrossEntity }}',
+    GETDATE(),
+    '{{ appsmith.store.fullPO.header.Currency }}'
+);
+
+    -- 🔹 DELIVERABLES
+    {{ appsmith.store.fullPO.deliverables.length > 0 ? `
+    INSERT INTO dbo.PurchaseOrderHeaderDeliverables (
+        MicrossSalesOrderReference,
+        CustomerPartNumber,
+        CustomerRevIssue,
+        MicrossPartNumber,
+        TotalDeliveryQty,
+        QuotedYeild,
+        StartQty,
+        QuotedLeadTime
+    )
+    VALUES
+    ${appsmith.store.fullPO.deliverables.map(r => `
+    (
+        @PO,
+        '${r.CustomerPartNumber || ''}',
+        '${r.CustomerRevIssue || ''}',
+        '${r.MicrossPartNumber || ''}',
+        ${r.TotalDeliveryQty || 0},
+        ${r.QuotedYeild || 0},
+        ${r.StartQty || 0},
+        '${r.QuotedLeadTime || ''}'
+    )`).join(",")}
+    ;` : '' }}
+
+    -- 🔹 GROUP TESTS
+    {{ appsmith.store.fullPO.groupTests.length > 0 ? `
+    INSERT INTO dbo.PurchaseOrderHeaderGroupTests (
+        MicrossSalesOrderReference,
+        CustomerPartNumber,
+        CustomerRevIssue,
+        MicrossPartNumber,
+        TotalDeliveryQty,
+        QuotedYeild,
+        StartQty,
+        QuotedLeadTime
+    )
+    VALUES
+    ${appsmith.store.fullPO.groupTests.map(r => `
+    (
+        @PO,
+        '${r.CustomerPartNumber || ''}',
+        '${r.CustomerRevIssue || ''}',
+        '${r.MicrossPartNumber || ''}',
+        ${r.TotalDeliveryQty || 0},
+        ${r.QuotedYeild || 0},
+        ${r.StartQty || 0},
+        '${r.QuotedLeadTime || ''}'
+    )`).join(",")}
+    ;` : '' }}
+
+    -- 🔹 NRE
+    {{ appsmith.store.fullPO.nre.length > 0 ? `
+    INSERT INTO dbo.PurchaseOrderHeaderNRE (
+        MicrossSalesOrderReference,
+        Description,
+        StartQty,
+        QuotedLeadTime
+    )
+    VALUES
+    ${appsmith.store.fullPO.nre.map(r => `
+    (
+        @PO,
+        '${r.Description || ''}',
+        ${r.StartQty || 0},
+        '${r.QuotedLeadTime || ''}'
+    )`).join(",")}
+    ;` : '' }}
+
+    COMMIT;
+
+    SELECT 'SUCCESS' AS Status;
+
+END TRY
+BEGIN CATCH
+    ROLLBACK;
+
+    SELECT 
+        'ERROR' AS Status,
+        ERROR_MESSAGE() AS Message;
+END CATCH;

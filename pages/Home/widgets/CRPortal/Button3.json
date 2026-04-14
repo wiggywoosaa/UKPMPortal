@@ -1,0 +1,57 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 215,
+  "boxShadow": "none",
+  "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "buttonVariant": "PRIMARY",
+  "disabledWhenInvalid": false,
+  "dynamicBindingPathList": [
+    {
+      "key": "buttonColor"
+    },
+    {
+      "key": "borderRadius"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "isDefaultClickDisabled": true,
+  "isDisabled": false,
+  "isLoading": false,
+  "isVisible": true,
+  "key": "wim0zqpr35",
+  "leftColumn": 54,
+  "minWidth": 120,
+  "mobileBottomRow": 126,
+  "mobileLeftColumn": 47,
+  "mobileRightColumn": 63,
+  "mobileTopRow": 122,
+  "needsErrorInfo": false,
+  "onClick": "{{\n(() => {\n\n  const questions = List_Questions.listData || [];\n\n  const invalid = questions.some(q => {\n\n    const ans = appsmith.store.answers?.[q.id];\n\n    // ❗ skip completely untouched questions\n    if (!ans || ans.YesNo === undefined) return false;\n\n    // 🚀 ONLY validate when NO\n    if (Number(ans.YesNo) === 0) {\n\n      const responsible = ans.ResponsiblePerson;\n      const action = ans.Action;\n      const due = ans.DueDate;\n\n      return (\n        !responsible || responsible.toString().trim() === \"\" ||\n        !action || action.toString().trim() === \"\" ||\n        !due || due.toString().trim() === \"\"\n      );\n\n    }\n\n    return false;\n\n  });\n\n  if (invalid) {\n    showAlert(\"All 'No' answers must have Responsible Person, Action and Due Date\", \"error\");\n    return;\n  }\n\n  const versionId = \"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx\".replace(/[xy]/g, function(c) {\n    const r = Math.random() * 16 | 0;\n    const v = c === \"x\" ? r : (r & 0x3 | 0x8);\n    return v.toString(16);\n  });\n\n  return storeValue(\"currentVersion\", versionId)\n    .then(() => InsertAnswers.run())\n    .then(() => {\n      return storeValue(\n        \"originalAnswers\",\n        JSON.parse(JSON.stringify(appsmith.store.answers))\n      );\n    })\n    .then(() => {\n      showAlert(\"Answers saved\", \"success\");\n    });\n\n})()\n}}",
+  "originalBottomRow": 215,
+  "originalTopRow": 211,
+  "parentColumnSpace": 25.48046875,
+  "parentId": "os1mn3f0s0",
+  "parentRowSpace": 10,
+  "placement": "CENTER",
+  "recaptchaType": "V3",
+  "renderMode": "CANVAS",
+  "resetFormOnClick": false,
+  "responsiveBehavior": "hug",
+  "rightColumn": 63,
+  "text": "Submit Answers",
+  "topRow": 211,
+  "type": "BUTTON_WIDGET",
+  "version": 1,
+  "widgetId": "c3nhe3w23z",
+  "widgetName": "Button3"
+}

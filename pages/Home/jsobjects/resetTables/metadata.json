@@ -1,0 +1,11 @@
+{
+  "gitSyncId": "69ccf8e72446822078bf9d91_898390f4-9d54-4b4a-88d0-cb99a8aa6f86",
+  "id": "Home_resetTables",
+  "unpublishedCollection": {
+    "name": "resetTables",
+    "pageId": "Home",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": []
+  }
+}

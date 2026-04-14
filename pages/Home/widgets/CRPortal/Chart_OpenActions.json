@@ -1,0 +1,116 @@
+{
+  "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+  "allowScroll": true,
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 52,
+  "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
+  "chartData": {
+    "dcaubwevpq": {
+      "color": "#3b82f6",
+      "data": "{{\n(() => {\n\n  const data = GetOpenActions.data || [];\n\n  const grouped = {};\n\n  data.forEach(r => {\n\n    const po = r.MicrossSalesOrderReference;\n\n    if (!po) return;\n\n    grouped[po] = (grouped[po] || 0) + 1;\n\n  });\n\n  return Object.entries(grouped).map(([po, count]) => ({\n    x: po,\n    y: count\n  }));\n\n})()\n}}",
+      "seriesName": ""
+    }
+  },
+  "chartName": "Open Actions",
+  "chartType": "COLUMN_CHART",
+  "customEChartConfig": "{{ ((chartType) => ( \n(() => {\n\n  const data = GetOpenActions.data;\n\n  if (!data || data.length === 0) {\n    return {\n      option: {\n        title: {\n          text: \"No Open Actions\",\n          left: \"center\"\n        }\n      }\n    };\n  }\n\n  // 🔹 Group by PO\n  const grouped = {};\n\n  data.forEach(r => {\n\n    const po = r.MicrossSalesOrderReference;\n\n    if (!po) return; // 🔴 skip bad rows\n\n    if (!grouped[po]) {\n      grouped[po] = 0;\n    }\n\n    grouped[po] += 1;\n\n  });\n\n  const xData = Object.keys(grouped);\n  const yData = Object.values(grouped);\n\n  return {\n    option: {\n      tooltip: { trigger: 'axis' },\n      xAxis: {\n        type: 'category',\n        data: xData\n      },\n      yAxis: {\n        type: 'value'\n      },\n      series: [\n        {\n          type: 'bar',\n          data: yData,\n          itemStyle: {\n            color: '#ff4d4f'\n          }\n        }\n      ]\n    }\n  };\n\n})()\n))(Chart_OpenActions.chartType) }}",
+  "customFusionChartConfig": {
+    "dataSource": {
+      "chart": {
+        "alignCaptionWithCanvas": 1,
+        "canvasPadding": "0",
+        "caption": "Sales Report",
+        "captionAlignment": "center",
+        "captionFontColor": "#231F20",
+        "captionFontSize": "24",
+        "captionPadding": "20",
+        "chartBottomMargin": "10",
+        "chartLeftMargin": "20",
+        "chartRightMargin": "40",
+        "chartTopMargin": "10",
+        "labelFontColor": "#716e6e",
+        "labelFontSize": "12",
+        "legendIconAlpha": "100",
+        "legendIconBgAlpha": "100",
+        "legendIconSides": "4",
+        "legendPosition": "top",
+        "theme": "fusion",
+        "xAxisName": "Product Line",
+        "xAxisNameFontColor": "#716e6e",
+        "xAxisNameFontSize": "14",
+        "yAxisName": "Revenue($)",
+        "yAxisNameFontColor": "#716e6e",
+        "yAxisNameFontSize": "14",
+        "yAxisValueFontColor": "#716e6e",
+        "yAxisValueFontSize": "12"
+      },
+      "data": [
+        {
+          "label": "Product1",
+          "value": 20000
+        },
+        {
+          "label": "Product2",
+          "value": 22000
+        },
+        {
+          "label": "Product3",
+          "value": 32000
+        }
+      ]
+    },
+    "type": "column2d"
+  },
+  "dynamicBindingPathList": [
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "boxShadow"
+    },
+    {
+      "key": "accentColor"
+    },
+    {
+      "key": "fontFamily"
+    },
+    {
+      "key": "customEChartConfig"
+    },
+    {
+      "key": "chartData.dcaubwevpq.data"
+    }
+  ],
+  "dynamicTriggerPathList": [],
+  "flexVerticalAlignment": "start",
+  "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
+  "isLoading": false,
+  "isVisible": true,
+  "key": "fw7zflx8az",
+  "labelOrientation": "rotate",
+  "leftColumn": 4,
+  "minWidth": 450,
+  "mobileBottomRow": 34,
+  "mobileLeftColumn": 4,
+  "mobileRightColumn": 28,
+  "mobileTopRow": 2,
+  "needsErrorInfo": true,
+  "originalBottomRow": 37,
+  "originalTopRow": 5,
+  "parentColumnSpace": 28.9921875,
+  "parentId": "c6uury0wpf",
+  "parentRowSpace": 10,
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 33,
+  "setAdaptiveYMin": false,
+  "showDataPointLabel": true,
+  "topRow": 12,
+  "type": "CHART_WIDGET",
+  "version": 1,
+  "widgetId": "zdhl9j0i6v",
+  "widgetName": "Chart_OpenActions",
+  "xAxisName": "Micross Sales Order Refence",
+  "yAxisName": "Open Actions"
+}

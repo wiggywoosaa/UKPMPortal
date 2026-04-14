@@ -1,0 +1,3 @@
+SELECT id, Department, MicrossEntity
+FROM dbo.Admin_Department
+ORDER BY Department

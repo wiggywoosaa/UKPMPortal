@@ -1,0 +1,7 @@
+UPDATE dbo.Admin_Users
+SET
+  Name = {{ this.params.Name }},
+  IsAdmin = {{ this.params.IsAdmin }},
+  IsActive = {{ this.params.IsActive }},
+  PasswordHash = COALESCE({{ this.params.PasswordHash }}, PasswordHash)
+WHERE id = {{ this.params.id }}

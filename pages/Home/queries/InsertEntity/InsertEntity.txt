@@ -1,0 +1,2 @@
+INSERT INTO dbo.Admin_MicrossEntity (MicrossEntity)
+VALUES ('{{ Table_Entities.newRow.MicrossEntity }}')

@@ -1,0 +1,7 @@
+SELECT *
+FROM dbo.Admin_Questions
+
+WHERE 
+    Enabled = 1
+    AND MicrossEntity = '{{ GetPOH.data?.[0]?.MicrossEntity || "" }}'
+    AND Department = '{{ Select_Department.selectedOptionValue || "" }}'

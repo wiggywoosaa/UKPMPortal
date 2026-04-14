@@ -1,0 +1,2 @@
+DELETE FROM dbo.Admin_UserDepartments
+WHERE UserId = {{ this.params.userId }}

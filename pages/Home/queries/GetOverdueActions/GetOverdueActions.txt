@@ -1,0 +1,26 @@
+SELECT
+    a.MicrossSalesOrderReference,
+    a.QuestionId,
+    q.Question,
+    a.ResponsiblePerson,
+    a.Action,
+    a.DueDate,
+    a.AnsweredBy,
+    a.Status
+FROM dbo.POH_Answers a
+JOIN dbo.Admin_Questions q
+    ON a.QuestionId = q.id
+WHERE 
+    a.IsLatest = 1
+    AND a.YesNo = 0
+    AND a.DueDate IS NOT NULL
+    AND a.Status = 'Open'
+    AND a.DueDate < GETDATE()
+
+    -- 🔥 ADD THIS FILTER
+    AND (
+        '{{ Select_ResponsibleFilter.selectedOptionValue || "ALL" }}' = 'ALL'
+        OR a.ResponsiblePerson = '{{ Select_ResponsibleFilter.selectedOptionValue || "" }}'
+    )
+
+ORDER BY a.DueDate ASC;

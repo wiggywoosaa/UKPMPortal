@@ -1,0 +1,5 @@
+UPDATE dbo.Admin_Department
+SET 
+  Department = '{{ Table_Departments.updatedRow.Department }}',
+  MicrossEntity = '{{ Table_Departments.updatedRow.MicrossEntity }}'
+WHERE id = {{ Table_Departments.updatedRow.id }}

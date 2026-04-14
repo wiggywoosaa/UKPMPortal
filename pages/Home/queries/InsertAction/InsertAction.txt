@@ -1,0 +1,30 @@
+INSERT INTO dbo.POH_Answers (
+    MicrossSalesOrderReference,
+    QuestionId,
+    YesNo,
+    ResponsiblePerson,
+    Action,
+    DueDate,
+    Status,
+    AnsweredBy,
+    AnsweredDate,
+    VersionId,
+    CreatedAt,
+    IsLatest,
+    ParentActionID   -- 👈 NEW FIELD
+)
+VALUES (
+    '{{ this.params.po }}',
+    {{ this.params.questionId }},
+    0,
+    '{{ this.params.responsible }}',
+    '{{ this.params.action }}',
+    '{{ this.params.dueDate }}',
+    'Open',
+    '{{ appsmith.user.name }}',
+    GETDATE(),
+    NEWID(),
+    GETDATE(),
+    1,
+    {{ this.params.parentId || 'NULL' }}   -- 👈 SAFE INSERT
+);

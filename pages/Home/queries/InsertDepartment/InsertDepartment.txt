@@ -1,0 +1,8 @@
+INSERT INTO dbo.Admin_Department (
+    Department,
+    MicrossEntity
+)
+VALUES (
+    '{{ Table_Departments.newRow.Department }}',
+    '{{ Table_Departments.newRow.MicrossEntity }}'
+)

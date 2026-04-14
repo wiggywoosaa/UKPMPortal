@@ -1,0 +1,124 @@
+{
+  "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+  "additionalStaticProps": [
+    "level",
+    "levelData",
+    "prefixMetaWidgetId",
+    "metaWidgetId"
+  ],
+  "animateLoading": true,
+  "backgroundColor": "transparent",
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 209,
+  "boxShadow": "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
+  "children": [
+    {
+      "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+      "bottomRow": 1180,
+      "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
+      "canExtend": false,
+      "containerStyle": "none",
+      "detachFromLayout": true,
+      "dropDisabled": true,
+      "dynamicBindingPathList": [
+        {
+          "key": "borderRadius"
+        },
+        {
+          "key": "boxShadow"
+        }
+      ],
+      "dynamicHeight": "AUTO_HEIGHT",
+      "flexLayers": [],
+      "isLoading": false,
+      "isVisible": true,
+      "key": "seu170923k",
+      "leftColumn": 0,
+      "maxDynamicHeight": 9000,
+      "minDynamicHeight": 4,
+      "minHeight": 400,
+      "minWidth": 450,
+      "mobileBottomRow": 400,
+      "mobileLeftColumn": 0,
+      "mobileRightColumn": 611.53125,
+      "mobileTopRow": 0,
+      "needsErrorInfo": false,
+      "noPad": true,
+      "openParentPropertyPane": true,
+      "parentColumnSpace": 1,
+      "parentId": "j5x228kijc",
+      "parentRowSpace": 1,
+      "renderMode": "CANVAS",
+      "responsiveBehavior": "fill",
+      "rightColumn": 611.53125,
+      "topRow": 0,
+      "type": "CANVAS_WIDGET",
+      "version": 1,
+      "widgetId": "9kjm1dxnzq",
+      "widgetName": "Canvas6"
+    }
+  ],
+  "currentItemsView": "{{[]}}",
+  "dynamicBindingPathList": [
+    {
+      "key": "currentItemsView"
+    },
+    {
+      "key": "selectedItemView"
+    },
+    {
+      "key": "triggeredItemView"
+    },
+    {
+      "key": "primaryKeys"
+    },
+    {
+      "key": "accentColor"
+    },
+    {
+      "key": "listData"
+    }
+  ],
+  "dynamicPropertyPathList": [],
+  "dynamicTriggerPathList": [],
+  "enhancements": true,
+  "flexVerticalAlignment": "start",
+  "gridType": "vertical",
+  "hasMetaWidgets": true,
+  "isCanvas": true,
+  "isLoading": false,
+  "isVisible": true,
+  "itemBackgroundColor": "#FFFFFF",
+  "itemSpacing": "8",
+  "key": "prnr7xz21r",
+  "leftColumn": 4,
+  "listData": "{{\n(() => {\n\n  // 🚨 must have department selected\n  if (!appsmith.store.selectedDepartment) return [];\n\n  // 🚨 must have entity loaded\n  if (!GetPOH.data?.[0]?.MicrossEntity) return [];\n\n  // 🚨 must be logged in\n  if (!appsmith.store.user) return [];\n\n  // 🚨 must have permissions loaded\n  if (!appsmith.store.userDepartments) return [];\n\n  return (QuestionBuilder.getQuestions() || []).filter(q => {\n\n    // 🚀 ADMIN OVERRIDE\n    if (!appsmith.store.user.isAdmin) {\n\n      // 🔒 HARD PERMISSION CHECK\n      if (!appsmith.store.userDepartments.includes(q.Department)) return false;\n\n    }\n\n    // 🚀 DEPARTMENT DROPDOWN FILTER\n    if (q.Department !== appsmith.store.selectedDepartment) return false;\n\n    // 🚀 EXISTING DEPENDENCY LOGIC (UNCHANGED)\n    if (!q.DependsOnQuestionId) return true;\n\n    const answer =\n      appsmith.store.answers?.[q.DependsOnQuestionId]?.YesNo\n      ?? q.YesNo;\n\n    return Number(answer) === Number(q.DependsOnValue);\n\n  });\n\n})()\n}}",
+  "mainCanvasId": "9kjm1dxnzq",
+  "mainContainerId": "knx453z8ez",
+  "minWidth": 450,
+  "mobileBottomRow": 98,
+  "mobileLeftColumn": 4,
+  "mobileRightColumn": 28,
+  "mobileTopRow": 58,
+  "needsErrorInfo": false,
+  "originalBottomRow": 209,
+  "originalTopRow": 91,
+  "pageSize": 8,
+  "parentColumnSpace": 25.48046875,
+  "parentId": "os1mn3f0s0",
+  "parentRowSpace": 10,
+  "primaryKeys": "{{List_Questions.listData.map((currentItem, currentIndex) => currentItem[\"id\"] )}}",
+  "renderMode": "CANVAS",
+  "requiresFlatWidgetChildren": true,
+  "responsiveBehavior": "fill",
+  "rightColumn": 63,
+  "selectedItemView": "{{{}}}",
+  "serverSidePagination": false,
+  "templateHeight": 160,
+  "topRow": 91,
+  "totalRecordsCount": "20",
+  "triggeredItemView": "{{{}}}",
+  "type": "LIST_WIDGET_V2",
+  "widgetId": "j5x228kijc",
+  "widgetName": "List_Questions"
+}

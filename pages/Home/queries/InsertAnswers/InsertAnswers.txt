@@ -1,0 +1,123 @@
+BEGIN TRY
+    BEGIN TRANSACTION;
+
+    DECLARE @PO NVARCHAR(250) = '{{ appsmith.store.selectedPO }}';
+    DECLARE @Version UNIQUEIDENTIFIER = '{{ appsmith.store.currentVersion }}';
+
+    {{
+    (() => {
+
+      // 🔥 CHANGE DETECTION (FIXED + ROBUST)
+      const normalize = (v) =>
+        v === null || v === undefined ? '' : String(v);
+
+      const changes = Object.entries(appsmith.store.answers || {})
+        .filter(([qId, val]) => {
+
+          const original = appsmith.store.originalAnswers?.[qId];
+
+          // 🔥 No original = new row
+          if (!original) return true;
+
+          return (
+            Number(original.YesNo ?? 0) !== Number(val.YesNo ?? 0) ||
+
+            normalize(original.Answer) !== normalize(val.Answer) ||
+
+            normalize(original.ResponsiblePerson) !== normalize(val.ResponsiblePerson) ||
+
+            normalize(original.Action) !== normalize(val.Action) ||
+
+            normalize(original.DueDate) !== normalize(val.DueDate)
+          );
+        });
+
+      // 🔴 DEBUG (remove later if you want)
+      console.log("CHANGES:", changes);
+
+      if (changes.length === 0) {
+        console.log("NO CHANGES DETECTED");
+        return '';
+      }
+
+      return `
+
+      -- 🔴 Only update CURRENT latest rows
+      UPDATE dbo.POH_Answers
+      SET IsLatest = 0
+      WHERE MicrossSalesOrderReference = '${appsmith.store.selectedPO}'
+      AND QuestionId IN (${changes.map(([qId]) => qId).join(",")})
+      AND IsLatest = 1;
+
+      -- 🔹 Insert only changed rows
+      INSERT INTO dbo.POH_Answers (
+          MicrossSalesOrderReference,
+          QuestionId,
+          YesNo,
+          Answer,
+          AnsweredBy,
+          AnsweredDate,
+          ResponsiblePerson,
+          Action,
+          DueDate,
+          VersionId,
+          CreatedAt,
+          IsLatest
+      )
+      VALUES
+      ${changes.map(([qId, val]) => {
+
+        const safeAnswer = val.Answer
+          ? `'${val.Answer.replace(/'/g, "''")}'`
+          : 'NULL';
+
+        const safeUser = appsmith.user.name
+  ? `'${appsmith.user.name.replace(/'/g, "''")}'`
+  : 'NULL';
+
+        const safeDate = val.AnsweredDate
+          ? `'${val.AnsweredDate}'`
+          : 'NULL';
+
+        const safeResponsible = val.ResponsiblePerson
+          ? `'${val.ResponsiblePerson.replace(/'/g, "''")}'`
+          : 'NULL';
+
+        const safeAction = val.Action
+          ? `'${val.Action.replace(/'/g, "''")}'`
+          : 'NULL';
+
+        const safeDueDate = val.DueDate
+          ? `'${val.DueDate}'`
+          : 'NULL';
+
+        return `(
+          '${appsmith.store.selectedPO}',
+          ${qId},
+          ${val.YesNo ?? 'NULL'},
+          ${safeAnswer},
+          ${safeUser},
+          ${safeDate},
+          ${safeResponsible},
+          ${safeAction},
+          ${safeDueDate},
+          '${appsmith.store.currentVersion}',
+          GETDATE(),
+          1
+        )`;
+
+      }).join(",")}
+      ;`;
+
+    })()
+    }}
+
+    COMMIT;
+
+    SELECT 'SUCCESS' AS Status;
+
+END TRY
+BEGIN CATCH
+    ROLLBACK;
+    SELECT ERROR_MESSAGE() AS Message;
+END CATCH;

@@ -1,0 +1,10 @@
+SELECT 
+    id,
+    Email,
+    Name,
+    IsAdmin,
+    IsActive,
+    PasswordHash
+FROM dbo.Admin_Users
+WHERE Email = '{{Input_LoginEmail.text}}'
+AND IsActive = 1

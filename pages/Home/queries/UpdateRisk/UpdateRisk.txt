@@ -1,0 +1,5 @@
+UPDATE dbo.POH_Risks
+SET
+  RiskDescription = {{ this.params.riskDescription }},
+  Mitigation = {{ this.params.mitigation }}
+WHERE id = {{ this.params.id }}

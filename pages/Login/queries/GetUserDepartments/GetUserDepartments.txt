@@ -1,0 +1,3 @@
+SELECT Department
+FROM dbo.Admin_UserDepartments
+WHERE UserId = {{ appsmith.store.selectedUser.id }}

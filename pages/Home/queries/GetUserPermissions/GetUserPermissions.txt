@@ -1,0 +1,9 @@
+SELECT 
+    u.Email,
+    u.IsAdmin,
+    d.Department
+FROM dbo.Admin_Users u
+LEFT JOIN dbo.Admin_UserDepartments d 
+    ON u.Email = d.UserEmail
+WHERE u.Email = {{ appsmith.user.email }}
+AND u.IsActive = 1;

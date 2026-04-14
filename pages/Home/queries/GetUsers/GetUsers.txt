@@ -1,0 +1,17 @@
+SELECT 
+    u.id,
+    u.Email,
+    u.Name,
+    u.IsAdmin,
+    u.IsActive,
+    STRING_AGG(d.Department, ', ') AS Departments
+FROM dbo.Admin_Users u
+LEFT JOIN dbo.Admin_UserDepartments d 
+    ON u.id = d.UserId
+GROUP BY 
+    u.id,
+    u.Email,
+    u.Name,
+    u.IsAdmin,
+    u.IsActive
+ORDER BY u.Email;

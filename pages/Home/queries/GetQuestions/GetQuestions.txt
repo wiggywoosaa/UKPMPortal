@@ -1,0 +1,13 @@
+SELECT 
+    id,
+    Department,
+    Question,
+    YesNo,
+    TextLine,
+    Enabled,
+    MicrossEntity,
+		DependsOnQuestionId,
+		DependsOnValue,
+		RequiresPM
+FROM dbo.Admin_Questions
+ORDER BY Department

@@ -1,0 +1,9 @@
+INSERT INTO dbo.Admin_Users
+(Email, Name, PasswordHash, IsAdmin, IsActive)
+VALUES (
+  {{ this.params.Email }},
+  {{ this.params.Name }},
+  {{ this.params.PasswordHash }},
+  {{ this.params.IsAdmin }},
+  {{ this.params.IsActive }}
+)

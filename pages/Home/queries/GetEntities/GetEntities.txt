@@ -1,0 +1,3 @@
+SELECT id, MicrossEntity
+FROM dbo.Admin_MicrossEntity
+ORDER BY MicrossEntity

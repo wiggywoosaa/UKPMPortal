@@ -1,0 +1,15 @@
+UPDATE dbo.POH_Answers
+SET 
+    Status = '{{ this.params.status }}',
+
+    ResponsiblePerson = 
+        CASE 
+            WHEN '{{ appsmith.store.user?.isAdmin }}' = 'true'
+            THEN '{{ this.params.responsible }}'
+            ELSE ResponsiblePerson
+        END
+
+WHERE 
+    MicrossSalesOrderReference = '{{ this.params.po }}'
+    AND QuestionId = {{ this.params.questionId }}
+    AND IsLatest = 1;

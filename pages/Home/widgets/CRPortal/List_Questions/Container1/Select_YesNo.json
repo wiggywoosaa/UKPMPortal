@@ -1,0 +1,73 @@
+{
+  "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 6,
+  "boxShadow": "none",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( \nappsmith.store.answers?.[currentItem.id]?.YesNo\n))(Select_YesNo.options, Select_YesNo.serverSideFiltering) }}",
+  "dynamicBindingPathList": [
+    {
+      "key": "accentColor"
+    },
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "sourceData"
+    },
+    {
+      "key": "defaultOptionValue"
+    }
+  ],
+  "dynamicHeight": "FIXED",
+  "dynamicPropertyPathList": [
+    {
+      "key": "sourceData"
+    },
+    {
+      "key": "onOptionChange"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onOptionChange"
+    }
+  ],
+  "isDisabled": false,
+  "isFilterable": true,
+  "isLoading": false,
+  "isRequired": false,
+  "isVisible": true,
+  "key": "pc61945y5t",
+  "labelAlignment": "left",
+  "labelPosition": "Left",
+  "labelText": "Yes / No",
+  "labelTextSize": "0.875rem",
+  "labelWidth": "3",
+  "leftColumn": 23,
+  "maxDynamicHeight": 9000,
+  "minDynamicHeight": 4,
+  "minWidth": 450,
+  "mobileBottomRow": 7,
+  "mobileLeftColumn": 38,
+  "mobileRightColumn": 58,
+  "mobileTopRow": 0,
+  "needsErrorInfo": false,
+  "onOptionChange": "{{\n(() => {\n\n  // 🔹 Get new Yes/No value\n  const newValue = Number(Select_YesNo.selectedOptionValue);\n\n  // 🔹 Get existing answer object for this question\n  const current = appsmith.store.answers?.[currentItem.id] || {};\n\n  // 🔹 Build updated answers object\n  const updatedAnswers = {\n    ...appsmith.store.answers,\n    [currentItem.id]: {\n      ...current,\n\n      YesNo: newValue,\n\n      AnsweredBy: appsmith.user.email || appsmith.user.name || \"Unknown\",\n      AnsweredDate: new Date().toISOString()\n    }\n  };\n\n  // 🔥 If switching to YES → remove extra fields\n  if (newValue === 1) {\n    delete updatedAnswers[currentItem.id].ResponsiblePerson;\n    delete updatedAnswers[currentItem.id].Action;\n    delete updatedAnswers[currentItem.id].DueDate;\n  }\n\n  // 🔹 If switching to NO → ensure fields exist (optional but clean)\n  if (newValue === 0) {\n    updatedAnswers[currentItem.id].ResponsiblePerson =\n      current.ResponsiblePerson || \"\";\n\n    updatedAnswers[currentItem.id].Action =\n      current.Action || \"\";\n\n    updatedAnswers[currentItem.id].DueDate =\n      current.DueDate || \"\";\n  }\n\n  // 🔹 Save back to store\n  return storeValue(\"answers\", updatedAnswers);\n\n})()\n}}",
+  "optionLabel": "label",
+  "optionValue": "value",
+  "parentColumnSpace": 23.05230712890625,
+  "parentId": "47vpqtyhp6",
+  "parentRowSpace": 10,
+  "placeholderText": "Select option",
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 32,
+  "serverSideFiltering": false,
+  "sourceData": "{{[\n  { label: \"Yes\", value: 1 },\n  { label: \"No\", value: 0 }\n]}}",
+  "topRow": 2,
+  "type": "SELECT_WIDGET",
+  "version": 1,
+  "widgetId": "zgta7t0ncf",
+  "widgetName": "Select_YesNo"
+}

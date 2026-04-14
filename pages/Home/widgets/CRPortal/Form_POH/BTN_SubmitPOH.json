@@ -1,0 +1,55 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 155,
+  "boxShadow": "none",
+  "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "buttonVariant": "PRIMARY",
+  "disabledWhenInvalid": true,
+  "dynamicBindingPathList": [
+    {
+      "key": "buttonColor"
+    },
+    {
+      "key": "borderRadius"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "isDefaultClickDisabled": true,
+  "isDisabled": false,
+  "isLoading": false,
+  "isVisible": true,
+  "key": "w6mlahxi3n",
+  "leftColumn": 51,
+  "minWidth": 120,
+  "mobileBottomRow": 37,
+  "mobileLeftColumn": 46,
+  "mobileRightColumn": 62,
+  "mobileTopRow": 33,
+  "needsErrorInfo": false,
+  "onClick": "{{ \nTable_Deliverables.setSelectedRowIndex(0)\n.then(() => Table_GroupTests.setSelectedRowIndex(0))\n.then(() => Table_NRE.setSelectedRowIndex(0))\n.then(() => storeValue(\"fullPO\", POH.getData()))\n.then(() => InsertFullPO.run())\n.then(() => {\n  Table_Deliverables.setData([]);\n  Table_GroupTests.setData([]);\n  Table_NRE.setData([]);\n})\n}}",
+  "originalBottomRow": 155,
+  "originalTopRow": 151,
+  "parentId": "6u83p7yxlx",
+  "placement": "CENTER",
+  "recaptchaType": "V3",
+  "renderMode": "CANVAS",
+  "resetFormOnClick": true,
+  "responsiveBehavior": "hug",
+  "rightColumn": 63,
+  "text": "Submit",
+  "topRow": 151,
+  "type": "BUTTON_WIDGET",
+  "version": 1,
+  "widgetId": "fnduwja5xn",
+  "widgetName": "BTN_SubmitPOH"
+}

@@ -1,0 +1,4 @@
+SELECT *
+FROM dbo.POH_Risks
+WHERE 
+  IsActive = 1

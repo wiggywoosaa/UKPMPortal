@@ -1,0 +1,7 @@
+SELECT 
+    id,
+    Name,
+    Email
+FROM dbo.Admin_Users
+WHERE IsActive = 1
+ORDER BY Name

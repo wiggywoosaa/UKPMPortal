@@ -1,0 +1,23 @@
+INSERT INTO dbo.Admin_Questions (
+    Department,
+    Question,
+    YesNo,
+    TextLine,
+    Enabled,
+    MicrossEntity,
+		DependsOnQuestionId,
+		DependsOnValue,
+		RequiresPM
+)
+VALUES (
+    '{{ Table_Questions.newRow.Department }}',
+    '{{ Table_Questions.newRow.Question }}',
+    {{ Table_Questions.newRow.YesNo ? 1 : 0 }},
+    {{ Table_Questions.newRow.TextLine ? 1 : 0 }},
+    {{ Table_Questions.newRow.Enabled ? 1 : 0 }},
+    '{{ Table_Questions.newRow.MicrossEntity }}',
+		'{{ Table_Questions.newRow.DependsOnQuestionId }}',
+	  {{ Table_Questions.newRow.DependsOnValue ? 1 : 0 }},
+		{{ Table_Questions.newRow.RequiresPM ? 1 : 0 }}
+
+)

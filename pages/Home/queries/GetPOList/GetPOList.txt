@@ -1,0 +1,3 @@
+SELECT DISTINCT MicrossSalesOrderReference, CustomerDivision
+FROM dbo.PurchaseOrderHeader
+WHERE MicrossSalesOrderReference IS NOT NULL

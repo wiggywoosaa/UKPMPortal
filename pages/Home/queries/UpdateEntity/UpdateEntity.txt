@@ -1,0 +1,3 @@
+UPDATE dbo.Admin_MicrossEntity
+SET MicrossEntity = '{{ Table_Entities.updatedRow.MicrossEntity }}'
+WHERE id = {{ Table_Entities.updatedRow.id }}

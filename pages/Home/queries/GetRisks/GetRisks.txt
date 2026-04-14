@@ -1,0 +1,8 @@
+SELECT *
+FROM dbo.POH_Risks
+WHERE 
+  IsActive = 1
+  AND (
+    '{{ Select_PORisk.selectedOptionValue }}' <> ''
+    AND MicrossSalesOrderReference = '{{ Select_PORisk.selectedOptionValue }}'
+  )

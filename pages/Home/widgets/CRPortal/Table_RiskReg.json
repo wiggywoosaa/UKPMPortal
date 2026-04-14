@@ -1,0 +1,321 @@
+{
+  "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+  "animateLoading": true,
+  "borderColor": "#E0DEDE",
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "borderWidth": "1",
+  "bottomRow": 144,
+  "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
+  "cachedTableData": {},
+  "canFreezeColumn": true,
+  "childStylesheet": {
+    "button": {
+      "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+      "boxShadow": "none",
+      "buttonColor": "{{appsmith.theme.colors.primaryColor}}"
+    },
+    "editActions": {
+      "discardBorderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+      "discardButtonColor": "{{appsmith.theme.colors.primaryColor}}",
+      "saveBorderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+      "saveButtonColor": "{{appsmith.theme.colors.primaryColor}}"
+    },
+    "iconButton": {
+      "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+      "boxShadow": "none",
+      "buttonColor": "{{appsmith.theme.colors.primaryColor}}"
+    },
+    "menuButton": {
+      "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+      "boxShadow": "none",
+      "menuColor": "{{appsmith.theme.colors.primaryColor}}"
+    }
+  },
+  "columnOrder": [
+    "MicrossSalesOrderReference",
+    "OverallRiskScore",
+    "UnmitigatedRisks",
+    "RiskLevel",
+    "_scoreRaw"
+  ],
+  "columnUpdatedAt": 1776163689276,
+  "columnWidthMap": {
+    "MicrossSalesOrderReference": 282,
+    "OverallRiskScore": 341,
+    "UnmitigatedRisks": 296
+  },
+  "compactMode": "SHORT",
+  "customIsLoading": false,
+  "customIsLoadingValue": "",
+  "defaultPageSize": 0,
+  "defaultSelectedRowIndex": 0,
+  "defaultSelectedRowIndices": [
+    0
+  ],
+  "delimiter": ",",
+  "dynamicBindingPathList": [
+    {
+      "key": "accentColor"
+    },
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "boxShadow"
+    },
+    {
+      "key": "tableData"
+    },
+    {
+      "key": "primaryColumns.MicrossSalesOrderReference.computedValue"
+    },
+    {
+      "key": "primaryColumns.OverallRiskScore.computedValue"
+    },
+    {
+      "key": "primaryColumns.UnmitigatedRisks.computedValue"
+    },
+    {
+      "key": "primaryColumns.RiskLevel.computedValue"
+    },
+    {
+      "key": "primaryColumns._scoreRaw.computedValue"
+    },
+    {
+      "key": "primaryColumns.OverallRiskScore.textColor"
+    },
+    {
+      "key": "primaryColumns.MicrossSalesOrderReference.buttonLabel"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "tableData"
+    },
+    {
+      "key": "primaryColumns.OverallRiskScore.textColor"
+    },
+    {
+      "key": "primaryColumns.MicrossSalesOrderReference.onClick"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "primaryColumns.MicrossSalesOrderReference.onClick"
+    }
+  ],
+  "enableClientSideSearch": true,
+  "endOfData": false,
+  "flexVerticalAlignment": "start",
+  "horizontalAlignment": "LEFT",
+  "inlineEditingSaveOption": "ROW_LEVEL",
+  "isLoading": false,
+  "isSortable": true,
+  "isVisible": true,
+  "isVisibleDownload": true,
+  "isVisibleFilters": false,
+  "isVisiblePagination": true,
+  "isVisibleSearch": true,
+  "key": "pyhwdszahg",
+  "label": "Data",
+  "leftColumn": 5,
+  "minWidth": 450,
+  "mobileBottomRow": 136,
+  "mobileLeftColumn": 5,
+  "mobileRightColumn": 39,
+  "mobileTopRow": 108,
+  "needsErrorInfo": false,
+  "parentColumnSpace": 28.9921875,
+  "parentId": "j88mmrowx7",
+  "parentRowSpace": 10,
+  "primaryColumns": {
+    "MicrossSalesOrderReference": {
+      "alias": "MicrossSalesOrderReference",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "buttonLabel": "{{(() => { const tableData = Table_RiskReg.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ( currentRow[\"MicrossSalesOrderReference\"])) :  currentRow[\"MicrossSalesOrderReference\"] })()}}",
+      "buttonVariant": "SECONDARY",
+      "cellBackground": "",
+      "columnType": "button",
+      "computedValue": "{{Table_RiskReg.processedTableData.map((currentRow, currentIndex) => ( currentRow[\"MicrossSalesOrderReference\"]))}}",
+      "currencyCode": "USD",
+      "customAlias": "",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "fontStyle": "",
+      "horizontalAlignment": "LEFT",
+      "id": "MicrossSalesOrderReference",
+      "index": 0,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "Micross Sales Order Reference",
+      "menuItemsSource": "STATIC",
+      "notation": "standard",
+      "onClick": "{{\nSelect_PORisk.setSelectedOption(currentRow.MicrossSalesOrderReference)\n.then(() => Promise.all([\n  GetRisks.run(),\n  GetOpenActions.run(),\n  GetOverdueActions.run()\n]))\n}}",
+      "originalId": "MicrossSalesOrderReference",
+      "sticky": "",
+      "textColor": "",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
+    "OverallRiskScore": {
+      "alias": "OverallRiskScore",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "cellBackground": "",
+      "columnType": "number",
+      "computedValue": "{{Table_RiskReg.processedTableData.map((currentRow, currentIndex) => ( currentRow[\"OverallRiskScore\"]))}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "fontStyle": "",
+      "horizontalAlignment": "LEFT",
+      "id": "OverallRiskScore",
+      "index": 1,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "Overall Risk Score",
+      "notation": "standard",
+      "originalId": "OverallRiskScore",
+      "sticky": "",
+      "textColor": "{{(() => { const tableData = Table_RiskReg.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (\ncurrentRow._scoreRaw >= 7\n  ? \"#ff4d4f\"\n  : currentRow._scoreRaw >= 4\n  ? \"#faad14\"\n  : \"#52c41a\"\n)) : \ncurrentRow._scoreRaw >= 7\n  ? \"#ff4d4f\"\n  : currentRow._scoreRaw >= 4\n  ? \"#faad14\"\n  : \"#52c41a\"\n })()}}",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
+    "RiskLevel": {
+      "alias": "RiskLevel",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "cellBackground": "",
+      "columnType": "text",
+      "computedValue": "{{(() => { const tableData = Table_RiskReg.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (\ncurrentRow.RiskLevel === \"High\"\n  ? \"🔴 HIGH\"\n  : currentRow.RiskLevel === \"Medium\"\n  ? \"🟠 MEDIUM\"\n  : \"🟢 LOW\"\n)) : \ncurrentRow.RiskLevel === \"High\"\n  ? \"🔴 HIGH\"\n  : currentRow.RiskLevel === \"Medium\"\n  ? \"🟠 MEDIUM\"\n  : \"🟢 LOW\"\n })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "fontStyle": "",
+      "horizontalAlignment": "LEFT",
+      "id": "RiskLevel",
+      "index": 3,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "Risk Level",
+      "notation": "standard",
+      "originalId": "RiskLevel",
+      "sticky": "",
+      "textColor": "",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
+    "UnmitigatedRisks": {
+      "alias": "UnmitigatedRisks",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "cellBackground": "",
+      "columnType": "number",
+      "computedValue": "{{Table_RiskReg.processedTableData.map((currentRow, currentIndex) => ( currentRow[\"UnmitigatedRisks\"]))}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "fontStyle": "",
+      "horizontalAlignment": "LEFT",
+      "id": "UnmitigatedRisks",
+      "index": 2,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "Unmitigated Risks",
+      "notation": "standard",
+      "originalId": "UnmitigatedRisks",
+      "sticky": "",
+      "textColor": "",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
+    "_scoreRaw": {
+      "alias": "_scoreRaw",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "cellBackground": "",
+      "columnType": "number",
+      "computedValue": "{{Table_RiskReg.processedTableData.map((currentRow, currentIndex) => ( currentRow[\"_scoreRaw\"]))}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "fontStyle": "",
+      "horizontalAlignment": "LEFT",
+      "id": "_scoreRaw",
+      "index": 4,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": false,
+      "label": "_scoreRaw",
+      "notation": "standard",
+      "originalId": "_scoreRaw",
+      "sticky": "",
+      "textColor": "",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    }
+  },
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 61,
+  "searchKey": "",
+  "tableData": "{{\n(() => {\n\n  const data = GetRisksAll.data?.data || GetRisksAll.data || [];\n\n  const probMap = { Low: 1, Medium: 2, High: 3 };\n  const impactMap = { Low: 1, Medium: 2, High: 3 };\n\n  const grouped = {};\n\n  data.forEach(r => {\n\n    const po = r.MicrossSalesOrderReference;\n    if (!po) return;\n\n    if (!grouped[po]) {\n      grouped[po] = {\n        MicrossSalesOrderReference: po,\n        totalScore: 0,\n        maxScore: 0,\n        unmitigated: 0\n      };\n    }\n\n    const isUnmitigated =\n      !r.Mitigation || r.Mitigation.toString().trim() === \"\";\n\n    if (!isUnmitigated) return;   // 🔥 THIS IS THE FIX\n\n    const p = probMap[r.Probability] || 0;\n    const i = impactMap[r.Impact] || 0;\n\n    const score = p * i;\n\n    grouped[po].totalScore += score;\n    grouped[po].maxScore += 9;\n    grouped[po].unmitigated += 1;\n\n  });\n\n  return Object.values(grouped)\n    .map(r => {\n\n      const scoreOutOf10 = r.maxScore\n        ? ((r.totalScore / r.maxScore) * 10)\n        : 0;\n\n      const rounded = Math.round(scoreOutOf10 * 10) / 10;\n\n      let level = \"Low\";\n      if (rounded >= 7) level = \"High\";\n      else if (rounded >= 4) level = \"Medium\";\n\n      return {\n        MicrossSalesOrderReference: r.MicrossSalesOrderReference,\n        OverallRiskScore: `${rounded}/10`,\n        RiskLevel: level,\n        UnmitigatedRisks: r.unmitigated,\n        _scoreRaw: rounded\n      };\n\n    })\n    .sort((a, b) => b._scoreRaw - a._scoreRaw);\n\n})()\n}}",
+  "textSize": "0.875rem",
+  "topRow": 116,
+  "totalRecordsCount": 0,
+  "type": "TABLE_WIDGET_V2",
+  "version": 2,
+  "verticalAlignment": "CENTER",
+  "widgetId": "8blkx5lhla",
+  "widgetName": "Table_RiskReg"
+}

@@ -1,0 +1,18 @@
+INSERT INTO dbo.POH_Risks
+(
+  MicrossSalesOrderReference,
+  Probability,
+  Impact,
+  RiskDescription,
+  Mitigation,
+  CreatedBy
+)
+VALUES
+(
+  '{{ Select_PORisk.selectedOptionValue }}',
+  {{ this.params.probability }},
+  {{ this.params.impact }},
+  {{ this.params.riskDescription }},
+  {{ this.params.mitigation }},
+  {{ this.params.createdBy }}
+)
