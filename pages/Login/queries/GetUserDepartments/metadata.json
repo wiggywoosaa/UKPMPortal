@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT Department\nFROM dbo.Admin_UserDepartments\nWHERE UserId = {{ appsmith.store.selectedUser.id }}",
+      "body": "SELECT Department\nFROM dbo.Admin_UserDepartments\nWHERE UserId = {{ this.params.userId }}",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

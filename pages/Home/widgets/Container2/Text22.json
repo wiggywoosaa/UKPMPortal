@@ -48,7 +48,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 47,
   "shouldTruncate": false,
-  "text": "{{\n(appsmith.store.userContext?.departments || []).length\n  ? \"You are a member of the following groups: \" +\n    appsmith.store.userContext.departments.join(\", \")\n  : \"You are not assigned to any groups\"\n}}",
+  "text": "{{\n(() => {\n\n  const deps = appsmith.store.userContext?.departments || [];\n\n  if (!deps.length) {\n    return \"You are not assigned to any groups\";\n  }\n\n  return \"You are a member of the following groups: \" +\n    deps\n      .map(d => (d || \"\").trim())\n      .filter(Boolean)\n      .join(\", \");\n\n})()\n}}",
   "textAlign": "LEFT",
   "textColor": "#231F20",
   "topRow": 5,
