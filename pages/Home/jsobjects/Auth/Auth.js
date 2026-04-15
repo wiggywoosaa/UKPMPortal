@@ -2,35 +2,39 @@ export default {
 
   checkAuth: () => {
 
-    const user = appsmith.store.user;
+    const ctx = appsmith.store.userContext;
 
-    // 🟡 STORE NOT READY
-    if (user === undefined) return false;
+    // 🔴 STILL LOADING → DO NOTHING
+    if (ctx === undefined) {
+      console.log("Auth: waiting for userContext...");
+      return false;
+    }
 
-    // 🔴 NOT LOGGED IN
-    if (user === null) {
+    // 🔴 NOT LOGGED IN → REDIRECT
+    if (!ctx || !ctx.id) {
       showAlert("Please login", "warning");
       navigateTo("Login");
       return false;
     }
 
+    // ✅ OK
     return true;
   },
 
   checkAdmin: () => {
 
-    const user = appsmith.store.user;
+    const ctx = appsmith.store.userContext;
 
-    if (user === undefined) return false;
+    if (ctx === undefined) return false;
 
-    if (!user) {
-      showAlert("Please login", "warning");
+    if (!ctx || !ctx.id) {
       navigateTo("Login");
       return false;
     }
 
-    if (!user.isAdmin) {
+    if (!ctx.isAdmin) {
       showAlert("Access denied", "error");
+      navigateTo("Home");
       return false;
     }
 
