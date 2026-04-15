@@ -3,9 +3,9 @@
   "animateLoading": true,
   "autoFocus": false,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 10,
+  "bottomRow": 14,
   "boxShadow": "none",
-  "defaultText": "{{ GetPMAnswers.data?.[0]?.Comments || \"\" }}",
+  "defaultText": "{{\nGetPMAnswers.data?.[0]?.AnsweredBy || appsmith.store.user?.name\n}}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -15,46 +15,51 @@
     },
     {
       "key": "defaultText"
+    },
+    {
+      "key": "isDisabled"
     }
   ],
-  "dynamicHeight": "AUTO_HEIGHT",
+  "dynamicHeight": "FIXED",
+  "dynamicPropertyPathList": [
+    {
+      "key": "isDisabled"
+    }
+  ],
   "dynamicTriggerPathList": [],
   "iconAlign": "left",
-  "inputType": "MULTI_LINE_TEXT",
-  "isDisabled": false,
+  "inputType": "TEXT",
+  "isDisabled": "{{\n!appsmith.store.isEditing\n}}",
   "isLoading": false,
   "isRequired": false,
   "isVisible": true,
   "key": "lhr3hf6hz1",
-  "label": "Comment",
+  "label": "Answered By",
   "labelAlignment": "left",
   "labelPosition": "Left",
   "labelStyle": "",
   "labelTextSize": "0.875rem",
-  "labelWidth": 5,
-  "leftColumn": 22,
+  "labelWidth": "10",
+  "leftColumn": 0,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
-  "mobileBottomRow": 9,
-  "mobileLeftColumn": 22,
-  "mobileRightColumn": 42,
-  "mobileTopRow": 2,
+  "mobileBottomRow": 14,
+  "mobileLeftColumn": 1,
+  "mobileRightColumn": 21,
+  "mobileTopRow": 7,
   "needsErrorInfo": false,
-  "originalBottomRow": 9,
-  "originalTopRow": 2,
   "parentColumnSpace": 26.4146728515625,
-  "parentId": "swgc7e1vro",
+  "parentId": "onfgrpi7po",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "resetOnSubmit": true,
   "responsiveBehavior": "fill",
-  "rightColumn": 64,
-  "shouldAllowAutofill": false,
+  "rightColumn": 18,
   "showStepArrows": false,
-  "topRow": 2,
+  "topRow": 7,
   "type": "INPUT_WIDGET_V2",
   "version": 2,
-  "widgetId": "3s90wqbv93",
-  "widgetName": "Input1"
+  "widgetId": "tgirw2ajqa",
+  "widgetName": "Input2"
 }

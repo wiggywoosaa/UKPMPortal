@@ -2,12 +2,12 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 44,
+  "bottomRow": 9,
   "boxShadow": "none",
   "closeOnSelection": true,
   "dateFormat": "DD/MM/YY",
   "datePickerType": "DATE_PICKER",
-  "defaultDate": "{{ GetPM.data[0].BidExpiryDateOrDetailsOfReQuote }}",
+  "defaultDate": "{{\nGetPMAnswers.data?.[0]?.Date || moment().format(\"YYYY-MM-DD\")\n}}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -17,48 +17,54 @@
     },
     {
       "key": "defaultDate"
+    },
+    {
+      "key": "isDisabled"
     }
   ],
   "dynamicHeight": "FIXED",
   "dynamicPropertyPathList": [
     {
       "key": "defaultDate"
+    },
+    {
+      "key": "isDisabled"
     }
   ],
   "dynamicTriggerPathList": [],
   "firstDayOfWeek": 0,
-  "isDisabled": true,
+  "isDisabled": "{{\n!appsmith.store.isEditing\n}}",
   "isLoading": false,
   "isRequired": false,
   "isVisible": true,
-  "key": "k9536f0kmy",
-  "label": "Bid Expiry Date Or Details Of ReQuote",
+  "key": "wg2jibkt7b",
+  "label": "Date",
   "labelAlignment": "left",
-  "labelPosition": "Left",
+  "labelPosition": "Top",
   "labelTextSize": "0.875rem",
-  "labelWidth": "10",
-  "leftColumn": 4,
+  "labelWidth": 5,
+  "leftColumn": 56,
   "maxDate": "2121-12-31T18:29:00.000Z",
   "maxDynamicHeight": 9000,
   "minDate": "1920-12-31T18:30:00.000Z",
   "minDynamicHeight": 4,
   "minWidth": 450,
-  "mobileBottomRow": 30,
-  "mobileLeftColumn": 34,
-  "mobileRightColumn": 54,
-  "mobileTopRow": 23,
+  "mobileBottomRow": 9,
+  "mobileLeftColumn": 43,
+  "mobileRightColumn": 63,
+  "mobileTopRow": 2,
   "needsErrorInfo": false,
-  "parentColumnSpace": 25.961669921875,
-  "parentId": "qprk2red7n",
+  "parentColumnSpace": 26.4146728515625,
+  "parentId": "onfgrpi7po",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 33,
+  "rightColumn": 63,
   "shortcuts": false,
-  "timePrecision": "None",
-  "topRow": 38,
+  "timePrecision": "minute",
+  "topRow": 2,
   "type": "DATE_PICKER_WIDGET2",
   "version": 2,
-  "widgetId": "125inpnvj3",
-  "widgetName": "DatePicker_QBidExpiryDateOrDCP"
+  "widgetId": "u405xfc0f7",
+  "widgetName": "DatePicker1"
 }

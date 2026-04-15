@@ -17,16 +17,22 @@
     },
     {
       "key": "defaultOptionValue"
+    },
+    {
+      "key": "isDisabled"
     }
   ],
   "dynamicHeight": "FIXED",
   "dynamicPropertyPathList": [
     {
       "key": "sourceData"
+    },
+    {
+      "key": "isDisabled"
     }
   ],
   "dynamicTriggerPathList": [],
-  "isDisabled": false,
+  "isDisabled": "{{\n!appsmith.store.isEditing\n}}",
   "isFilterable": true,
   "isLoading": false,
   "isRequired": false,
@@ -37,7 +43,7 @@
   "labelText": "Requires Program Management?",
   "labelTextSize": "0.875rem",
   "labelWidth": "10",
-  "leftColumn": 1,
+  "leftColumn": 0,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
@@ -50,12 +56,12 @@
   "optionLabel": "label",
   "optionValue": "value",
   "parentColumnSpace": 26.4146728515625,
-  "parentId": "swgc7e1vro",
+  "parentId": "onfgrpi7po",
   "parentRowSpace": 10,
   "placeholderText": "Select option",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 21,
+  "rightColumn": 18,
   "serverSideFiltering": false,
   "sourceData": "{{[\n  { label: \"Yes\", value: 1 },\n  { label: \"No\", value: 0 },\n\t{ label: \"\", value: ''}\n]}}",
   "topRow": 2,

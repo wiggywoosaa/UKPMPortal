@@ -3,9 +3,9 @@
   "animateLoading": true,
   "autoFocus": false,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 24,
+  "bottomRow": 10,
   "boxShadow": "none",
-  "defaultText": "{{ GetPM.data[0].CustomerPurchaseOrderNumber }}",
+  "defaultText": "{{ GetPMAnswers.data?.[0]?.Comments || \"\" }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -15,43 +15,54 @@
     },
     {
       "key": "defaultText"
+    },
+    {
+      "key": "isDisabled"
     }
   ],
-  "dynamicHeight": "FIXED",
+  "dynamicHeight": "AUTO_HEIGHT",
+  "dynamicPropertyPathList": [
+    {
+      "key": "isDisabled"
+    }
+  ],
   "dynamicTriggerPathList": [],
   "iconAlign": "left",
-  "inputType": "TEXT",
-  "isDisabled": true,
+  "inputType": "MULTI_LINE_TEXT",
+  "isDisabled": "{{\n!appsmith.store.isEditing\n}}",
   "isLoading": false,
-  "isRequired": true,
+  "isRequired": false,
   "isVisible": true,
-  "key": "59r58l8l8l",
-  "label": "Customer Purchase Order Number",
+  "key": "lhr3hf6hz1",
+  "label": "Comment",
   "labelAlignment": "left",
   "labelPosition": "Left",
   "labelStyle": "",
   "labelTextSize": "0.875rem",
-  "labelWidth": "10",
-  "leftColumn": 4,
+  "labelWidth": 5,
+  "leftColumn": 20,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
-  "mobileBottomRow": 16,
-  "mobileLeftColumn": 4,
-  "mobileRightColumn": 24,
-  "mobileTopRow": 9,
+  "mobileBottomRow": 9,
+  "mobileLeftColumn": 22,
+  "mobileRightColumn": 42,
+  "mobileTopRow": 2,
   "needsErrorInfo": false,
-  "parentColumnSpace": 10.5595703125,
-  "parentId": "qprk2red7n",
+  "originalBottomRow": 10,
+  "originalTopRow": 2,
+  "parentColumnSpace": 26.4146728515625,
+  "parentId": "onfgrpi7po",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "resetOnSubmit": true,
   "responsiveBehavior": "fill",
-  "rightColumn": 33,
+  "rightColumn": 55,
+  "shouldAllowAutofill": false,
   "showStepArrows": false,
-  "topRow": 17,
+  "topRow": 2,
   "type": "INPUT_WIDGET_V2",
   "version": 2,
-  "widgetId": "gcgthel47p",
-  "widgetName": "Input_QCustomerPurchaseOrderPM"
+  "widgetId": "3s90wqbv93",
+  "widgetName": "Input_PMComments"
 }

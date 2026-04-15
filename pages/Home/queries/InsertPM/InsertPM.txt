@@ -1,0 +1,14 @@
+INSERT INTO dbo.PM_Answers (
+    MicrossSalesOrderReference,
+    PMAnswer,
+    Comments,
+    AnsweredBy,
+    Date
+)
+VALUES (
+    {{ Select_POPM.selectedOptionValue }},
+    {{ Number(Select_PMAnswer.selectedOptionValue) }},
+    {{ Input_PMComments.text }},
+    {{ appsmith.store.user?.name }},
+    GETDATE()
+)

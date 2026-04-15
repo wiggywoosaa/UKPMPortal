@@ -1,0 +1,7 @@
+UPDATE dbo.PM_Answers
+SET
+    PMAnswer = {{ Number(Select_PMAnswer.selectedOptionValue) }},
+    Comments = {{ Input_PMComments.text }},
+    AnsweredBy = {{ appsmith.store.user?.name }},
+    Date = GETDATE()
+WHERE MicrossSalesOrderReference = {{ Select_POPM.selectedOptionValue }}
