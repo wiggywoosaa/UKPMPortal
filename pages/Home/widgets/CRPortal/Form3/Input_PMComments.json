@@ -29,7 +29,7 @@
   "dynamicTriggerPathList": [],
   "iconAlign": "left",
   "inputType": "MULTI_LINE_TEXT",
-  "isDisabled": "{{\n!appsmith.store.isEditing\n}}",
+  "isDisabled": "{{ appsmith.store.isEditingPM !== true }}",
   "isLoading": false,
   "isRequired": false,
   "isVisible": true,

@@ -33,7 +33,7 @@
   ],
   "dynamicTriggerPathList": [],
   "firstDayOfWeek": 0,
-  "isDisabled": "{{\n!appsmith.store.isEditing\n}}",
+  "isDisabled": "{{ appsmith.store.isEditingPM !== true }}",
   "isLoading": false,
   "isRequired": false,
   "isVisible": true,
