@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 12,
+  "bottomRow": 9,
   "boxShadow": "none",
   "defaultImage": "https://www.micross.com/images/header/micross-logo.jpg",
   "dynamicBindingPathList": [
@@ -31,7 +31,7 @@
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "rightColumn": 64,
-  "topRow": 1,
+  "topRow": 0,
   "type": "IMAGE_WIDGET",
   "version": 1,
   "widgetId": "kohw2u9bys",

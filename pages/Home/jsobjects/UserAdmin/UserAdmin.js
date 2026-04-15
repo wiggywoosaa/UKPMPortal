@@ -65,25 +65,28 @@ export default {
       .map(d => d.trim());
 
     // 🚀 DELETE OLD
-    await DeleteUserDepartments.run({
-      userId: userId
-    });
+    await DeleteUserDepartments.run({ userId });
 
     // 🚀 INSERT NEW
     for (const dep of departments) {
       await InsertUserDepartment.run({
-        userId: userId,
+        userId,
         department: dep
       });
     }
 
     showAlert("Departments saved");
 
-    // 🚀 REFRESH DATA
+    // 🚀 REFRESH USERS LIST
     await GetUsers.run();
 
-    // 🔥 IMPORTANT: refresh current logged-in user permissions
-    await UserContext.loadUserContext();
+    // 🔥 ONLY REFRESH CONTEXT IF CURRENT USER WAS EDITED
+    const currentUserId = appsmith.store.userContext?.id;
+
+    if (currentUserId === userId) {
+      await UserContext.loadUserContext(); // 👈 use your loader
+      showAlert("Your permissions have been updated", "info");
+    }
 
     // 🚀 RESET FORM
     resetWidget("Form1");
