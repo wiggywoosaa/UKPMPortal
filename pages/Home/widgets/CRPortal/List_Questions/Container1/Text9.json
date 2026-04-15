@@ -46,7 +46,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 18,
   "shouldTruncate": false,
-  "text": "{{\nappsmith.store.answers?.[currentItem.id]?.AnsweredBy\n? \"Answered by \" + (appsmith.store.user?.name || appsmith.store.answers[currentItem.id].AnsweredBy)\n  + \" on \" + moment(appsmith.store.answers[currentItem.id].AnsweredDate).format(\"DD/MM/YYYY HH:mm\")\n: \"\"\n}}",
+  "text": "{{\n(() => {\n\n  const answer = appsmith.store.answers?.[currentItem.id];\n\n  if (!answer?.AnsweredBy) return \"\";\n\n  return \"Answered by \" + answer.AnsweredBy +\n    \" on \" + moment(answer.AnsweredDate).format(\"DD/MM/YYYY HH:mm\");\n\n})()\n}}",
   "textAlign": "LEFT",
   "textColor": "#231F20",
   "topRow": 8,
