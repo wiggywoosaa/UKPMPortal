@@ -1,0 +1,43 @@
+DECLARE @PO NVARCHAR(250) = '{{ appsmith.store.selectedPO }}';
+DECLARE @Dept NVARCHAR(250) = '{{ appsmith.store.selectedDepartment.replace(/'/g, "''") }}';
+DECLARE @User NVARCHAR(250) = '{{ appsmith.store.userContext.name.replace(/'/g, "''") }}';
+DECLARE @Approved BIT = {{ Checkbox_Approve.isChecked ? 1 : 0 }};
+
+IF EXISTS (
+    SELECT 1
+    FROM dbo.POH_DepartmentSignOff
+    WHERE 
+        MicrossSalesOrderReference = @PO
+        AND Department = @Dept
+)
+BEGIN
+
+    UPDATE dbo.POH_DepartmentSignOff
+    SET 
+        HeadOfDeptName = @User,
+        SignedOff = @Approved,
+        SignedDate = GETDATE()
+    WHERE 
+        MicrossSalesOrderReference = @PO
+        AND Department = @Dept
+
+END
+ELSE
+BEGIN
+
+    INSERT INTO dbo.POH_DepartmentSignOff (
+        MicrossSalesOrderReference,
+        Department,
+        HeadOfDeptName,
+        SignedOff,
+        SignedDate
+    )
+    VALUES (
+        @PO,
+        @Dept,
+        @User,
+        @Approved,
+        GETDATE()
+    )
+
+END

@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 98,
+  "bottomRow": 6,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -11,45 +11,42 @@
     },
     {
       "key": "borderRadius"
-    },
-    {
-      "key": "text"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
   "dynamicTriggerPathList": [],
   "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
   "fontSize": "0.875rem",
-  "fontStyle": "BOLD,ITALIC",
+  "fontStyle": "BOLD",
   "isLoading": false,
   "isVisible": true,
-  "key": "wjkswgja7w",
-  "leftColumn": 47,
+  "key": "jorab6p2vl",
+  "leftColumn": 0,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
-  "mobileBottomRow": 55,
-  "mobileLeftColumn": 47,
-  "mobileRightColumn": 63,
-  "mobileTopRow": 51,
+  "mobileBottomRow": 6,
+  "mobileLeftColumn": 0,
+  "mobileRightColumn": 16,
+  "mobileTopRow": 2,
   "needsErrorInfo": false,
-  "originalBottomRow": 98,
-  "originalTopRow": 94,
+  "originalBottomRow": 7,
+  "originalTopRow": 2,
   "overflow": "NONE",
-  "parentColumnSpace": 25.48046875,
-  "parentId": "os1mn3f0s0",
+  "parentColumnSpace": 29.337844848632812,
+  "parentId": "ktzlxtbmhy",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 63,
+  "rightColumn": 11,
   "shouldTruncate": false,
-  "text": "{{\n(() => {\n\n  const questions = List_Questions.listData || [];\n\n  const total = questions.length;\n\n  const answered = questions.filter(q => {\n    const ans = appsmith.store.answers?.[q.id]?.YesNo;\n    return ans !== undefined && ans !== null;\n  }).length;\n\n  return `${answered} / ${total} Questions Completed`;\n\n})()\n}}",
-  "textAlign": "RIGHT",
+  "text": "Department Questions Sign Off Status",
+  "textAlign": "LEFT",
   "textColor": "#231F20",
-  "topRow": 94,
+  "topRow": 2,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
-  "widgetId": "q2xf0yslc8",
-  "widgetName": "Text10"
+  "widgetId": "hgh0lysgx5",
+  "widgetName": "Text25"
 }

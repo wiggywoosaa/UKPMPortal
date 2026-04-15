@@ -1,0 +1,6 @@
+SELECT TOP 1 *
+FROM dbo.POH_DepartmentSignOff
+WHERE 
+    MicrossSalesOrderReference = '{{ appsmith.store.selectedPO }}'
+    AND Department = '{{ appsmith.store.selectedDepartment }}'
+ORDER BY SignedDate DESC
