@@ -1,33 +1,30 @@
 export default {
 
-  loadUserContext: async () => {
+  load: async () => {
 
     try {
 
-      // 🔹 Get logged-in user from store (set at login)
       const user = appsmith.store.userContext;
 
-      if (!user?.id) {
-        throw new Error("User not available in store");
-      }
+      if (!user?.id) return;
 
-      // 🔥 Load departments for THIS user
       await GetMyDepartments.run({
         userId: user.id
       });
 
-      // 🔹 Clean departments
       const departments = (GetMyDepartments.data || [])
-        .map(d => (d.Department || "").trim());
+        .map(d => (d.Department || "").trim())
+        .filter(Boolean);
 
-      // 🔥 Build updated context
       const updatedContext = {
         ...user,
         departments
       };
 
-      // 🔥 Store it
       await storeValue("userContext", updatedContext);
+
+      // 🔥 KEEP AUTH ALIVE
+      await storeValue("authReady", true);
 
       console.log("UserContext refreshed:", updatedContext);
 
@@ -40,4 +37,4 @@ export default {
 
   }
 
-}
+};

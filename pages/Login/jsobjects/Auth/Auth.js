@@ -1,7 +1,7 @@
 export default {
   login: async () => {
 
-    // 🔹 VALIDATE INPUT
+    // 🔹 VALIDATION
     if (!Input_LoginEmail.text || !Input_LoginPassword.text) {
       showAlert("Enter email and password", "error");
       return;
@@ -27,28 +27,31 @@ export default {
       return;
     }
 
-    // 🔥 LOAD USER DEPARTMENTS (CRITICAL)
+    // 🔥 LOAD DEPARTMENTS
     await GetUserDepartments.run({
       userId: user.id
     });
 
     const departments = (GetUserDepartments.data || [])
       .map(d => (d.Department || "").trim())
-      .filter(d => d !== "");
+      .filter(Boolean);
 
-    // 🔥 STORE FULL CONTEXT (SINGLE SOURCE OF TRUTH)
+    // 🔥 BUILD USER CONTEXT
     const userContext = {
       id: user.id,
       email: user.Email,
       name: user.Name,
       isAdmin: user.IsAdmin === 1 || user.IsAdmin === true,
-      departments: departments
+      departments
     };
 
+    // 🔥 STORE SESSION
     await storeValue("userContext", userContext);
 
-    // 🔹 OPTIONAL: DEBUG
-    console.log("UserContext:", userContext);
+    // 🔥 MARK AUTH READY (CRITICAL)
+    await storeValue("authReady", true);
+
+    console.log("Login success:", userContext);
 
     // 🔹 NAVIGATE
     navigateTo("Home");

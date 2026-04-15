@@ -1,6 +1,6 @@
 {
-  "gitSyncId": "69ccf8e72446822078bf9d91_9e7e5e34-292e-41bc-bc25-e6f24545a2d6",
-  "id": "Home_UserContext.loadUserContext",
+  "gitSyncId": "69ccf8e72446822078bf9d91_ec751d6d-7b93-4c67-b80e-788b3e7b7300",
+  "id": "Home_UserContext.load",
   "pluginId": "js-plugin",
   "pluginType": "JS",
   "unpublishedAction": {
@@ -23,8 +23,8 @@
       }
     ],
     "executeOnLoad": false,
-    "fullyQualifiedName": "UserContext.loadUserContext",
-    "name": "loadUserContext",
+    "fullyQualifiedName": "UserContext.load",
+    "name": "load",
     "pageId": "Home",
     "userSetOnLoad": false
   }

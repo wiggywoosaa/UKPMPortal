@@ -3,29 +3,30 @@ export default {
   checkAuth: () => {
 
     const ctx = appsmith.store.userContext;
+    const ready = appsmith.store.authReady;
 
-    // 🔴 STILL LOADING → DO NOTHING
-    if (ctx === undefined) {
-      console.log("Auth: waiting for userContext...");
+    // 🔴 WAIT UNTIL LOGIN FLOW COMPLETE
+    if (!ready) {
+      console.log("Auth waiting...");
       return false;
     }
 
-    // 🔴 NOT LOGGED IN → REDIRECT
+    // 🔴 NOT LOGGED IN
     if (!ctx || !ctx.id) {
       showAlert("Please login", "warning");
       navigateTo("Login");
       return false;
     }
 
-    // ✅ OK
     return true;
   },
 
   checkAdmin: () => {
 
     const ctx = appsmith.store.userContext;
+    const ready = appsmith.store.authReady;
 
-    if (ctx === undefined) return false;
+    if (!ready) return false;
 
     if (!ctx || !ctx.id) {
       navigateTo("Login");
@@ -41,4 +42,4 @@ export default {
     return true;
   }
 
-}
+};
