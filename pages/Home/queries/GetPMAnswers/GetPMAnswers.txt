@@ -1,0 +1,2 @@
+SELECT PMAnswer,Comments,Date,MicrossSalesOrderReference,AnsweredBy,QuestionId FROM dbo.PM_Answers
+WHERE MicrossSalesOrderReference = {{ Select_POPM.selectedOptionValue }}
