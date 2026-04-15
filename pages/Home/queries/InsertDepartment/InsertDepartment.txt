@@ -1,8 +1,10 @@
 INSERT INTO dbo.Admin_Department (
     Department,
-    MicrossEntity
+    MicrossEntity,
+	  RunOrder
 )
 VALUES (
-    '{{ Table_Departments.newRow.Department }}',
-    '{{ Table_Departments.newRow.MicrossEntity }}'
+    {{ "'" + Table_Departments.newRow.Department + "'" }},
+    {{ "'" + Table_Departments.newRow.MicrossEntity + "'" }},
+  	{{ Number(Table_Departments.updatedRow.RunOrder || 0) }}
 )

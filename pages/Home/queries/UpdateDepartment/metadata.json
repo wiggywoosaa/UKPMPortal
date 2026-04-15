@@ -5,12 +5,12 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "UPDATE dbo.Admin_Department\nSET \n  Department = '{{ Table_Departments.updatedRow.Department }}',\n  MicrossEntity = '{{ Table_Departments.updatedRow.MicrossEntity }}'\nWHERE id = {{ Table_Departments.updatedRow.id }}",
+      "body": "UPDATE dbo.Admin_Department\nSET \n  Department = {{ \"'\" + Table_Departments.updatedRow.Department + \"'\" }},\n  MicrossEntity = {{ \"'\" + Table_Departments.updatedRow.MicrossEntity + \"'\" }},\n  RunOrder = {{ Number(Table_Departments.updatedRow.RunOrder || 0) }}\nWHERE id = {{ Table_Departments.updatedRow.id }}",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
         {
-          "value": true
+          "value": false
         }
       ],
       "timeoutInMillisecond": 10000
