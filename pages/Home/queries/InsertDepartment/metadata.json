@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "INSERT INTO dbo.Admin_Department (\n    Department,\n    MicrossEntity,\n\t  RunOrder\n)\nVALUES (\n    {{ \"'\" + Table_Departments.newRow.Department + \"'\" }},\n    {{ \"'\" + Table_Departments.newRow.MicrossEntity + \"'\" }},\n  \t{{ Number(Table_Departments.updatedRow.RunOrder || 0) }}\n)",
+      "body": "INSERT INTO dbo.Admin_Department (\n    Department,\n    MicrossEntity,\n\t  RunOrder\n)\nVALUES (\n    {{Table_Departments.newRow.Department}},\n    {{Table_Departments.newRow.MicrossEntity }},\n  \t{{ Number(Table_Departments.updatedRow.RunOrder || 0) }}\n)",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

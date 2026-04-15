@@ -324,6 +324,51 @@
       "version": 1,
       "widgetId": "qprk2red7n",
       "widgetName": "Canvas16"
+    },
+    {
+      "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+      "bottomRow": 1460,
+      "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
+      "canExtend": false,
+      "containerStyle": "none",
+      "detachFromLayout": true,
+      "dynamicBindingPathList": [
+        {
+          "key": "borderRadius"
+        },
+        {
+          "key": "boxShadow"
+        }
+      ],
+      "dynamicHeight": "AUTO_HEIGHT",
+      "dynamicTriggerPathList": [],
+      "flexLayers": [],
+      "isLoading": false,
+      "isVisible": true,
+      "key": "mptv00u6jm",
+      "leftColumn": 0,
+      "maxDynamicHeight": 9000,
+      "minDynamicHeight": 4,
+      "minHeight": 1500,
+      "minWidth": 450,
+      "mobileBottomRow": 1501,
+      "mobileLeftColumn": 0,
+      "mobileRightColumn": 1875.5,
+      "mobileTopRow": 1,
+      "needsErrorInfo": false,
+      "parentColumnSpace": 1,
+      "parentId": "t9ltnwt1jl",
+      "parentRowSpace": 1,
+      "renderMode": "CANVAS",
+      "responsiveBehavior": "fill",
+      "rightColumn": 1875.5,
+      "tabId": "tabdwkevkl8ya",
+      "tabName": "Final Acceptance",
+      "topRow": 1,
+      "type": "CANVAS_WIDGET",
+      "version": 1,
+      "widgetId": "yc754fsi7w",
+      "widgetName": "Canvas19"
     }
   ],
   "defaultTab": "{{ appsmith.store.activeTab || \"Dashboard\" }}",
@@ -423,9 +468,17 @@
       "label": "Action Tracker",
       "widgetId": "c6uury0wpf"
     },
+    "tabdwkevkl8ya": {
+      "id": "tabdwkevkl8ya",
+      "index": 6,
+      "isDuplicateLabel": false,
+      "isVisible": true,
+      "label": "Final Acceptance",
+      "widgetId": "yc754fsi7w"
+    },
     "tabjr8p3b0asi": {
       "id": "tabjr8p3b0asi",
-      "index": 6,
+      "index": 7,
       "isDuplicateLabel": false,
       "isVisible": "{{ appsmith.store.user?.isAdmin }}",
       "label": "Administration",

@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "INSERT INTO dbo.Admin_Questions (\n    Department,\n    Question,\n    YesNo,\n    TextLine,\n    Enabled,\n    MicrossEntity,\n\t\tDependsOnQuestionId,\n\t\tDependsOnValue,\n\t\tRequiresPM\n)\nVALUES (\n    '{{ Table_Questions.newRow.Department }}',\n    '{{ Table_Questions.newRow.Question }}',\n    {{ Table_Questions.newRow.YesNo ? 1 : 0 }},\n    {{ Table_Questions.newRow.TextLine ? 1 : 0 }},\n    {{ Table_Questions.newRow.Enabled ? 1 : 0 }},\n    '{{ Table_Questions.newRow.MicrossEntity }}',\n\t\t'{{ Table_Questions.newRow.DependsOnQuestionId }}',\n\t  {{ Table_Questions.newRow.DependsOnValue ? 1 : 0 }},\n\t\t{{ Table_Questions.newRow.RequiresPM ? 1 : 0 }}\n\n)",
+      "body": "INSERT INTO dbo.Admin_Questions (\n    Department,\n    Question,\n    YesNo,\n    TextLine,\n    Enabled,\n    MicrossEntity,\n    DependsOnQuestionId,\n    DependsOnValue,\n    RequiresPM\n)\nVALUES (\n    {{ Table_Questions.newRow.Department }},\n    {{ Table_Questions.newRow.Question }},\n    {{ Number(Table_Questions.newRow.YesNo || 0) }},\n    {{ Number(Table_Questions.newRow.TextLine || 0) }},\n    {{ Number(Table_Questions.newRow.Enabled || 0) }},\n    {{ Table_Questions.newRow.MicrossEntity }},\n    {{ Table_Questions.newRow.DependsOnQuestionId || null }},\n    {{ Table_Questions.newRow.DependsOnValue || null }},\n    {{ Number(Table_Questions.newRow.RequiresPM || 0) }}\n)",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

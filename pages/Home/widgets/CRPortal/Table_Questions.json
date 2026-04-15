@@ -45,7 +45,7 @@
     "RequiresPM",
     "EditActions1"
   ],
-  "columnUpdatedAt": 1776237368351,
+  "columnUpdatedAt": 1776239966722,
   "columnWidthMap": {
     "Department": 162,
     "DependsOnQuestionId": 353,
@@ -55,7 +55,7 @@
     "TextLine": 185,
     "YesNo": 178
   },
-  "compactMode": "SHORT",
+  "compactMode": "DEFAULT",
   "customIsLoading": false,
   "customIsLoadingValue": "",
   "defaultNewRow": "{{\n{\n  Department: Table_Departments.selectedRow?.Department,\n  MicrossEntity: Table_Entities.selectedRow?.MicrossEntity\n}\n}}",
@@ -166,6 +166,9 @@
     },
     {
       "key": "primaryColumns.EditActions1.isDiscardDisabled"
+    },
+    {
+      "key": "primaryColumns.EditActions1.onSave"
     }
   ],
   "dynamicTriggerPathList": [
@@ -174,6 +177,9 @@
     },
     {
       "key": "onAddNewRowSave"
+    },
+    {
+      "key": "primaryColumns.EditActions1.onSave"
     }
   ],
   "enableClientSideSearch": true,
@@ -337,9 +343,10 @@
       "isEditable": false,
       "isSaveDisabled": "{{Table_Questions.processedTableData.map((currentRow, currentIndex) => ( !Table_Questions.updatedRowIndices.includes(currentIndex)))}}",
       "isSaveVisible": true,
-      "isVisible": false,
+      "isVisible": true,
       "label": "Save / Discard",
       "notation": "standard",
+      "onSave": "{{\nTable_Questions.updatedRow?.id\n  ? UpdateQuestion.run().then(() => GetQuestions.run())\n  : InsertQuestion.run().then(() => GetQuestions.run())\n}}",
       "originalId": "EditActions1",
       "saveActionLabel": "Save",
       "saveBorderRadius": "{{Table_Questions.processedTableData.map((currentRow, currentIndex) => ( (appsmith.theme.borderRadius.appBorderRadius)))}}",

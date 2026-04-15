@@ -1,6 +1,6 @@
 UPDATE dbo.Admin_Department
 SET 
-  Department = {{ "'" + Table_Departments.updatedRow.Department + "'" }},
-  MicrossEntity = {{ "'" + Table_Departments.updatedRow.MicrossEntity + "'" }},
+  Department = {{Table_Departments.updatedRow.Department}},
+  MicrossEntity = {{Table_Departments.updatedRow.MicrossEntity }},
   RunOrder = {{ Number(Table_Departments.updatedRow.RunOrder || 0) }}
 WHERE id = {{ Table_Departments.updatedRow.id }}

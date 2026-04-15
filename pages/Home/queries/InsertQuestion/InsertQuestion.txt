@@ -5,19 +5,18 @@ INSERT INTO dbo.Admin_Questions (
     TextLine,
     Enabled,
     MicrossEntity,
-		DependsOnQuestionId,
-		DependsOnValue,
-		RequiresPM
+    DependsOnQuestionId,
+    DependsOnValue,
+    RequiresPM
 )
 VALUES (
-    '{{ Table_Questions.newRow.Department }}',
-    '{{ Table_Questions.newRow.Question }}',
-    {{ Table_Questions.newRow.YesNo ? 1 : 0 }},
-    {{ Table_Questions.newRow.TextLine ? 1 : 0 }},
-    {{ Table_Questions.newRow.Enabled ? 1 : 0 }},
-    '{{ Table_Questions.newRow.MicrossEntity }}',
-		'{{ Table_Questions.newRow.DependsOnQuestionId }}',
-	  {{ Table_Questions.newRow.DependsOnValue ? 1 : 0 }},
-		{{ Table_Questions.newRow.RequiresPM ? 1 : 0 }}
-
+    {{ Table_Questions.newRow.Department }},
+    {{ Table_Questions.newRow.Question }},
+    {{ Number(Table_Questions.newRow.YesNo || 0) }},
+    {{ Number(Table_Questions.newRow.TextLine || 0) }},
+    {{ Number(Table_Questions.newRow.Enabled || 0) }},
+    {{ Table_Questions.newRow.MicrossEntity }},
+    {{ Table_Questions.newRow.DependsOnQuestionId || null }},
+    {{ Table_Questions.newRow.DependsOnValue || null }},
+    {{ Number(Table_Questions.newRow.RequiresPM || 0) }}
 )

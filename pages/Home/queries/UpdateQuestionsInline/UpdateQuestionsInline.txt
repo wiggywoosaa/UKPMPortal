@@ -1,0 +1,12 @@
+UPDATE dbo.Admin_Questions
+SET
+    Department = {{ Table_Questions.updatedRow.Department }},
+    Question = {{ Table_Questions.updatedRow.Question }},
+    YesNo = {{ Number(Table_Questions.updatedRow.YesNo || 0) }},
+    TextLine = {{ Number(Table_Questions.updatedRow.TextLine || 0) }},
+    Enabled = {{ Number(Table_Questions.updatedRow.Enabled || 0) }},
+    MicrossEntity = {{ Table_Questions.updatedRow.MicrossEntity }},
+    DependsOnQuestionId = {{ Table_Questions.updatedRow.DependsOnQuestionId || null }},
+    DependsOnValue = {{ Table_Questions.updatedRow.DependsOnValue || null }},
+    RequiresPM = {{ Number(Table_Questions.updatedRow.RequiresPM || 0) }}
+WHERE id = {{ Table_Questions.updatedRow.id }}
