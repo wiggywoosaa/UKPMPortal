@@ -3,38 +3,42 @@ export default {
   checkAuth: () => {
 
     const ctx = appsmith.store.userContext;
-    const ready = appsmith.store.authReady;
 
-    // 🔴 WAIT UNTIL LOGIN FLOW COMPLETE
-    if (!ready) {
-      console.log("Auth waiting...");
-      return false;
+    // 🟡 CASE 1: STORE NOT INITIALISED YET → DO NOTHING
+    if (typeof ctx === "undefined") {
+      console.log("Auth: store not ready, skipping");
+      return true;
     }
 
-    // 🔴 NOT LOGGED IN
-    if (!ctx || !ctx.id) {
-      showAlert("Please login", "warning");
+    // 🔴 CASE 2: EXPLICITLY NOT LOGGED IN
+    if (ctx === null) {
+      console.log("Auth: no user, redirecting");
       navigateTo("Login");
       return false;
     }
 
+    // 🔴 CASE 3: BROKEN CONTEXT
+    if (!ctx?.id) {
+      console.log("Auth: invalid userContext, redirecting");
+      navigateTo("Login");
+      return false;
+    }
+
+    // ✅ CASE 4: VALID SESSION
     return true;
   },
 
   checkAdmin: () => {
 
     const ctx = appsmith.store.userContext;
-    const ready = appsmith.store.authReady;
 
-    if (!ready) return false;
-
-    if (!ctx || !ctx.id) {
+    if (typeof ctx === "undefined") return true;
+    if (!ctx?.id) {
       navigateTo("Login");
       return false;
     }
 
     if (!ctx.isAdmin) {
-      showAlert("Access denied", "error");
       navigateTo("Home");
       return false;
     }

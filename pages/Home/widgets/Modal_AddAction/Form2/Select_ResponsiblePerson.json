@@ -2,7 +2,7 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 29,
+  "bottomRow": 30,
   "boxShadow": "none",
   "defaultOptionValue": "{{ ((options, serverSideFiltering) => (  appsmith.user.name || \"ALL\" ))(Select_ResponsiblePerson.options, Select_ResponsiblePerson.serverSideFiltering) }}",
   "dynamicBindingPathList": [
@@ -64,7 +64,7 @@
   "rightColumn": 63,
   "serverSideFiltering": false,
   "sourceData": "{{\n[\n  { label: \"All\", value: \"ALL\" },\n  ...(GetUsersForDropdown.data || []).map(u => ({\n    label: u.Name,\n    value: u.Name   // or Email if you switched earlier\n  }))\n]\n}}",
-  "topRow": 24,
+  "topRow": 25,
   "type": "SELECT_WIDGET",
   "version": 1,
   "widgetId": "msqviaq7c3",

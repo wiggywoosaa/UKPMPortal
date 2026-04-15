@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 42,
+  "bottomRow": 43,
   "boxShadow": "none",
   "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
   "buttonVariant": "SECONDARY",
@@ -36,7 +36,7 @@
   "responsiveBehavior": "hug",
   "rightColumn": 44,
   "text": "Reset",
-  "topRow": 38,
+  "topRow": 39,
   "type": "BUTTON_WIDGET",
   "version": 1,
   "widgetId": "6a6g3enqfo",
