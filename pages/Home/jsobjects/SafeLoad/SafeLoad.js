@@ -4,13 +4,17 @@ export default {
 
     try {
 
-      const user = appsmith.store.user;
+      const ctx = appsmith.store.userContext;
 
       // 🟡 WAIT UNTIL STORE READY
-      if (user === undefined) return;
+      if (typeof ctx === "undefined") {
+        console.log("SafeLoad: waiting for userContext...");
+        return;
+      }
 
       // 🔴 NOT LOGGED IN
-      if (!user) {
+      if (!ctx || !ctx.id) {
+        console.log("SafeLoad: no user, redirecting");
         navigateTo("Login");
         return;
       }
