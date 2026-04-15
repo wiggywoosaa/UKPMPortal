@@ -73,7 +73,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 24,
   "serverSideFiltering": false,
-  "sourceData": "{{\n(() => {\n\n  const allDepts = GetDepartments.data || [];\n  const entity = GetPOH.data?.[0]?.MicrossEntity;\n\n  const userDeps = (appsmith.store.userContext?.departments || [])\n    .map(d => (d || \"\").trim().toLowerCase());\n\n  const isAdmin = appsmith.store.userContext?.isAdmin === true;\n\n  // 🔴 SAFETY: wait for data\n  if (!allDepts.length || !entity) return [];\n\n  return allDepts\n    .filter(d => d.MicrossEntity === entity)\n    .filter(d => {\n\n      // 🔥 Admin sees everything\n      if (isAdmin) return true;\n\n      const dept = (d.Department || \"\").trim().toLowerCase();\n\n      return userDeps.includes(dept);\n\n    })\n    .map(d => ({\n      label: d.Department,\n      value: d.Department\n    }));\n\n})()\n}}",
+  "sourceData": "{{\n(() => {\n\n  const allDepts = GetDepartments.data || [];\n  const entity = GetPOH.data?.[0]?.MicrossEntity;\n\n  const ctx = appsmith.store.userContext;\n\n  // 🔴 WAIT FOR DATA\n  if (!allDepts.length || !entity || ctx === undefined) return [];\n\n  const userDeps = (ctx?.departments || [])\n    .map(d => (d || \"\").trim().toLowerCase());\n\n  return allDepts\n    .filter(d => d.MicrossEntity === entity)\n    .filter(d => {\n\n      const dept = (d.Department || \"\").trim().toLowerCase();\n\n      // 🔥 ONLY SHOW WHAT USER HAS ACCESS TO\n      return userDeps.includes(dept);\n\n    })\n    .map(d => ({\n      label: d.Department,\n      value: d.Department\n    }));\n\n})()\n}}",
   "topRow": 84,
   "type": "SELECT_WIDGET",
   "version": 1,
