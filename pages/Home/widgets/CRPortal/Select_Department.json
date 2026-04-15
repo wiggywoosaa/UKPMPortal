@@ -51,7 +51,7 @@
   "labelText": "Department",
   "labelTextSize": "0.875rem",
   "labelWidth": "10",
-  "leftColumn": 4,
+  "leftColumn": 5,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,

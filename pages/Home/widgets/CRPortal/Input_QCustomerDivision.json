@@ -30,6 +30,7 @@
   "labelAlignment": "left",
   "labelPosition": "Left",
   "labelStyle": "",
+  "labelTextColor": "",
   "labelTextSize": "0.875rem",
   "labelWidth": "10",
   "leftColumn": 4,

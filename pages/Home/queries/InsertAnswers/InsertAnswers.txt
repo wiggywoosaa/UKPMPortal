@@ -7,7 +7,6 @@ BEGIN TRY
     {{
     (() => {
 
-      // 🔥 CHANGE DETECTION (FIXED + ROBUST)
       const normalize = (v) =>
         v === null || v === undefined ? '' : String(v);
 
@@ -16,7 +15,7 @@ BEGIN TRY
 
           const original = appsmith.store.originalAnswers?.[qId];
 
-          // 🔥 No original = new row
+          // 🔥 new row
           if (!original) return true;
 
           return (
@@ -32,7 +31,6 @@ BEGIN TRY
           );
         });
 
-      // 🔴 DEBUG (remove later if you want)
       console.log("CHANGES:", changes);
 
       if (changes.length === 0) {
@@ -42,14 +40,14 @@ BEGIN TRY
 
       return `
 
-      -- 🔴 Only update CURRENT latest rows
+      -- 🔴 mark previous latest as old
       UPDATE dbo.POH_Answers
       SET IsLatest = 0
       WHERE MicrossSalesOrderReference = '${appsmith.store.selectedPO}'
       AND QuestionId IN (${changes.map(([qId]) => qId).join(",")})
       AND IsLatest = 1;
 
-      -- 🔹 Insert only changed rows
+      -- 🔹 insert new version rows
       INSERT INTO dbo.POH_Answers (
           MicrossSalesOrderReference,
           QuestionId,
@@ -62,7 +60,8 @@ BEGIN TRY
           DueDate,
           VersionId,
           CreatedAt,
-          IsLatest
+          IsLatest,
+          Status
       )
       VALUES
       ${changes.map(([qId, val]) => {
@@ -72,8 +71,8 @@ BEGIN TRY
           : 'NULL';
 
         const safeUser = appsmith.user.name
-  ? `'${appsmith.user.name.replace(/'/g, "''")}'`
-  : 'NULL';
+          ? `'${appsmith.user.name.replace(/'/g, "''")}'`
+          : 'NULL';
 
         const safeDate = val.AnsweredDate
           ? `'${val.AnsweredDate}'`
@@ -103,7 +102,8 @@ BEGIN TRY
           ${safeDueDate},
           '${appsmith.store.currentVersion}',
           GETDATE(),
-          1
+          1,
+          'Open'  -- 🔥 default status for new version rows
         )`;
 
       }).join(",")}
