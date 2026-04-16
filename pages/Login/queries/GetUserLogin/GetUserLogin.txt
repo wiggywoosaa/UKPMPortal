@@ -1,0 +1,14 @@
+SELECT 
+    id,
+    Name,
+    Email,
+    IsAdmin,
+    IsActive,
+    IsApprover,
+    [Limit],
+    PasswordHash
+FROM dbo.Admin_Users
+WHERE 
+    Email = '{{Input_Email.text}}'
+    AND PasswordHash = '{{CryptoJS.SHA256(Input_Password.text).toString()}}'
+    AND IsActive = 1

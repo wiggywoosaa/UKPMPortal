@@ -1,16 +1,16 @@
 {
-  "gitSyncId": "69ccf8e72446822078bf9d91_ff9c0f3f-ddab-40e8-b59b-cd075aee2b9c",
-  "id": "Login_GetMyUser",
+  "gitSyncId": "69ccf8e72446822078bf9d91_492b8176-d408-4573-a382-7727506aed96",
+  "id": "Login_GetUserLogin",
   "pluginId": "mssql-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT \n    id,\n    Name,\n    Email,\n    IsAdmin,\n    IsActive,\n    IsApprover,\n    [Limit]\nFROM dbo.Admin_Users\nWHERE id = {{this.params.userId}}",
+      "body": "SELECT \n    id,\n    Name,\n    Email,\n    IsAdmin,\n    IsActive,\n    IsApprover,\n    [Limit],\n    PasswordHash\nFROM dbo.Admin_Users\nWHERE \n    Email = '{{Input_Email.text}}'\n    AND PasswordHash = '{{CryptoJS.SHA256(Input_Password.text).toString()}}'\n    AND IsActive = 1",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
         {
-          "value": false
+          "value": true
         }
       ],
       "timeoutInMillisecond": 10000
@@ -27,8 +27,8 @@
         "key": "body"
       }
     ],
-    "executeOnLoad": true,
-    "name": "GetMyUser",
+    "executeOnLoad": false,
+    "name": "GetUserLogin",
     "pageId": "Login",
     "userSetOnLoad": false
   }

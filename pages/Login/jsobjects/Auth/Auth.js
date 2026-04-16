@@ -2,14 +2,14 @@ export default {
   login: async () => {
 
     // 🔹 VALIDATION
-    if (!Input_LoginEmail.text || !Input_LoginPassword.text) {
+    if (!Input_Email.text || !Input_Password.text) {
       showAlert("Enter email and password", "error");
       return;
     }
 
     // 🔹 GET USER
     await GetMyUser.run({
-      email: Input_LoginEmail.text
+      email: Input_Email.text
     });
 
     const user = GetMyUser.data?.[0];
@@ -20,7 +20,7 @@ export default {
     }
 
     // 🔹 CHECK PASSWORD
-    const hash = CryptoJS.SHA256(Input_LoginPassword.text).toString();
+    const hash = CryptoJS.SHA256(Input_Password.text).toString();
 
     if (hash !== user.PasswordHash) {
       showAlert("Invalid login", "error");

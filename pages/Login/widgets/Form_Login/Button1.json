@@ -36,7 +36,7 @@
   "mobileRightColumn": 62,
   "mobileTopRow": 33,
   "needsErrorInfo": false,
-  "onClick": "{{ Auth.login() }}",
+  "onClick": "{{\n(() => {\n\n  return GetUserLogin.run()\n\n    .then(() => {\n\n      const user = GetUserLogin.data?.[0];\n\n      if (!user) {\n        showAlert(\"Invalid login\", \"error\");\n        return;\n      }\n\n      // 🔹 store basic user first\n      return storeValue(\"userContext\", {\n        id: user.id,\n        name: user.Name,\n        email: user.Email\n      })\n\n      // 🔥 load full context (departments + approver etc)\n      .then(() => UserContext.loadUserContext())\n\n      .then(() => {\n        navigateTo(\"Home\");\n      });\n\n    })\n\n    .catch((err) => {\n      console.error(\"Login failed:\", err);\n      showAlert(\"Login error\", \"error\");\n    });\n\n})()\n}}",
   "originalBottomRow": 24,
   "originalTopRow": 20,
   "parentId": "9exuvepgin",

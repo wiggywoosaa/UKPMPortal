@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 9,
+  "bottomRow": 31,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -51,7 +51,7 @@
   "text": "{{\n(() => {\n\n  const deps = appsmith.store.userContext?.departments || [];\n  const isApprover = Number(appsmith.store.userContext?.isApprover) === 1;\n\n  let message = \"\";\n\n  if (!deps.length) {\n    message = \"You are not assigned to any groups\";\n  } else {\n    message = \"You are a member of the following groups: \" +\n      deps\n        .map(d => (d || \"\").trim())\n        .filter(Boolean)\n        .join(\", \");\n  }\n\n  // 🔥 ADD APPROVER STATUS\n  if (isApprover) {\n    message += \" | You have approval rights\";\n  }\n\n  return message;\n\n})()\n}}",
   "textAlign": "LEFT",
   "textColor": "#231F20",
-  "topRow": 5,
+  "topRow": 27,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,

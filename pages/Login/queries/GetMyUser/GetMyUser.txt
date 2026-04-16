@@ -8,4 +8,3 @@ SELECT
     [Limit]
 FROM dbo.Admin_Users
 WHERE id = {{this.params.userId}}
-AND IsActive = 1
