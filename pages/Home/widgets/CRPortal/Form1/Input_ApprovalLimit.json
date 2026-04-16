@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 34,
   "boxShadow": "none",
-  "defaultText": "{{ Table_Users.selectedRow?.Approvallimit || '' }}",
+  "defaultText": "{{ Table_Users.selectedRow?.Limit || '' }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

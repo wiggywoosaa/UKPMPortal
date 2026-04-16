@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT TOP 1 *\nFROM dbo.POH_DepartmentSignOff\nWHERE \n    MicrossSalesOrderReference = '{{ appsmith.store.selectedPO }}'\n    AND Department = '{{ appsmith.store.selectedDepartment }}'\nORDER BY SignedDate DESC",
+      "body": "SELECT *\nFROM dbo.POH_DepartmentSignOff\nWHERE \n    MicrossSalesOrderReference = '{{ appsmith.store.selectedPO }}'\n    AND '{{ appsmith.store.selectedPO }}' IS NOT NULL\n    AND '{{ appsmith.store.currentVersion }}' IS NOT NULL",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

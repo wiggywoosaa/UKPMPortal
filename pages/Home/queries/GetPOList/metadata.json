@@ -5,12 +5,12 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT DISTINCT MicrossSalesOrderReference, CustomerDivision\nFROM dbo.PurchaseOrderHeader\nWHERE MicrossSalesOrderReference IS NOT NULL",
+      "body": "SELECT DISTINCT \n    poh.MicrossSalesOrderReference, \n    poh.CustomerDivision\nFROM dbo.PurchaseOrderHeader poh\nWHERE \n    poh.MicrossSalesOrderReference IS NOT NULL\n\n    AND (\n        {{ \n        (appsmith.store.userContext?.departments || [])\n          .map(d => `\n            NOT EXISTS (\n              SELECT 1\n              FROM dbo.POH_DepartmentSignOff s\n              WHERE \n                s.MicrossSalesOrderReference = poh.MicrossSalesOrderReference\n                AND LOWER(LTRIM(RTRIM(s.Department))) = '${d.replace(/'/g,\"''\").toLowerCase()}'\n                AND s.SignedOff = 1\n            )\n          `)\n          .join(\" OR \") || \"1=1\"\n        }}\n    )",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
         {
-          "value": true
+          "value": false
         }
       ],
       "timeoutInMillisecond": 10000
@@ -22,7 +22,11 @@
       "name": "MICNORSQL.MICROSS.LOCAL",
       "pluginId": "mssql-plugin"
     },
-    "dynamicBindingPathList": [],
+    "dynamicBindingPathList": [
+      {
+        "key": "body"
+      }
+    ],
     "executeOnLoad": true,
     "name": "GetPOList",
     "pageId": "Home",

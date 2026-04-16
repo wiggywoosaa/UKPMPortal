@@ -1,0 +1,11 @@
+SELECT 
+    id,
+    Name,
+    Email,
+    IsAdmin,
+    IsActive,
+    IsApprover,
+    [Limit]
+FROM dbo.Admin_Users
+WHERE id = {{this.params.userId}}
+AND IsActive = 1

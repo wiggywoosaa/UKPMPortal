@@ -15,6 +15,9 @@
     },
     {
       "key": "isDisabled"
+    },
+    {
+      "key": "tooltip"
     }
   ],
   "dynamicPropertyPathList": [
@@ -28,7 +31,7 @@
     }
   ],
   "isDefaultClickDisabled": true,
-  "isDisabled": "{{\n(() => {\n\n  const selectedDept = appsmith.store.selectedDepartment;\n  const questions = List_Questions.listData || [];\n  const answers = appsmith.store.answers || {};\n  const signOff = GetDepartmentSignOff.data?.[0];\n\n  if (!selectedDept || !questions.length) return true;\n\n  const selectedNorm = selectedDept.trim().toLowerCase();\n\n  const deptQuestions = questions.filter(q =>\n    q.Department?.trim().toLowerCase() === selectedNorm\n  );\n\n  if (!deptQuestions.length) return true;\n\n  const incomplete = deptQuestions.some(q => {\n\n    const ans = answers[q.id];\n\n    if (!ans || ans.YesNo === undefined) return true;\n\n    if (Number(ans.YesNo) === 0) {\n      const responsible = ans.ResponsiblePerson?.toString().trim();\n      const action = ans.Action?.toString().trim();\n      const due = ans.DueDate?.toString().trim();\n      return (!responsible || !action || !due);\n    }\n\n    return false;\n\n  });\n\n  const isComplete = !incomplete;\n\n  // 🔥 FIX HERE\n  const isSigned = Number(signOff?.SignedOff) === 1;\n\n  return !isComplete || isSigned;\n\n})()\n}}",
+  "isDisabled": "{{\n(() => {\n\n  const selectedDept = appsmith.store.selectedDepartment?.trim().toLowerCase();\n  const questions = List_Questions.listData || [];\n  const answers = appsmith.store.answers || {};\n  const signOffs = GetDepartmentSignOff.data || [];\n\n  // 🔥 FIXED TYPE CHECK\n  const isApprover = Number(appsmith.store.userContext?.isApprover) === 1;\n\n  if (!isApprover) return true;\n\n  if (!selectedDept || !questions.length) return true;\n\n  const deptQuestions = questions.filter(q =>\n    q.Department?.trim().toLowerCase() === selectedDept\n  );\n\n  if (!deptQuestions.length) return true;\n\n  const incomplete = deptQuestions.some(q => {\n\n    const ans = answers[q.id];\n\n    if (!ans || ans.YesNo === undefined) return true;\n\n    if (Number(ans.YesNo) === 0) {\n      const responsible = ans.ResponsiblePerson?.toString().trim();\n      const action = ans.Action?.toString().trim();\n      const due = ans.DueDate?.toString().trim();\n      return (!responsible || !action || !due);\n    }\n\n    return false;\n\n  });\n\n  const isComplete = !incomplete;\n\n  const deptSign = signOffs.find(s =>\n    s.Department?.trim().toLowerCase() === selectedDept\n  );\n\n  const isSigned = Number(deptSign?.SignedOff) === 1;\n\n  return !isComplete || isSigned;\n\n})()\n}}",
   "isLoading": false,
   "isVisible": true,
   "key": "1lqzkia43c",
@@ -50,6 +53,7 @@
   "responsiveBehavior": "hug",
   "rightColumn": 63,
   "text": "Approve",
+  "tooltip": "{{\n!appsmith.store.userContext?.isApprover\n  ? \"You do not have approval rights\"\n  : \"Approve department\"\n}}",
   "topRow": 2,
   "type": "BUTTON_WIDGET",
   "version": 1,

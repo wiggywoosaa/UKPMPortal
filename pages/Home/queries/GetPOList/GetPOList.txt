@@ -1,3 +1,23 @@
-SELECT DISTINCT MicrossSalesOrderReference, CustomerDivision
-FROM dbo.PurchaseOrderHeader
-WHERE MicrossSalesOrderReference IS NOT NULL
+SELECT DISTINCT 
+    poh.MicrossSalesOrderReference, 
+    poh.CustomerDivision
+FROM dbo.PurchaseOrderHeader poh
+WHERE 
+    poh.MicrossSalesOrderReference IS NOT NULL
+
+    AND (
+        {{ 
+        (appsmith.store.userContext?.departments || [])
+          .map(d => `
+            NOT EXISTS (
+              SELECT 1
+              FROM dbo.POH_DepartmentSignOff s
+              WHERE 
+                s.MicrossSalesOrderReference = poh.MicrossSalesOrderReference
+                AND LOWER(LTRIM(RTRIM(s.Department))) = '${d.replace(/'/g,"''").toLowerCase()}'
+                AND s.SignedOff = 1
+            )
+          `)
+          .join(" OR ") || "1=1"
+        }}
+    )

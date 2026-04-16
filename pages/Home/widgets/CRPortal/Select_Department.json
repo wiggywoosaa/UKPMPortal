@@ -39,7 +39,7 @@
       "key": "onOptionChange"
     }
   ],
-  "isDisabled": "{{ !GetPOH.data?.length }}",
+  "isDisabled": "{{ !appsmith.store.deptReady }}",
   "isFilterable": true,
   "isLoading": false,
   "isRequired": false,
@@ -73,7 +73,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 24,
   "serverSideFiltering": false,
-  "sourceData": "{{\n(() => {\n\n  const allDepts = GetDepartments.data || [];\n  const entity = GetPOH.data?.[0]?.MicrossEntity;\n  const ctx = appsmith.store.userContext;\n\n  // 🟡 WAIT FOR DATA\n  if (!allDepts.length || !entity || typeof ctx === \"undefined\") {\n    return [];\n  }\n\n  // 🔴 NOT LOGGED IN (extra safety)\n  if (!ctx?.departments) return [];\n\n  const userDeps = ctx.departments\n    .map(d => d?.trim().toLowerCase())\n    .filter(Boolean);\n\n  return allDepts\n    .filter(d => d.MicrossEntity === entity)\n    .filter(d => {\n      const dept = d.Department?.trim().toLowerCase();\n      return userDeps.includes(dept);\n    })\n    .map(d => ({\n      label: d.Department,\n      value: d.Department\n    }));\n\n})()\n}}",
+  "sourceData": "{{\n(() => {\n\n  const ready = appsmith.store.deptReady;\n\n  const allDepts = GetDepartments.data || [];\n  const entity = GetPOH.data?.[0]?.MicrossEntity;\n  const ctx = appsmith.store.userContext;\n  const signOffs = GetDepartmentSignOff.data || [];\n  const selectedPO = appsmith.store.selectedPO;\n\n  if (!ready || !allDepts.length || !entity || !ctx) return [];\n\n  const userDeps = (ctx.departments || [])\n    .map(d => d?.trim().toLowerCase())\n    .filter(Boolean);\n\n  return allDepts\n    .filter(d => d.MicrossEntity === entity)\n\n    .filter(d => {\n      const dept = d.Department?.trim().toLowerCase();\n      return userDeps.includes(dept);\n    })\n\n    .filter(d => {\n      const dept = d.Department?.trim().toLowerCase();\n\n      const isSigned = signOffs.some(s =>\n        s.MicrossSalesOrderReference === selectedPO &&\n        Number(s.SignedOff) === 1 &&\n        s.Department?.trim().toLowerCase() === dept\n      );\n\n      return !isSigned;\n    })\n\n    .map(d => ({\n      label: d.Department,\n      value: d.Department\n    }));\n\n})()\n}}",
   "topRow": 94,
   "type": "SELECT_WIDGET",
   "version": 1,

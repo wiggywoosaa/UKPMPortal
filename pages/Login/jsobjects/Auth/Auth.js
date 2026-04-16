@@ -8,11 +8,11 @@ export default {
     }
 
     // 🔹 GET USER
-    await LoginUser.run({
+    await GetMyUser.run({
       email: Input_LoginEmail.text
     });
 
-    const user = LoginUser.data?.[0];
+    const user = GetMyUser.data?.[0];
 
     if (!user) {
       showAlert("Invalid login", "error");
