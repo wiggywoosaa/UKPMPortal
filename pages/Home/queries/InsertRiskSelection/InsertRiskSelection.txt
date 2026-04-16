@@ -1,0 +1,13 @@
+IF NOT EXISTS (
+    SELECT 1 
+    FROM dbo.Risks
+    WHERE LOWER(LTRIM(RTRIM(RiskName))) = LOWER(LTRIM(RTRIM('{{Input_NewRisk.text}}')))
+)
+BEGIN
+    INSERT INTO dbo.Risks (RiskName)
+    VALUES (LTRIM(RTRIM('{{Input_NewRisk.text}}')))
+END
+ELSE
+BEGIN
+    SELECT 'EXISTS' AS Status
+END

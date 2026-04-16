@@ -111,6 +111,9 @@
     },
     {
       "key": "primaryColumns.EditActions1.isDiscardDisabled"
+    },
+    {
+      "key": "primaryColumns.RiskDescription.selectOptions"
     }
   ],
   "dynamicPropertyPathList": [
@@ -452,7 +455,7 @@
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
       "cellBackground": "",
-      "columnType": "text",
+      "columnType": "select",
       "computedValue": "{{Table_High_High.processedTableData.map((currentRow, currentIndex) => ( currentRow[\"RiskDescription\"]))}}",
       "currencyCode": "USD",
       "decimals": 0,
@@ -468,11 +471,13 @@
       "isDisabled": false,
       "isDiscardVisible": true,
       "isEditable": true,
+      "isFilterable": true,
       "isSaveVisible": true,
       "isVisible": true,
       "label": "Description",
       "notation": "standard",
       "originalId": "RiskDescription",
+      "selectOptions": "{{(() => { const tableData = Table_High_High.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (\n(GetRiskSelection.data || []).map(r => ({\n  label: r.RiskName,\n  value: r.RiskName\n}))\n)) : \n(GetRiskSelection.data || []).map(r => ({\n  label: r.RiskName,\n  value: r.RiskName\n}))\n })()}}",
       "sticky": "",
       "textColor": "",
       "textSize": "0.875rem",

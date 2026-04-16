@@ -1,0 +1,3 @@
+SELECT id, RiskName
+FROM dbo.Risks
+ORDER BY RiskName

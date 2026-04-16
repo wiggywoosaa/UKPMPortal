@@ -1,0 +1,54 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 18,
+  "boxShadow": "none",
+  "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "buttonStyle": "PRIMARY_BUTTON",
+  "buttonVariant": "PRIMARY",
+  "disabledWhenInvalid": false,
+  "dynamicBindingPathList": [
+    {
+      "key": "buttonColor"
+    },
+    {
+      "key": "borderRadius"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "isDefaultClickDisabled": true,
+  "isDisabled": false,
+  "isLoading": false,
+  "isVisible": true,
+  "key": "6ax46dvwyv",
+  "leftColumn": 46,
+  "minWidth": 120,
+  "mobileBottomRow": 22,
+  "mobileLeftColumn": 47,
+  "mobileRightColumn": 63,
+  "mobileTopRow": 18,
+  "needsErrorInfo": false,
+  "onClick": "{{\nInsertRiskSelection.run()\n.then(res => {\n\n  if (res?.[0]?.Status === \"EXISTS\") {\n    showAlert(\"Risk already exists\", \"warning\");\n    return;\n  }\n\n  return GetRiskSelection.run()\n  .then(() => {\n\n    const index = appsmith.store.riskRowIndex;\n    const newRisk = Input_NewRisk.text;\n\n    const data = [...Table_High_Low.tableData];\n\n    if (index !== undefined && data[index]) {\n      data[index].Risk = newRisk;\n      Table_High_Low.setData(data);\n    }\n\n    closeModal(Modal_AddRisk.name);\n    showAlert(\"Risk added\", \"success\");\n\n  });\n\n})\n}}",
+  "parentId": "0h7hh9ikro",
+  "placement": "CENTER",
+  "recaptchaType": "V3",
+  "renderMode": "CANVAS",
+  "resetFormOnClick": false,
+  "responsiveBehavior": "hug",
+  "rightColumn": 62,
+  "text": "Confirm",
+  "topRow": 14,
+  "type": "BUTTON_WIDGET",
+  "version": 1,
+  "widgetId": "11jymy5kjq",
+  "widgetName": "Button17"
+}

@@ -1,0 +1,48 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 14,
+  "boxShadow": "none",
+  "buttonColor": "#e15615",
+  "buttonVariant": "PRIMARY",
+  "disabledWhenInvalid": false,
+  "dynamicBindingPathList": [
+    {
+      "key": "borderRadius"
+    }
+  ],
+  "dynamicPropertyPathList": [],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "isDefaultClickDisabled": true,
+  "isDisabled": false,
+  "isLoading": false,
+  "isVisible": true,
+  "key": "b8namkte8o",
+  "leftColumn": 5,
+  "minWidth": 120,
+  "mobileBottomRow": 11,
+  "mobileLeftColumn": 5,
+  "mobileRightColumn": 21,
+  "mobileTopRow": 7,
+  "needsErrorInfo": false,
+  "onClick": "{{showModal(Modal_AddRisk.name);}}",
+  "parentColumnSpace": 33.24560546875,
+  "parentId": "j88mmrowx7",
+  "parentRowSpace": 10,
+  "placement": "CENTER",
+  "recaptchaType": "V3",
+  "renderMode": "CANVAS",
+  "resetFormOnClick": false,
+  "responsiveBehavior": "hug",
+  "rightColumn": 10,
+  "text": "Add New Risk",
+  "topRow": 10,
+  "type": "BUTTON_WIDGET",
+  "version": 1,
+  "widgetId": "yx9pw2gt06",
+  "widgetName": "Button18"
+}
