@@ -61,7 +61,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 23,
   "serverSideFiltering": false,
-  "sourceData": "{{ \nGetPOList.data.map(p => ({\n  label: p.MicrossSalesOrderReference,\n  value: p.MicrossSalesOrderReference\n})) \n}}",
+  "sourceData": "{{ \nGetPOListRisk.data.map(p => ({\n  label: p.MicrossSalesOrderReference,\n  value: p.MicrossSalesOrderReference\n})) \n}}",
   "topRow": 2,
   "type": "SELECT_WIDGET",
   "version": 1,
