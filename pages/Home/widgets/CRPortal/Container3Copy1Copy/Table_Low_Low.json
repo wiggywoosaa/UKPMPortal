@@ -452,7 +452,7 @@
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
       "cellBackground": "",
-      "columnType": "text",
+      "columnType": "select",
       "computedValue": "{{Table_Low_Low.processedTableData.map((currentRow, currentIndex) => ( currentRow[\"RiskDescription\"]))}}",
       "currencyCode": "USD",
       "decimals": 0,

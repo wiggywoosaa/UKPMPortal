@@ -1,0 +1,15 @@
+SELECT TOP 1 d.Department
+FROM dbo.Admin_Department d
+WHERE 
+    d.MicrossEntity = '{{ appsmith.store.userContext.entity }}'
+
+    AND NOT EXISTS (
+        SELECT 1
+        FROM dbo.POH_DepartmentSignOff s
+        WHERE 
+            s.MicrossSalesOrderReference = '{{ appsmith.store.selectedPO }}'
+            AND LOWER(LTRIM(RTRIM(s.Department))) = LOWER(LTRIM(RTRIM(d.Department)))
+            AND s.SignedOff = 1
+    )
+
+ORDER BY d.RunOrder ASC

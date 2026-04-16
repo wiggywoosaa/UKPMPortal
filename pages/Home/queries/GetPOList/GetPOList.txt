@@ -2,22 +2,34 @@ SELECT DISTINCT
     poh.MicrossSalesOrderReference, 
     poh.CustomerDivision
 FROM dbo.PurchaseOrderHeader poh
-WHERE 
-    poh.MicrossSalesOrderReference IS NOT NULL
+WHERE poh.MicrossSalesOrderReference IS NOT NULL
 
-    AND (
-        {{ 
-        (appsmith.store.userContext?.departments || [])
-          .map(d => `
-            NOT EXISTS (
-              SELECT 1
-              FROM dbo.POH_DepartmentSignOff s
-              WHERE 
-                s.MicrossSalesOrderReference = poh.MicrossSalesOrderReference
-                AND LOWER(LTRIM(RTRIM(s.Department))) = '${d.replace(/'/g,"''").toLowerCase()}'
-                AND s.SignedOff = 1
+AND EXISTS (
+
+    SELECT 1
+    FROM dbo.Admin_Department d
+
+    WHERE 
+
+        -- 🔥 find FIRST unsigned department for THIS PO
+        d.RunOrder = (
+            SELECT MIN(d2.RunOrder)
+            FROM dbo.Admin_Department d2
+
+            WHERE NOT EXISTS (
+                SELECT 1
+                FROM dbo.POH_DepartmentSignOff s
+                WHERE 
+                    s.MicrossSalesOrderReference = poh.MicrossSalesOrderReference
+                    AND LOWER(LTRIM(RTRIM(s.Department))) = LOWER(LTRIM(RTRIM(d2.Department)))
+                    AND s.SignedOff = 1
             )
-          `)
-          .join(" OR ") || "1=1"
-        }}
-    )
+        )
+
+        -- 🔥 user must belong to that department
+        AND LOWER(LTRIM(RTRIM(d.Department))) IN (
+            {{ appsmith.store.userContext?.departments
+                ?.map(dep => `'${dep.replace(/'/g,"''").toLowerCase()}'`)
+                .join(",") || "''" }}
+        )
+)
