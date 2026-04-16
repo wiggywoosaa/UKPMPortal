@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT \n    u.id,\n    u.Email,\n    u.Name,\n    u.IsAdmin,\n    u.IsActive,\n    STRING_AGG(d.Department, ', ') AS Departments\nFROM dbo.Admin_Users u\nLEFT JOIN dbo.Admin_UserDepartments d \n    ON u.id = d.UserId\nGROUP BY \n    u.id,\n    u.Email,\n    u.Name,\n    u.IsAdmin,\n    u.IsActive\nORDER BY u.Email;",
+      "body": "SELECT \n    u.id,\n    u.Email,\n    u.Name,\n    u.IsAdmin,\n    u.IsActive,\n\t\tu.IsApprover,\n\t\tu.Limit,\n    STRING_AGG(d.Department, ', ') AS Departments\nFROM dbo.Admin_Users u\nLEFT JOIN dbo.Admin_UserDepartments d \n    ON u.id = d.UserId\nGROUP BY \n    u.id,\n    u.Email,\n    u.Name,\n    u.IsAdmin,\n    u.IsActive,\n\t\tu.IsApprover,\n\t\tu.Limit\nORDER BY u.Email;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

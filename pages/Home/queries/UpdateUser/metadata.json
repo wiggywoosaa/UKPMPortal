@@ -5,12 +5,12 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "UPDATE dbo.Admin_Users\nSET\n  Name = {{ this.params.Name }},\n  IsAdmin = {{ this.params.IsAdmin }},\n  IsActive = {{ this.params.IsActive }},\n  PasswordHash = COALESCE({{ this.params.PasswordHash }}, PasswordHash)\nWHERE id = {{ this.params.id }}",
+      "body": "UPDATE dbo.Admin_Users\nSET \n    Name = '{{Input_Name.text.replace(/'/g, \"''\")}}',\n    IsAdmin = {{Switch_IsAdmin.isSwitchedOn ? 1 : 0}},\n    IsActive = {{Switch_IsActive.isSwitchedOn ? 1 : 0}},\n    IsApprover = {{Switch_IsApprover.isSwitchedOn ? 1 : 0}},\n    [Limit] = {{Input_ApprovalLimit.text ? Number(Input_ApprovalLimit.text) : 'NULL'}},\n    PasswordHash = \n      CASE \n        WHEN '{{Input_Password.text}}' != '' \n        THEN '{{CryptoJS.SHA256(Input_Password.text).toString()}}'\n        ELSE PasswordHash \n      END\nWHERE id = {{appsmith.store.selectedUser?.id}}",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
         {
-          "value": true
+          "value": false
         }
       ],
       "timeoutInMillisecond": 10000

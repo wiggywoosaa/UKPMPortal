@@ -1,7 +1,14 @@
 UPDATE dbo.Admin_Users
-SET
-  Name = {{ this.params.Name }},
-  IsAdmin = {{ this.params.IsAdmin }},
-  IsActive = {{ this.params.IsActive }},
-  PasswordHash = COALESCE({{ this.params.PasswordHash }}, PasswordHash)
-WHERE id = {{ this.params.id }}
+SET 
+    Name = '{{Input_Name.text.replace(/'/g, "''")}}',
+    IsAdmin = {{Switch_IsAdmin.isSwitchedOn ? 1 : 0}},
+    IsActive = {{Switch_IsActive.isSwitchedOn ? 1 : 0}},
+    IsApprover = {{Switch_IsApprover.isSwitchedOn ? 1 : 0}},
+    [Limit] = {{Input_ApprovalLimit.text ? Number(Input_ApprovalLimit.text) : 'NULL'}},
+    PasswordHash = 
+      CASE 
+        WHEN '{{Input_Password.text}}' != '' 
+        THEN '{{CryptoJS.SHA256(Input_Password.text).toString()}}'
+        ELSE PasswordHash 
+      END
+WHERE id = {{appsmith.store.selectedUser?.id}}

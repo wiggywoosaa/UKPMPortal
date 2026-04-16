@@ -50,12 +50,14 @@ export default {
     } else {
 
       await UpdateUser.run({
-        id: userId,
-        Name: Input_Name.text,
-        IsAdmin: Switch_IsAdmin.isSwitchedOn ? 1 : 0,
-        IsActive: Switch_IsActive.isSwitchedOn ? 1 : 0,
-        PasswordHash: hash
-      });
+  id: userId,
+  Name: Input_Name.text,
+  IsAdmin: Switch_IsAdmin.isSwitchedOn ? 1 : 0,
+  IsActive: Switch_IsActive.isSwitchedOn ? 1 : 0,
+  IsApprover: Switch_IsApprover.isSwitchedOn ? 1 : 0,
+  Limit: Input_ApprovalLimit.text ? Number(Input_ApprovalLimit.text) : null,
+  PasswordHash: hash
+});
 
       showAlert("User updated");
     }
@@ -84,7 +86,7 @@ export default {
     const currentUserId = appsmith.store.userContext?.id;
 
     if (currentUserId === userId) {
-      await UserContext.loadUserContext(); // 👈 use your loader
+      await UserContext.load(); // 👈 use your loader
       showAlert("Your permissions have been updated", "info");
     }
 

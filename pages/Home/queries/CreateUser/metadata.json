@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "INSERT INTO dbo.Admin_Users\n(Email, Name, PasswordHash, IsAdmin, IsActive)\nVALUES (\n  {{ this.params.Email }},\n  {{ this.params.Name }},\n  {{ this.params.PasswordHash }},\n  {{ this.params.IsAdmin }},\n  {{ this.params.IsActive }}\n)",
+      "body": "INSERT INTO dbo.Admin_Users (\n    Email,\n    Name,\n    PasswordHash,\n    IsAdmin,\n    IsActive,\n    IsApprover,\n    [Limit]\n)\nVALUES (\n    '{{Input_Email.text.replace(/'/g, \"''\")}}',\n    '{{Input_Name.text.replace(/'/g, \"''\")}}',\n    '{{Input_Password.text ? CryptoJS.SHA256(Input_Password.text).toString() : \"\"}}',\n    {{Switch_IsAdmin.isSwitchedOn ? 1 : 0}},\n    {{Switch_IsActive.isSwitchedOn ? 1 : 0}},\n    {{Switch_IsApprover.isSwitchedOn ? 1 : 0}},\n    {{Input_ApprovalLimit.text ? Number(Input_ApprovalLimit.text) : 'NULL'}}\n)",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

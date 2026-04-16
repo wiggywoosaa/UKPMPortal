@@ -4,7 +4,9 @@ SELECT
     Name,
     IsAdmin,
     IsActive,
-    PasswordHash
+    PasswordHash,
+		IsApprover,
+    Limit
 FROM dbo.Admin_Users
 WHERE Email = '{{Input_LoginEmail.text}}'
 AND IsActive = 1

@@ -59,7 +59,7 @@
   "placeholderText": "Select option(s)",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 45,
+  "rightColumn": 40,
   "serverSideFiltering": false,
   "sourceData": "{{\nGetDepartments.data.map(d => ({\n  label: d.Department,\n  value: d.Department\n}))\n}}",
   "topRow": 27,

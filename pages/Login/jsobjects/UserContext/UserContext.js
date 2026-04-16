@@ -6,13 +6,18 @@ export default {
 
       const user = appsmith.store.userContext;
 
-      // 🔴 IMPORTANT: do NOT crash if not ready
       if (!user?.id) {
-        console.warn("User not ready, skipping context load");
-        return;
+        throw new Error("User not available in store");
       }
 
-      // 🔥 LOAD DEPARTMENTS USING PARAM (NO STORE DEPENDENCY)
+      // 🔹 GET USER DETAILS
+      await GetMyUser.run({
+        userId: user.id
+      });
+
+      const userData = GetMyUser.data?.[0];
+
+      // 🔹 GET DEPARTMENTS
       await GetMyDepartments.run({
         userId: user.id
       });
@@ -20,14 +25,23 @@ export default {
       const departments = (GetMyDepartments.data || [])
         .map(d => (d.Department || "").trim());
 
+      // 🔥 BUILD FULL CONTEXT
       const updatedContext = {
         ...user,
-        departments
+
+        // existing
+        departments,
+
+        // 🔥 NEW FIELDS
+        isAdmin: Number(userData?.IsAdmin) === 1,
+        isApprover: Number(userData?.IsApprover) === 1,
+        approvalLimit: Number(userData?.Limit || 0)
+
       };
 
       await storeValue("userContext", updatedContext);
 
-      console.log("UserContext refreshed:", updatedContext);
+      console.log("UserContext:", updatedContext);
 
     } catch (err) {
 

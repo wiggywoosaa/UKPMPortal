@@ -1,9 +1,18 @@
-INSERT INTO dbo.Admin_Users
-(Email, Name, PasswordHash, IsAdmin, IsActive)
+INSERT INTO dbo.Admin_Users (
+    Email,
+    Name,
+    PasswordHash,
+    IsAdmin,
+    IsActive,
+    IsApprover,
+    [Limit]
+)
 VALUES (
-  {{ this.params.Email }},
-  {{ this.params.Name }},
-  {{ this.params.PasswordHash }},
-  {{ this.params.IsAdmin }},
-  {{ this.params.IsActive }}
+    '{{Input_Email.text.replace(/'/g, "''")}}',
+    '{{Input_Name.text.replace(/'/g, "''")}}',
+    '{{Input_Password.text ? CryptoJS.SHA256(Input_Password.text).toString() : ""}}',
+    {{Switch_IsAdmin.isSwitchedOn ? 1 : 0}},
+    {{Switch_IsActive.isSwitchedOn ? 1 : 0}},
+    {{Switch_IsApprover.isSwitchedOn ? 1 : 0}},
+    {{Input_ApprovalLimit.text ? Number(Input_ApprovalLimit.text) : 'NULL'}}
 )

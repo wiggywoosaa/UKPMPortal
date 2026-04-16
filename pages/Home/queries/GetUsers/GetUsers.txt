@@ -4,6 +4,8 @@ SELECT
     u.Name,
     u.IsAdmin,
     u.IsActive,
+		u.IsApprover,
+		u.Limit,
     STRING_AGG(d.Department, ', ') AS Departments
 FROM dbo.Admin_Users u
 LEFT JOIN dbo.Admin_UserDepartments d 
@@ -13,5 +15,7 @@ GROUP BY
     u.Email,
     u.Name,
     u.IsAdmin,
-    u.IsActive
+    u.IsActive,
+		u.IsApprover,
+		u.Limit
 ORDER BY u.Email;
