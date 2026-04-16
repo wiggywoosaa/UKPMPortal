@@ -43,7 +43,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 63,
   "shouldTruncate": false,
-  "text": "{{ \" Micross Sales Order Reference : \" + appsmith.store.selectedActionRow?.MicrossSalesOrderReference }}",
+  "text": "{{ \" Micross Sales Order Reference : \" + Select_POPM.selectedOptionLabel}}",
   "textAlign": "LEFT",
   "textColor": "#231F20",
   "topRow": 1,

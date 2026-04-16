@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 7,
+  "bottomRow": 5,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -19,8 +19,8 @@
   "dynamicHeight": "AUTO_HEIGHT",
   "dynamicTriggerPathList": [],
   "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
-  "fontSize": "1.25rem",
-  "fontStyle": "BOLD",
+  "fontSize": "0.875rem",
+  "fontStyle": "",
   "isLoading": false,
   "isVisible": true,
   "key": "kli9q3s398",
@@ -30,24 +30,26 @@
   "minWidth": 450,
   "mobileBottomRow": 5,
   "mobileLeftColumn": 1,
-  "mobileRightColumn": 41,
+  "mobileRightColumn": 17,
   "mobileTopRow": 1,
   "needsErrorInfo": false,
-  "originalBottomRow": 7,
+  "originalBottomRow": 5,
   "originalTopRow": 1,
   "overflow": "NONE",
-  "parentId": "v6m5ebtj4y",
+  "parentColumnSpace": 6.408203125,
+  "parentId": "vy3cokeorl",
+  "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 58,
+  "rightColumn": 63,
   "shouldTruncate": false,
-  "text": "{{\n\"Add Sub-Action to Action ID \" + appsmith.store.selectedActionRow?.id\n}}",
+  "text": "{{ \" Micross Sales Order Reference : \" + appsmith.store.selectedActionRow?.MicrossSalesOrderReference }}",
   "textAlign": "LEFT",
   "textColor": "#231F20",
   "topRow": 1,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
-  "widgetId": "rbwuasfjuf",
-  "widgetName": "Text20"
+  "widgetId": "m1sn8bq2fb",
+  "widgetName": "Text_PMPO"
 }

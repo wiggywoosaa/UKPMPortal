@@ -4,7 +4,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 29,
   "boxShadow": "none",
-  "defaultOptionValue": "{{ ((options, serverSideFiltering) => (  appsmith.user.name || \"ALL\" ))(Select_ResponsiblePerson.options, Select_ResponsiblePerson.serverSideFiltering) }}",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => (  appsmith.user.name || \"ALL\" ))(Select_PMResponsiblePerson.options, Select_PMResponsiblePerson.serverSideFiltering) }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -56,7 +56,7 @@
   "originalBottomRow": 28,
   "originalTopRow": 23,
   "parentColumnSpace": 28.9921875,
-  "parentId": "knyb02646g",
+  "parentId": "vy3cokeorl",
   "parentRowSpace": 10,
   "placeholderText": "Select option",
   "renderMode": "CANVAS",
@@ -67,6 +67,6 @@
   "topRow": 24,
   "type": "SELECT_WIDGET",
   "version": 1,
-  "widgetId": "msqviaq7c3",
-  "widgetName": "Select_ResponsiblePerson"
+  "widgetId": "bfglpv0ak6",
+  "widgetName": "Select_PMResponsiblePerson"
 }

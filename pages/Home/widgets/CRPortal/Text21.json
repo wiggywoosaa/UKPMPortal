@@ -41,7 +41,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 40,
   "shouldTruncate": false,
-  "text": "{{\nSelect_PORisk.selectedOptionValue\n  ? \"Customer Division : \" +\n    (GetPOList.data.find(p =>\n      p.MicrossSalesOrderReference === Select_PORisk.selectedOptionValue\n    )?.CustomerDivision || \"\")\n  : \"Select Sales Order\"\n}}",
+  "text": "{{\nSelect_PORisk.selectedOptionValue\n  ? \"Customer Division : \" +\n    (GetPOListRisk.data.find(p =>\n      p.MicrossSalesOrderReference === Select_PORisk.selectedOptionValue\n    )?.CustomerDivision || \"\")\n  : \"Select Sales Order\"\n}}",
   "textAlign": "LEFT",
   "textColor": "#231F20",
   "topRow": 2,
