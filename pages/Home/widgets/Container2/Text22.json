@@ -48,7 +48,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 47,
   "shouldTruncate": false,
-  "text": "{{\n(() => {\n\n  const deps = appsmith.store.userContext?.departments || [];\n  const isApprover = Number(appsmith.store.userContext?.isApprover) === 1;\n\n  let message = \"\";\n\n  if (!deps.length) {\n    message = \"You are not assigned to any groups\";\n  } else {\n    message = \"You are a member of the following groups: \" +\n      deps\n        .map(d => (d || \"\").trim())\n        .filter(Boolean)\n        .join(\", \");\n  }\n\n  // 🔥 ADD APPROVER STATUS\n  if (isApprover) {\n    message += \" | You have approval rights\";\n  }\n\n  return message;\n\n})()\n}}",
+  "text": "{{\n(() => {\n\n  const deps = appsmith.store.userContext?.departments || [];\n  const isApprover = Number(appsmith.store.userContext?.isApprover) === 1;\n  const limit = appsmith.store.userContext?.approvalLimit;\n\n  let message = \"\";\n\n  if (!deps.length) {\n    message = \"You are not assigned to any groups\";\n  } else {\n    message = \"You are a member of the following groups: \" +\n      deps\n        .map(d => (d || \"\").trim())\n        .filter(Boolean)\n        .join(\", \");\n  }\n\n  // 🔥 APPROVER STATUS\n  if (isApprover) {\n\n    message += \" | You have approval rights\";\n\n    // 🔥 ADD LIMIT\n    if (limit !== undefined && limit !== null) {\n      message += \" (Limit: £\" + Number(limit).toLocaleString() + \")\";\n    }\n\n  }\n\n  return message;\n\n})()\n}}",
   "textAlign": "LEFT",
   "textColor": "#231F20",
   "topRow": 5,
