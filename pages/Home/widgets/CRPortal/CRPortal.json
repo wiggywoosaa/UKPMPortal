@@ -415,7 +415,7 @@
   "mobileTopRow": 2,
   "needsErrorInfo": false,
   "onTabSelected": "{{GetPOList.run();\nGetPOGroupTests.run();\nGetPONRE.run();\nGetPODeliverables.run();\nGetOpenActions.run();\nGetOverdueActions.run();\nGetRisksAll.run();\nGetUserDepartments.run()}}",
-  "originalBottomRow": 163,
+  "originalBottomRow": 219,
   "originalTopRow": 13,
   "parentColumnSpace": 30.25,
   "parentId": "0",
