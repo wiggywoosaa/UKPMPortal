@@ -393,6 +393,9 @@
   "dynamicPropertyPathList": [
     {
       "key": "tabsObj.tabjr8p3b0asi.isVisible"
+    },
+    {
+      "key": "onTabSelected"
     }
   ],
   "dynamicTriggerPathList": [
@@ -414,7 +417,7 @@
   "mobileRightColumn": 25,
   "mobileTopRow": 2,
   "needsErrorInfo": false,
-  "onTabSelected": "{{GetPOList.run();\nGetPOGroupTests.run();\nGetPONRE.run();\nGetPODeliverables.run();\nGetOpenActions.run();\nGetOverdueActions.run();\nGetRisksAll.run();\nGetUserDepartments.run();\nGetPMQuestion.run();\nDashboardOpenSO.run()}}",
+  "onTabSelected": "{{GetPOList.run();\nGetPOGroupTests.run();\nGetPONRE.run();\nGetPODeliverables.run();\nGetOpenActions.run();\nGetOverdueActions.run();\nGetRisksAll.run();\nGetUserDepartments.run();\nGetPMQuestion.run()}}",
   "originalBottomRow": 132,
   "originalTopRow": 13,
   "parentColumnSpace": 30.25,
