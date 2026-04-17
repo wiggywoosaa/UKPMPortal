@@ -1,0 +1,25 @@
+SELECT 
+    COUNT(*) AS OverdueActions
+FROM dbo.POH_Answers a
+
+JOIN dbo.PurchaseOrderHeader poh
+    ON poh.MicrossSalesOrderReference = a.MicrossSalesOrderReference
+
+WHERE 
+    a.YesNo = 0
+    AND a.IsLatest = 1
+
+    -- ? same "real action" logic
+    AND (
+        LTRIM(RTRIM(ISNULL(a.Action, ''))) <> ''
+        OR LTRIM(RTRIM(ISNULL(a.ResponsiblePerson, ''))) <> ''
+        OR a.DueDate IS NOT NULL
+    )
+
+    -- ? overdue logic
+    AND a.DueDate IS NOT NULL
+    AND a.DueDate < GETDATE()
+
+    -- ? only open SOs
+    AND poh.CRStatus <> 'Completed'
+

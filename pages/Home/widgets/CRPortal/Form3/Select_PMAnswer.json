@@ -4,7 +4,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 6,
   "boxShadow": "none",
-  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( \nGetPMAnswers.data?.[0]?.PMAnswer ?? 0\n))(Select_PMAnswer.options, Select_PMAnswer.serverSideFiltering) }}",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( \nGetPMAnswers.data?.find(a => a.QuestionId === currentItem.id)?.PMAnswer ?? \"\"\n))(Select_PMAnswer.options, Select_PMAnswer.serverSideFiltering) }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

@@ -1,0 +1,21 @@
+SELECT 
+    COUNT(*) AS OpenActions
+FROM dbo.POH_Answers a
+JOIN dbo.PurchaseOrderHeader poh
+    ON poh.MicrossSalesOrderReference = a.MicrossSalesOrderReference
+
+WHERE 
+    a.YesNo = 0
+
+    -- ? Only latest answers
+    AND a.IsLatest = 1
+
+    -- ? Only real actions
+    AND (
+        LTRIM(RTRIM(ISNULL(a.Action, ''))) <> ''
+        OR LTRIM(RTRIM(ISNULL(a.ResponsiblePerson, ''))) <> ''
+        OR a.DueDate IS NOT NULL
+    )
+
+    -- ? Only open SOs
+    AND poh.CRStatus <> 'Completed'

@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 10,
   "boxShadow": "none",
-  "defaultText": "{{ GetPMAnswers.data?.[0]?.Comments || \"\" }}",
+  "defaultText": "{{\nGetPMAnswers.data\n  ?.find(a => a.QuestionId === currentItem.id)\n  ?.Comments ?? \"\"\n}}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

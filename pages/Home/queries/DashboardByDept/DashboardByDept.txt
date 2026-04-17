@@ -1,0 +1,22 @@
+SELECT 
+    CASE 
+        WHEN CRStatus LIKE 'With %' 
+        THEN REPLACE(CRStatus, 'With ', '')
+        ELSE CRStatus
+    END AS Department,
+    COUNT(*) AS Count
+FROM dbo.PurchaseOrderHeader
+
+WHERE 
+    CRStatus <> 'Completed'
+
+AND FORMAT(DateRecieved, 'yyyy-MM') = '{{ Select_MonthYear.selectedOptionValue }}'
+
+GROUP BY 
+    CASE 
+        WHEN CRStatus LIKE 'With %' 
+        THEN REPLACE(CRStatus, 'With ', '')
+        ELSE CRStatus
+    END
+
+ORDER BY Count DESC;

@@ -1,0 +1,7 @@
+SELECT 
+    COUNT(*) AS OpenCount
+FROM dbo.PurchaseOrderHeader
+WHERE 
+    CRStatus <> 'Completed'
+    AND MicrossSalesOrderReference IS NOT NULL
+

@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 9,
+  "bottomRow": 10,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -38,8 +38,8 @@
   "mobileRightColumn": 44,
   "mobileTopRow": 4,
   "needsErrorInfo": false,
-  "originalBottomRow": 9,
-  "originalTopRow": 5,
+  "originalBottomRow": 10,
+  "originalTopRow": 6,
   "overflow": "NONE",
   "parentColumnSpace": 28.9921875,
   "parentId": "5614x5s4dy",
@@ -51,7 +51,7 @@
   "text": "{{\n(() => {\n\n  const deps = appsmith.store.userContext?.departments || [];\n  const isApprover = Number(appsmith.store.userContext?.isApprover) === 1;\n  const limit = appsmith.store.userContext?.approvalLimit;\n\n  let message = \"\";\n\n  if (!deps.length) {\n    message = \"You are not assigned to any groups\";\n  } else {\n    message = \"You are a member of the following groups: \" +\n      deps\n        .map(d => (d || \"\").trim())\n        .filter(Boolean)\n        .join(\", \");\n  }\n\n  // 🔥 APPROVER STATUS\n  if (isApprover) {\n\n    message += \" | You have approval rights\";\n\n    // 🔥 ADD LIMIT\n    if (limit !== undefined && limit !== null) {\n      message += \" (Limit: £\" + Number(limit).toLocaleString() + \")\";\n    }\n\n  }\n\n  return message;\n\n})()\n}}",
   "textAlign": "LEFT",
   "textColor": "#231F20",
-  "topRow": 5,
+  "topRow": 6,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,

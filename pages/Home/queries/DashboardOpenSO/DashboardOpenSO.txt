@@ -1,0 +1,53 @@
+SELECT 
+    poh.MicrossSalesOrderReference,
+    poh.CustomerDivision,
+    poh.DateRecieved,
+    poh.TotalOrderValue,
+		poh.Currency,
+    poh.CRStatus,
+
+    -- 🔹 Working days since received (excludes weekends)
+    DATEDIFF(DAY, poh.DateRecieved, GETDATE())
+    - (DATEDIFF(WEEK, poh.DateRecieved, GETDATE()) * 2)
+    - CASE WHEN DATENAME(WEEKDAY, poh.DateRecieved) = 'Sunday' THEN 1 ELSE 0 END
+    - CASE WHEN DATENAME(WEEKDAY, GETDATE()) = 'Saturday' THEN 1 ELSE 0 END
+    AS WorkingDays,
+
+    -- 🔹 Overdue flag
+    CASE 
+        WHEN (
+            DATEDIFF(DAY, poh.DateRecieved, GETDATE())
+            - (DATEDIFF(WEEK, poh.DateRecieved, GETDATE()) * 2)
+            - CASE WHEN DATENAME(WEEKDAY, poh.DateRecieved) = 'Sunday' THEN 1 ELSE 0 END
+            - CASE WHEN DATENAME(WEEKDAY, GETDATE()) = 'Saturday' THEN 1 ELSE 0 END
+        ) > 10 
+        THEN 1 ELSE 0 
+    END AS IsOverdue,
+
+    -- 🔹 Days overdue
+    CASE 
+        WHEN (
+            DATEDIFF(DAY, poh.DateRecieved, GETDATE())
+            - (DATEDIFF(WEEK, poh.DateRecieved, GETDATE()) * 2)
+            - CASE WHEN DATENAME(WEEKDAY, poh.DateRecieved) = 'Sunday' THEN 1 ELSE 0 END
+            - CASE WHEN DATENAME(WEEKDAY, GETDATE()) = 'Saturday' THEN 1 ELSE 0 END
+        ) > 10 
+        THEN (
+            DATEDIFF(DAY, poh.DateRecieved, GETDATE())
+            - (DATEDIFF(WEEK, poh.DateRecieved, GETDATE()) * 2)
+            - CASE WHEN DATENAME(WEEKDAY, poh.DateRecieved) = 'Sunday' THEN 1 ELSE 0 END
+            - CASE WHEN DATENAME(WEEKDAY, GETDATE()) = 'Saturday' THEN 1 ELSE 0 END
+        ) - 10
+        ELSE 0
+    END AS DaysOverdue
+
+FROM dbo.PurchaseOrderHeader poh
+
+WHERE 
+    poh.MicrossSalesOrderReference IS NOT NULL
+
+
+    -- 🔥 Only OPEN (not completed)
+    AND poh.CRStatus <> 'Completed'
+
+ORDER BY poh.DateRecieved ASC;

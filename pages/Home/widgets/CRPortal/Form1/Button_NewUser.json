@@ -37,6 +37,8 @@
   "mobileTopRow": 33,
   "needsErrorInfo": false,
   "onClick": "{{\nstoreValue(\"selectedUser\", null);\nresetWidget(\"Form1\");\n\n// clear dropdown\nMS_UserDepartments.setSelectedOptions([]);\n\nresetWidget(\"Form1\");\n}}",
+  "originalBottomRow": 39,
+  "originalTopRow": 35,
   "parentColumnSpace": 10.1065673828125,
   "parentId": "xn0byl7sht",
   "parentRowSpace": 10,

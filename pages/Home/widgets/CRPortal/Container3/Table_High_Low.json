@@ -48,6 +48,7 @@
   "columnUpdatedAt": 1776337737212,
   "columnWidthMap": {
     "Mitigation": 173,
+    "RiskDescription": 150,
     "customColumn1": 123
   },
   "compactMode": "SHORT",

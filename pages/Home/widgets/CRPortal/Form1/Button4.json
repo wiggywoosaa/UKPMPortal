@@ -40,6 +40,8 @@
   "mobileTopRow": 33,
   "needsErrorInfo": false,
   "onClick": "{{ UserAdmin.submitUser() }}",
+  "originalBottomRow": 39,
+  "originalTopRow": 35,
   "parentId": "xn0byl7sht",
   "placement": "CENTER",
   "recaptchaType": "V3",

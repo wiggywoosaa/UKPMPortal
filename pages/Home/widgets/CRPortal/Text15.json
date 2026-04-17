@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 6,
+  "bottomRow": 5,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -54,7 +54,7 @@
   "text": "{{ RiskMatrix.getOverallRisk() }}",
   "textAlign": "LEFT",
   "textColor": "{{\n(() => {\n  const risk = RiskMatrix.getOverallRisk();\n\n  if (risk === \"High\") return \"red\";\n  if (risk === \"Medium\") return \"orange\";\n  return \"green\";\n})()\n}}",
-  "topRow": 2,
+  "topRow": 1,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,

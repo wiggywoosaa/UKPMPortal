@@ -1,0 +1,27 @@
+SELECT 
+    ISNULL(q.Department, 'Unknown') AS Department,
+    COUNT(*) AS ActionCount
+
+FROM dbo.POH_Answers a
+
+JOIN dbo.PurchaseOrderHeader poh
+    ON poh.MicrossSalesOrderReference = a.MicrossSalesOrderReference
+
+LEFT JOIN dbo.Admin_Questions q
+    ON q.id = a.QuestionId
+
+WHERE 
+    a.YesNo = 0
+    AND a.IsLatest = 1
+
+    AND (
+        LTRIM(RTRIM(ISNULL(a.Action, ''))) <> ''
+        OR LTRIM(RTRIM(ISNULL(a.ResponsiblePerson, ''))) <> ''
+        OR a.DueDate IS NOT NULL
+    )
+
+    AND poh.CRStatus <> 'Completed'
+
+
+GROUP BY ISNULL(q.Department, 'Unknown')
+ORDER BY ActionCount DESC;

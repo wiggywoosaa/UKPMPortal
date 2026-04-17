@@ -1,0 +1,20 @@
+WITH POH AS (
+    SELECT 
+        DateRecieved,
+
+        DATEDIFF(DAY, DateRecieved, GETDATE())
+        - (DATEDIFF(WEEK, DateRecieved, GETDATE()) * 2)
+        - CASE WHEN DATENAME(WEEKDAY, DateRecieved) = 'Sunday' THEN 1 ELSE 0 END
+        - CASE WHEN DATENAME(WEEKDAY, GETDATE()) = 'Saturday' THEN 1 ELSE 0 END
+        AS WorkingDays
+
+    FROM dbo.PurchaseOrderHeader
+    WHERE 
+        CRStatus <> 'Completed'
+
+
+)
+
+SELECT COUNT(*) AS OverdueCount
+FROM POH
+WHERE WorkingDays > 10;
