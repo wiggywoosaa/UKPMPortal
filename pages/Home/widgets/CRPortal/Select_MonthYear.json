@@ -50,7 +50,7 @@
   "mobileRightColumn": 61,
   "mobileTopRow": 1,
   "needsErrorInfo": false,
-  "onOptionChange": "{{DashBoardOverduevsOntime.run();\nDashboardOverdueValue.run();\nDashboardOpenSO.run();\nDashboardOverdueCount.run();\nDashboardOpenActionsbyDept.run();\nDashboardOpenSOCount.run();\nDashboardOpenSO.run();\nDashboardOpenActions.run();\nDashboardOverdueActionsCount.run()}}",
+  "onOptionChange": "{{DashBoardOverduevsOntime.run();\nDashboardOverdueValue.run();\nDashboardOpenSO.run();\nDashboardOverdueCount.run();\nDashboardOpenActionsbyDept.run();\nDashboardOpenSOCount.run();\nDashboardOpenSO.run();\nDashboardOpenActions.run();\nDashboardOverdueActionsCount.run();\nDashboardTotalValuebyMonth.run();\nDashboardPOSOpenAction.run()}}",
   "optionLabel": "label",
   "optionValue": "value",
   "parentColumnSpace": 22.4833984375,

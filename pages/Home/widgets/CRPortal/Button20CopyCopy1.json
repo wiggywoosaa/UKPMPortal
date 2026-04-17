@@ -3,7 +3,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 9,
   "boxShadow": "none",
-  "buttonColor": "#e15615",
+  "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
   "buttonVariant": "SECONDARY",
   "disabledWhenInvalid": false,
   "dynamicBindingPathList": [
@@ -12,6 +12,9 @@
     },
     {
       "key": "text"
+    },
+    {
+      "key": "buttonColor"
     }
   ],
   "dynamicTriggerPathList": [],
@@ -20,12 +23,12 @@
   "isLoading": false,
   "isVisible": true,
   "key": "6khl4gb2e0",
-  "leftColumn": 18,
+  "leftColumn": 3,
   "minWidth": 120,
-  "mobileBottomRow": 11,
-  "mobileLeftColumn": 3,
-  "mobileRightColumn": 19,
-  "mobileTopRow": 7,
+  "mobileBottomRow": 6,
+  "mobileLeftColumn": 20,
+  "mobileRightColumn": 36,
+  "mobileTopRow": 2,
   "needsErrorInfo": false,
   "parentColumnSpace": 22.4833984375,
   "parentId": "hc92v6vxx8",
@@ -35,11 +38,11 @@
   "renderMode": "CANVAS",
   "resetFormOnClick": false,
   "responsiveBehavior": "hug",
-  "rightColumn": 31,
-  "text": "Overdue Value : {{\n(DashboardOverdueValue.data || [])\n.map(d => \n  d.Currency + \": \" + \n  Number(d.TotalOverdueValue).toLocaleString()\n)\n.join(\"\\n\")\n}}",
+  "rightColumn": 16,
+  "text": "Total Value Filtered : {{\n(DashboardTotalValuebyMonth.data || [])\n.map(d => \n  d.Currency + \": \" + \n  Number(d.TotalValue).toLocaleString()\n)\n.join(\"\\n\")\n}}",
   "topRow": 2,
   "type": "BUTTON_WIDGET",
   "version": 1,
-  "widgetId": "msr738cjnt",
-  "widgetName": "Button19"
+  "widgetId": "esk93i6eq9",
+  "widgetName": "Button20CopyCopy1"
 }

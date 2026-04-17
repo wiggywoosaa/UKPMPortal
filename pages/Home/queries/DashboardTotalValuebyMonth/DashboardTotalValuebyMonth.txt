@@ -1,0 +1,11 @@
+SELECT 
+    poh.Currency,
+    SUM(poh.TotalOrderValue) AS TotalValue
+
+FROM dbo.PurchaseOrderHeader poh
+
+WHERE 
+    poh.CRStatus <> 'Completed'
+
+GROUP BY poh.Currency
+ORDER BY poh.Currency;
