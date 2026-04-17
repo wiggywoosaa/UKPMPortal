@@ -6,6 +6,8 @@ FROM dbo.PurchaseOrderHeader poh
 
 WHERE 
     poh.CRStatus <> 'Completed'
+		AND FORMAT(DateRecieved, 'yyyy-MM') = '{{ Select_MonthYear.selectedOptionValue }}'
+
 
 GROUP BY poh.Currency
 ORDER BY poh.Currency;

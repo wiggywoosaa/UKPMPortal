@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT \n    poh.Currency,\n    SUM(poh.TotalOrderValue) AS TotalValue\n\nFROM dbo.PurchaseOrderHeader poh\n\nWHERE \n    poh.CRStatus <> 'Completed'\n\nGROUP BY poh.Currency\nORDER BY poh.Currency;",
+      "body": "SELECT \n    poh.Currency,\n    SUM(poh.TotalOrderValue) AS TotalValue\n\nFROM dbo.PurchaseOrderHeader poh\n\nWHERE \n    poh.CRStatus <> 'Completed'\n\t\tAND FORMAT(DateRecieved, 'yyyy-MM') = '{{ Select_MonthYear.selectedOptionValue }}'\n\n\nGROUP BY poh.Currency\nORDER BY poh.Currency;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -22,7 +22,11 @@
       "name": "MICNORSQL.MICROSS.LOCAL",
       "pluginId": "mssql-plugin"
     },
-    "dynamicBindingPathList": [],
+    "dynamicBindingPathList": [
+      {
+        "key": "body"
+      }
+    ],
     "executeOnLoad": true,
     "name": "DashboardTotalValuebyMonth",
     "pageId": "Home",
