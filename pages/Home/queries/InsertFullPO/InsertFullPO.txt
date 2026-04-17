@@ -27,7 +27,8 @@ INSERT INTO dbo.PurchaseOrderHeader (
     SubmittedBy,
     MicrossEntity,
     SubmittedDate,
-    Currency
+    Currency,
+	CRStatus
 )
 VALUES (
     '{{ appsmith.store.fullPO.header.CustomerDivision }}',
@@ -42,7 +43,8 @@ VALUES (
     '{{ appsmith.store.fullPO.header.SubmittedBy }}',
     '{{ appsmith.store.fullPO.header.MicrossEntity }}',
     GETDATE(),
-    '{{ appsmith.store.fullPO.header.Currency }}'
+    '{{ appsmith.store.fullPO.header.Currency }}',
+'New'
 );
 
     -- 🔹 DELIVERABLES

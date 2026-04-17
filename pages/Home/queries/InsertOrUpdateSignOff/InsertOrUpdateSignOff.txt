@@ -3,41 +3,79 @@ DECLARE @Dept NVARCHAR(250) = '{{ appsmith.store.selectedDepartment.replace(/'/g
 DECLARE @User NVARCHAR(250) = '{{ appsmith.store.userContext.name.replace(/'/g, "''") }}';
 DECLARE @Approved BIT = {{ Checkbox_Approve.isChecked ? 1 : 0 }};
 
-IF EXISTS (
-    SELECT 1
-    FROM dbo.POH_DepartmentSignOff
-    WHERE 
-        MicrossSalesOrderReference = @PO
-        AND Department = @Dept
-)
-BEGIN
+BEGIN TRY
+    BEGIN TRANSACTION;
 
-    UPDATE dbo.POH_DepartmentSignOff
-    SET 
-        HeadOfDeptName = @User,
-        SignedOff = @Approved,
-        SignedDate = GETDATE()
-    WHERE 
-        MicrossSalesOrderReference = @PO
-        AND Department = @Dept
-
-END
-ELSE
-BEGIN
-
-    INSERT INTO dbo.POH_DepartmentSignOff (
-        MicrossSalesOrderReference,
-        Department,
-        HeadOfDeptName,
-        SignedOff,
-        SignedDate
+    -- 🔹 INSERT OR UPDATE SIGN-OFF
+    IF EXISTS (
+        SELECT 1
+        FROM dbo.POH_DepartmentSignOff
+        WHERE 
+            MicrossSalesOrderReference = @PO
+            AND Department = @Dept
     )
-    VALUES (
-        @PO,
-        @Dept,
-        @User,
-        @Approved,
-        GETDATE()
-    )
+    BEGIN
 
-END
+        UPDATE dbo.POH_DepartmentSignOff
+        SET 
+            HeadOfDeptName = @User,
+            SignedOff = @Approved,
+            SignedDate = GETDATE()
+        WHERE 
+            MicrossSalesOrderReference = @PO
+            AND Department = @Dept
+
+    END
+    ELSE
+    BEGIN
+
+        INSERT INTO dbo.POH_DepartmentSignOff (
+            MicrossSalesOrderReference,
+            Department,
+            HeadOfDeptName,
+            SignedOff,
+            SignedDate
+        )
+        VALUES (
+            @PO,
+            @Dept,
+            @User,
+            @Approved,
+            GETDATE()
+        )
+
+    END
+
+    -- 🔥 DETERMINE NEXT DEPARTMENT (BY RUN ORDER)
+    DECLARE @NextDept NVARCHAR(250);
+
+    SELECT TOP 1 @NextDept = d.Department
+    FROM dbo.Admin_Department d
+    WHERE NOT EXISTS (
+        SELECT 1
+        FROM dbo.POH_DepartmentSignOff s
+        WHERE 
+            s.MicrossSalesOrderReference = @PO
+            AND LOWER(LTRIM(RTRIM(s.Department))) = LOWER(LTRIM(RTRIM(d.Department)))
+            AND s.SignedOff = 1
+    )
+    ORDER BY d.RunOrder ASC;
+
+    -- 🔥 UPDATE HEADER STATUS
+    UPDATE dbo.PurchaseOrderHeader
+    SET CRStatus = 
+        CASE 
+            WHEN @NextDept IS NULL THEN 'Completed'
+            ELSE 'With ' + @NextDept
+        END
+    WHERE MicrossSalesOrderReference = @PO;
+
+    COMMIT;
+
+    SELECT 'SUCCESS' AS Status;
+
+END TRY
+BEGIN CATCH
+    ROLLBACK;
+    SELECT ERROR_MESSAGE() AS ErrorMessage;
+END CATCH;
