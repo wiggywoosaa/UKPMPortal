@@ -1,0 +1,28 @@
+SELECT 
+    a.MicrossSalesOrderReference,
+    COUNT(*) AS ActionCount
+
+FROM dbo.POH_Answers a
+
+JOIN dbo.PurchaseOrderHeader poh
+    ON poh.MicrossSalesOrderReference = a.MicrossSalesOrderReference
+
+WHERE 
+    a.YesNo = 0
+    AND a.IsLatest = 1
+
+    -- ? same open action logic
+    AND (
+        LTRIM(RTRIM(ISNULL(a.Action, ''))) <> ''
+        OR LTRIM(RTRIM(ISNULL(a.ResponsiblePerson, ''))) <> ''
+        OR a.DueDate IS NOT NULL
+    )
+
+    -- ? only open SOs
+    AND poh.CRStatus <> 'Completed'
+
+GROUP BY a.MicrossSalesOrderReference
+
+HAVING COUNT(*) > 0
+
+ORDER BY ActionCount DESC;
