@@ -5,7 +5,7 @@
   "borderColor": "#E0DEDE",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": 1,
-  "bottomRow": 176,
+  "bottomRow": 175,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "children": [
     {
@@ -418,8 +418,8 @@
   "mobileTopRow": 2,
   "needsErrorInfo": false,
   "onTabSelected": "{{GetPOList.run();\nGetPOGroupTests.run();\nGetPONRE.run();\nGetPODeliverables.run();\nGetOpenActions.run();\nGetOverdueActions.run();\nGetRisksAll.run();\nGetUserDepartments.run();\nGetPMQuestion.run()}}",
-  "originalBottomRow": 164,
-  "originalTopRow": 13,
+  "originalBottomRow": 131,
+  "originalTopRow": 12,
   "parentColumnSpace": 30.25,
   "parentId": "0",
   "parentRowSpace": 10,
@@ -496,7 +496,7 @@
       "widgetId": "qprk2red7n"
     }
   },
-  "topRow": 13,
+  "topRow": 12,
   "type": "TABS_WIDGET",
   "version": 3,
   "widgetId": "t9ltnwt1jl",

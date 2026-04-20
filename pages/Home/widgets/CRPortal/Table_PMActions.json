@@ -51,7 +51,7 @@
     "_index",
     "EditActions1"
   ],
-  "columnUpdatedAt": 1776349134981,
+  "columnUpdatedAt": 1776669329333,
   "columnWidthMap": {
     "Action": 192,
     "Answer": 246,
@@ -839,7 +839,7 @@
       "isDiscardVisible": true,
       "isEditable": false,
       "isSaveVisible": true,
-      "isVisible": false,
+      "isVisible": true,
       "label": "id",
       "notation": "standard",
       "originalId": "id",

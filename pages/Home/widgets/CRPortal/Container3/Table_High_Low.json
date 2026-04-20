@@ -291,6 +291,7 @@
       "saveButtonColor": "{{Table_High_Low.processedTableData.map((currentRow, currentIndex) => ( (appsmith.theme.colors.primaryColor)))}}",
       "saveIconAlign": "left",
       "sticky": "right",
+      "textSize": "0.875rem",
       "thousandSeparator": true,
       "validation": {},
       "width": 150

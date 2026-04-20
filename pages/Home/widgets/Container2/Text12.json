@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 6,
+  "bottomRow": 5,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -41,7 +41,7 @@
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 24,
+  "rightColumn": 26,
   "shouldTruncate": false,
   "text": "{{\n(() => {\n  const hour = new Date().getHours();\n  const name = appsmith.store.userContext?.name || \"User\";\n\n  if (hour < 12) return `Good morning, ${name}`;\n  if (hour < 18) return `Good afternoon, ${name}`;\n  return `Good evening, ${name}`;\n})()\n}}",
   "textAlign": "LEFT",
