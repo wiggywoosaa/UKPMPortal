@@ -12,17 +12,11 @@
     },
     {
       "key": "borderRadius"
-    },
-    {
-      "key": "isDisabled"
     }
   ],
   "dynamicPropertyPathList": [
     {
       "key": "onClick"
-    },
-    {
-      "key": "isDisabled"
     }
   ],
   "dynamicTriggerPathList": [
@@ -31,7 +25,7 @@
     }
   ],
   "isDefaultClickDisabled": true,
-  "isDisabled": "{{\nInput_PMSO_By.text != null &&\nInput_PMSO_By.text !== \"\"\n}}",
+  "isDisabled": false,
   "isLoading": false,
   "isVisible": true,
   "key": "bnj9t8mmam",
@@ -42,7 +36,7 @@
   "mobileRightColumn": 62,
   "mobileTopRow": 33,
   "needsErrorInfo": false,
-  "onClick": "{{\nInsertPM.run()\n.then(() => {\n  showAlert(\"Saved\", \"success\");\n  storeValue(\"isEditingPM\", false);\n\n  return Promise.all([\n    GetPMAnswers.run(),\n    GetPM.run(),\n    GetPODeliverablesPM.run(),\n    GetPOGroupTestsPM.run(),\n    GetPONREPM.run(),\n    GetPMQuestion.run()\n  ]);\n})\n.catch(err => {\n  showAlert(\"Error: \" + err.message, \"error\");\n});\n}}",
+  "onClick": "{{\nInsertPM.run()\n.then(() => {\n  showAlert(\"Saved\", \"success\");\n  storeValue(\"isEditingPM\", false);\n\n  return Promise.all([\n\t\tGetPOListPM.run(),\n    GetPMAnswers.run(),\n    GetPM.run(),\n    GetPODeliverablesPM.run(),\n    GetPOGroupTestsPM.run(),\n    GetPONREPM.run(),\n    GetPMQuestion.run()\n  ]);\n})\n.catch(err => {\n  showAlert(\"Error: \" + err.message, \"error\");\n});\n}}",
   "originalBottomRow": 15,
   "originalTopRow": 11,
   "parentId": "onfgrpi7po",

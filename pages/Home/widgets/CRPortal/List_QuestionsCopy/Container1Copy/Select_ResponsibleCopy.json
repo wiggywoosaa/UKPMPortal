@@ -1,0 +1,85 @@
+{
+  "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 11,
+  "boxShadow": "none",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( \nappsmith.store.answers?.[currentItem.id]?.ResponsiblePerson || \"\"\n))(Select_ResponsibleCopy.options, Select_ResponsibleCopy.serverSideFiltering) }}",
+  "dynamicBindingPathList": [
+    {
+      "key": "accentColor"
+    },
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "isDisabled"
+    },
+    {
+      "key": "sourceData"
+    },
+    {
+      "key": "defaultOptionValue"
+    },
+    {
+      "key": "isVisible"
+    }
+  ],
+  "dynamicHeight": "FIXED",
+  "dynamicPropertyPathList": [
+    {
+      "key": "sourceData"
+    },
+    {
+      "key": "onOptionChange"
+    },
+    {
+      "key": "isDisabled"
+    },
+    {
+      "key": "isVisible"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onOptionChange"
+    }
+  ],
+  "isDisabled": "{{ Number(appsmith.store.answers?.[currentItem.id]?.YesNo) === 1 }}",
+  "isFilterable": true,
+  "isLoading": false,
+  "isRequired": false,
+  "isVisible": "{{ Number(appsmith.store.answers?.[currentItem.id]?.YesNo) === 0 }}",
+  "key": "yhhb01mesl",
+  "labelAlignment": "left",
+  "labelPosition": "Left",
+  "labelText": "Resposible Person",
+  "labelTextSize": "0.875rem",
+  "labelWidth": "6",
+  "leftColumn": 18,
+  "maxDynamicHeight": 9000,
+  "minDynamicHeight": 4,
+  "minWidth": 450,
+  "mobileBottomRow": 14,
+  "mobileLeftColumn": 36,
+  "mobileRightColumn": 56,
+  "mobileTopRow": 7,
+  "needsErrorInfo": false,
+  "onOptionChange": "{{\nstoreValue(\"answers\", {\n  ...appsmith.store.answers,\n  [currentItem.id]: {\n    ...(appsmith.store.answers[currentItem.id] || {}),\n    ResponsiblePerson: Select_Responsible.selectedOptionValue\n  }\n})\n}}",
+  "optionLabel": "label",
+  "optionValue": "value",
+  "parentColumnSpace": 23.05230712890625,
+  "parentId": "gi4dk730b2",
+  "parentRowSpace": 10,
+  "placeholderText": "Select option",
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 32,
+  "serverSideFiltering": false,
+  "sourceData": "{{\n(GetUsersForDropdown.data || []).map(u => ({\n  label: u.Name,\n  value: u.Name   // 👈 store name\n}))\n}}",
+  "topRow": 7,
+  "type": "SELECT_WIDGET",
+  "version": 1,
+  "widgetId": "zdbpu1et19",
+  "widgetName": "Select_ResponsibleCopy"
+}

@@ -1,0 +1,58 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 12,
+  "dynamicBindingPathList": [
+    {
+      "key": "truncateButtonColor"
+    },
+    {
+      "key": "fontFamily"
+    },
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "text"
+    }
+  ],
+  "dynamicHeight": "FIXED",
+  "dynamicPropertyPathList": [
+    {
+      "key": "fontSize"
+    }
+  ],
+  "dynamicTriggerPathList": [],
+  "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
+  "fontSize": "0.775rem",
+  "fontStyle": "ITALIC",
+  "isLoading": false,
+  "isVisible": true,
+  "key": "wjkswgja7w",
+  "leftColumn": 0,
+  "maxDynamicHeight": 9000,
+  "minDynamicHeight": 4,
+  "minWidth": 450,
+  "mobileBottomRow": 11,
+  "mobileLeftColumn": 41,
+  "mobileRightColumn": 57,
+  "mobileTopRow": 7,
+  "needsErrorInfo": false,
+  "overflow": "NONE",
+  "parentColumnSpace": 23.05230712890625,
+  "parentId": "1qtmz7s9za",
+  "parentRowSpace": 10,
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 18,
+  "shouldTruncate": false,
+  "text": "{{\n(() => {\n\n  const answer = appsmith.store.answers?.[currentItem.id];\n\n  if (!answer?.AnsweredBy) return \"\";\n\n  return \"Answered by \" + answer.AnsweredBy +\n    \" on \" + moment(answer.AnsweredDate).format(\"DD/MM/YYYY HH:mm\");\n\n})()\n}}",
+  "textAlign": "LEFT",
+  "textColor": "#a855f7",
+  "topRow": 8,
+  "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "type": "TEXT_WIDGET",
+  "version": 1,
+  "widgetId": "a8fouusx1n",
+  "widgetName": "Text9Copy1"
+}

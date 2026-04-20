@@ -1,0 +1,2 @@
+SELECT * FROM dbo.PurchaseOrderHeaderNRE
+WHERE MicrossSalesOrderReference = {{ Select_FA.selectedOptionValue }}

@@ -4,7 +4,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 98,
   "boxShadow": "none",
-  "defaultOptionValue": "{{ ((options, serverSideFiltering) => (  appsmith.store.selectedDepartment || \"\" ))(Select_Department.options, Select_Department.serverSideFiltering) }}",
+  "defaultOptionValue": "",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -17,9 +17,6 @@
     },
     {
       "key": "isDisabled"
-    },
-    {
-      "key": "defaultOptionValue"
     }
   ],
   "dynamicHeight": "FIXED",
@@ -73,7 +70,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 30,
   "serverSideFiltering": false,
-  "sourceData": "{{\n(() => {\n\n  const ready = appsmith.store.deptReady;\n\n  const allDepts = GetDepartments.data || [];\n  const ctx = appsmith.store.userContext;\n  const signOffs = GetDepartmentSignOff.data || [];\n  const selectedPO = appsmith.store.selectedPO;\n\n  if (!ready || !allDepts.length || !ctx) return [];\n\n  // 🔹 user departments\n  const userDeps = (ctx.departments || [])\n    .map(d => d?.trim().toLowerCase())\n    .filter(Boolean);\n\n  // 🔹 get ALL departments sorted by RunOrder\n  const ordered = [...allDepts]\n    .sort((a, b) => Number(a.RunOrder) - Number(b.RunOrder));\n\n  // 🔥 find FIRST unsigned department\n  const nextDept = ordered.find(d => {\n\n    const dept = d.Department?.trim().toLowerCase();\n\n    const isSigned = signOffs.some(s =>\n      s.MicrossSalesOrderReference === selectedPO &&\n      Number(s.SignedOff) === 1 &&\n      s.Department?.trim().toLowerCase() === dept\n    );\n\n    return !isSigned;\n\n  });\n\n  if (!nextDept) return []; // everything signed\n\n  const nextDeptName = nextDept.Department?.trim().toLowerCase();\n\n  // 🔥 ONLY return it if user belongs to it\n  if (!userDeps.includes(nextDeptName)) {\n    return [{\n      label: \"Waiting for previous department\",\n      value: \"\"\n    }];\n  }\n\n  return [{\n    label: nextDept.Department,\n    value: nextDept.Department\n  }];\n\n})()\n}}",
+  "sourceData": "{{ \nGetDepartments.data.map(p => ({\n  label: p.MicrossSalesOrderReference,\n  value: p.MicrossSalesOrderReference\n})) \n}}",
   "topRow": 94,
   "type": "SELECT_WIDGET",
   "version": 1,

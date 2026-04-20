@@ -53,7 +53,7 @@
   "mobileRightColumn": 61,
   "mobileTopRow": 1,
   "needsErrorInfo": false,
-  "onOptionChange": "{{DashBoardOverduevsOntime.run();\nDashboardOverdueValue.run();\nDashboardOpenSO.run();\nDashboardOverdueCount.run();\nDashboardOpenActionsbyDept.run();\nDashboardOpenSOCount.run();\nDashboardOpenSO.run();\nDashboardOpenActions.run();\nDashboardOverdueActionsCount.run();\nDashboardTotalValuebyMonth.run();\nDashboardPOSOpenAction.run();\n;\nDashboardOpenSO.run()}}",
+  "onOptionChange": "  {{      DashboardByDept.run();\n        DashboardOpenActions.run();\n\t\t\t\tDashboardOpenActionsbyDept.run();\n\t\t\t\tDashboardOpenSO.run();\n\t\t\t\tDashboardOpenSOCount.run();\n\t\t\t\tDashboardOverdueActionsCount.run();\n\t\t\t\tDashboardOverdueCount.run();\n\t\t\t\tDashboardOverdueValue.run();\n\t\t\t\tDashBoardOverduevsOntime.run();\n\t\t\t\tDashboardPOSOpenAction.run();\n\t\t\t\tDashboardTotalValuebyMonth.run();}}",
   "optionLabel": "label",
   "optionValue": "value",
   "parentColumnSpace": 22.4833984375,

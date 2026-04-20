@@ -1,0 +1,14 @@
+SELECT DISTINCT 
+    poh.MicrossSalesOrderReference, 
+    poh.CustomerDivision
+FROM dbo.PurchaseOrderHeader poh
+
+JOIN dbo.Admin_Users u
+    ON LOWER(LTRIM(RTRIM(u.Name))) = LOWER(LTRIM(RTRIM('{{ appsmith.store.userContext?.name }}')))
+
+WHERE 
+    poh.MicrossSalesOrderReference IS NOT NULL 
+    AND poh.CRStatus = 'Final Acceptance'
+
+    -- 🔥 VALUE LIMIT FILTER
+    AND poh.TotalOrderValue <= ISNULL(u.Limit, 0)

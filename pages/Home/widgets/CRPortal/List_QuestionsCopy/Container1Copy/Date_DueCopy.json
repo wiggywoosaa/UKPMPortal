@@ -1,0 +1,84 @@
+{
+  "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 11,
+  "boxShadow": "none",
+  "closeOnSelection": true,
+  "dateFormat": "DD-MM-YYYY",
+  "datePickerType": "DATE_PICKER",
+  "defaultDate": "{{ appsmith.store.answers?.[currentItem.id]?.DueDate }}",
+  "dynamicBindingPathList": [
+    {
+      "key": "accentColor"
+    },
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "defaultDate"
+    },
+    {
+      "key": "isDisabled"
+    },
+    {
+      "key": "isVisible"
+    }
+  ],
+  "dynamicHeight": "FIXED",
+  "dynamicPropertyPathList": [
+    {
+      "key": "defaultDate"
+    },
+    {
+      "key": "onDateSelected"
+    },
+    {
+      "key": "isDisabled"
+    },
+    {
+      "key": "isVisible"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onDateSelected"
+    }
+  ],
+  "firstDayOfWeek": 0,
+  "isDisabled": "{{ Number(appsmith.store.answers?.[currentItem.id]?.YesNo) === 1 }}",
+  "isLoading": false,
+  "isRequired": false,
+  "isVisible": "{{ Number(appsmith.store.answers?.[currentItem.id]?.YesNo) === 0 }}",
+  "key": "2mzr60fz5h",
+  "label": "Due Date",
+  "labelAlignment": "left",
+  "labelPosition": "Top",
+  "labelTextSize": "0.875rem",
+  "labelWidth": 5,
+  "leftColumn": 58,
+  "maxDate": "2121-12-31T18:29:00.000Z",
+  "maxDynamicHeight": 9000,
+  "minDate": "1920-12-31T18:30:00.000Z",
+  "minDynamicHeight": 4,
+  "minWidth": 450,
+  "mobileBottomRow": 13,
+  "mobileLeftColumn": 43,
+  "mobileRightColumn": 63,
+  "mobileTopRow": 6,
+  "needsErrorInfo": false,
+  "onDateSelected": "{{\nstoreValue(\"answers\", {\n  ...appsmith.store.answers,\n  [currentItem.id]: {\n    ...(appsmith.store.answers[currentItem.id] || {}),\n    DueDate: Date_Due.selectedDate\n  }\n})\n}}",
+  "parentColumnSpace": 23.05230712890625,
+  "parentId": "gi4dk730b2",
+  "parentRowSpace": 10,
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 63,
+  "shortcuts": false,
+  "timePrecision": "minute",
+  "topRow": 4,
+  "type": "DATE_PICKER_WIDGET2",
+  "version": 2,
+  "widgetId": "6hykq5i4fj",
+  "widgetName": "Date_DueCopy"
+}
