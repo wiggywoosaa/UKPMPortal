@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 108,
+  "bottomRow": 222,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -11,9 +11,6 @@
     },
     {
       "key": "borderRadius"
-    },
-    {
-      "key": "text"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
@@ -23,33 +20,33 @@
   "fontStyle": "BOLD",
   "isLoading": false,
   "isVisible": true,
-  "key": "4ebmastv5a",
-  "leftColumn": 33,
+  "key": "nsc48fdazp",
+  "leftColumn": 3,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
-  "mobileBottomRow": 108,
-  "mobileLeftColumn": 33,
-  "mobileRightColumn": 49,
-  "mobileTopRow": 104,
+  "mobileBottomRow": 85,
+  "mobileLeftColumn": 4,
+  "mobileRightColumn": 20,
+  "mobileTopRow": 81,
   "needsErrorInfo": false,
-  "originalBottomRow": 108,
-  "originalTopRow": 104,
+  "originalBottomRow": 222,
+  "originalTopRow": 218,
   "overflow": "NONE",
-  "parentColumnSpace": 33.24560546875,
+  "parentColumnSpace": 28.9921875,
   "parentId": "yc754fsi7w",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 58,
+  "rightColumn": 19,
   "shouldTruncate": false,
-  "text": "{{JSON.stringify({id: currentItem.id, QuestionId: currentItem.QuestionId})}}\n",
+  "text": "Action Log",
   "textAlign": "LEFT",
   "textColor": "#231F20",
-  "topRow": 104,
+  "topRow": 218,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
-  "widgetId": "zkf4ev6n4r",
-  "widgetName": "Text32"
+  "widgetId": "8e4gqbusp2",
+  "widgetName": "Text23FACopy"
 }

@@ -56,6 +56,7 @@ GetPODeliverablesFA.run();
 GetPOGroupTestsFA.run();
 GetPONREFA.run();
 	 GetDepartments.run();
+	 GetActionsFA.run();
 
     }
   }
