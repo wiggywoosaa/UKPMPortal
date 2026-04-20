@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 14,
   "boxShadow": "none",
-  "defaultText": "{{\nGetPMAnswers.data\n  ?.find(a => a.QuestionId === currentItem.id)\n  ?.AnsweredBy ?? \"\"\n}}",
+  "defaultText": "{{ GetPMAnswers.data[0].AnsweredBy }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -15,26 +15,19 @@
     },
     {
       "key": "defaultText"
-    },
-    {
-      "key": "isDisabled"
     }
   ],
   "dynamicHeight": "FIXED",
-  "dynamicPropertyPathList": [
-    {
-      "key": "isDisabled"
-    }
-  ],
+  "dynamicPropertyPathList": [],
   "dynamicTriggerPathList": [],
   "iconAlign": "left",
   "inputType": "TEXT",
-  "isDisabled": "{{ appsmith.store.isEditingPM !== true }}",
+  "isDisabled": true,
   "isLoading": false,
   "isRequired": false,
   "isVisible": true,
   "key": "lhr3hf6hz1",
-  "label": "Answered By",
+  "label": "Signed Off By",
   "labelAlignment": "left",
   "labelPosition": "Left",
   "labelStyle": "",
@@ -61,5 +54,5 @@
   "type": "INPUT_WIDGET_V2",
   "version": 2,
   "widgetId": "tgirw2ajqa",
-  "widgetName": "Input2"
+  "widgetName": "Input_PMSO_By"
 }

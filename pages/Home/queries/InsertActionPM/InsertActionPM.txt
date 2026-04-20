@@ -1,0 +1,47 @@
+BEGIN TRY
+    BEGIN TRANSACTION;
+
+    -- 🔹 INSERT CHILD
+    INSERT INTO dbo.POH_Answers (
+        MicrossSalesOrderReference,
+        QuestionId,
+        YesNo,
+        ResponsiblePerson,
+        Action,
+        DueDate,
+        Status,
+        AnsweredBy,
+        AnsweredDate,
+        VersionId,
+        CreatedAt,
+        IsLatest,
+        ParentActionID
+    )
+    VALUES (
+        '{{ this.params.po }}',
+        {{ this.params.questionId }},
+        0,
+        '{{ this.params.responsible.replace(/'/g,"''") }}',
+        '{{ this.params.action.replace(/'/g,"''") }}',
+        {{ this.params.dueDate ? `'${this.params.dueDate}'` : 'NULL' }},
+        'PM Created',
+        '{{ appsmith.user.name }}',
+        GETDATE(),
+        NEWID(),
+        GETDATE(),
+        1,
+        {{ Number(this.params.actionId) }}
+    );
+
+    -- 🔥 UPDATE PARENT (FIXED)
+    UPDATE dbo.POH_Answers
+    SET Status = 'Rejected'
+    WHERE id = {{ Number(this.params.actionId) }};
+
+    COMMIT;
+
+END TRY
+BEGIN CATCH
+    ROLLBACK;
+    SELECT ERROR_MESSAGE() AS ErrorMessage;
+END CATCH;

@@ -2,7 +2,7 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "alignWidget": "LEFT",
   "animateLoading": true,
-  "bottomRow": 11,
+  "bottomRow": 10,
   "boxShadow": "none",
   "defaultSwitchState": "{{ Table_Users.selectedRow?.IsActive ?? true }}",
   "dynamicBindingPathList": [
@@ -34,7 +34,7 @@
   "mobileRightColumn": 43,
   "mobileTopRow": 21,
   "needsErrorInfo": false,
-  "originalBottomRow": 10,
+  "originalBottomRow": 11,
   "originalTopRow": 6,
   "parentColumnSpace": 12.8245849609375,
   "parentId": "xn0byl7sht",

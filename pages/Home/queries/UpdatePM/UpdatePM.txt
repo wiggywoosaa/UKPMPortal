@@ -1,7 +1,24 @@
-UPDATE dbo.PM_Answers
-SET
-    PMAnswer = {{ Number(Select_PMAnswer.selectedOptionValue) }},
-    Comments = {{ Input_PMComments.text }},
-    AnsweredBy = {{ appsmith.store.user?.name }},
-    Date = GETDATE()
-WHERE MicrossSalesOrderReference = {{ Select_POPM.selectedOptionValue }}
+BEGIN TRY
+    BEGIN TRANSACTION;
+
+    -- 🔹 UPDATE PM ANSWERS
+    UPDATE dbo.PM_Answers
+    SET
+        PMAnswer = {{ Number(Select_PMAnswer.selectedOptionValue) }},
+        Comments = '{{ Input_PMComments.text.replace(/'/g,"''") }}',
+        AnsweredBy = '{{ (appsmith.store.userContext?.name || "Unknown").replace(/'/g,"''") }}',
+        Date = GETDATE()
+    WHERE MicrossSalesOrderReference = '{{ Select_POPM.selectedOptionValue }}';
+
+    -- 🔥 UPDATE PO STATUS
+    UPDATE dbo.PurchaseOrderHeader
+    SET CRStatus = 'Final Acceptance'
+    WHERE MicrossSalesOrderReference = '{{ Select_POPM.selectedOptionValue }}';
+
+    COMMIT;
+
+END TRY
+BEGIN CATCH
+    ROLLBACK;
+    SELECT ERROR_MESSAGE() AS ErrorMessage;
+END CATCH;

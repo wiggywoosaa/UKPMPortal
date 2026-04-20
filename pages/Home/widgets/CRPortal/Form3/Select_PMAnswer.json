@@ -4,7 +4,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 6,
   "boxShadow": "none",
-  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( \nGetPMAnswers.data?.find(a => a.QuestionId === currentItem.id)?.PMAnswer ?? \"\"\n))(Select_PMAnswer.options, Select_PMAnswer.serverSideFiltering) }}",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => (  Number(GetPMAnswers.data?.[0]?.PMAnswer ?? \"\") ))(Select_PMAnswer.options, Select_PMAnswer.serverSideFiltering) }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -32,7 +32,7 @@
     }
   ],
   "dynamicTriggerPathList": [],
-  "isDisabled": "{{ appsmith.store.isEditingPM !== true }}",
+  "isDisabled": "{{\nInput_PMSO_By.text != null &&\nInput_PMSO_By.text !== \"\"\n}}",
   "isFilterable": true,
   "isLoading": false,
   "isRequired": false,

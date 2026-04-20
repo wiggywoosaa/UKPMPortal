@@ -1,0 +1,5 @@
+SELECT DISTINCT 
+    poh.MicrossSalesOrderReference, 
+    poh.CustomerDivision
+FROM dbo.PurchaseOrderHeader poh
+WHERE poh.MicrossSalesOrderReference IS NOT NULL  and poh.CRStatus = 'PM Verification'

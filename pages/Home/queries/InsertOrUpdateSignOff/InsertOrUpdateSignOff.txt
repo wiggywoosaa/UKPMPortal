@@ -1,6 +1,6 @@
 DECLARE @PO NVARCHAR(250) = '{{ appsmith.store.selectedPO }}';
 DECLARE @Dept NVARCHAR(250) = '{{ appsmith.store.selectedDepartment.replace(/'/g, "''") }}';
-DECLARE @User NVARCHAR(250) = '{{ appsmith.store.userContext.name.replace(/'/g, "''") }}';
+DECLARE @User NVARCHAR(250) = '{{ (appsmith.store.userContext?.name || "Unknown").replace(/'/g,"''") }}';
 DECLARE @Approved BIT = {{ Checkbox_Approve.isChecked ? 1 : 0 }};
 
 BEGIN TRY

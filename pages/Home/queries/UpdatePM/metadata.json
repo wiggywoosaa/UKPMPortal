@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "UPDATE dbo.PM_Answers\nSET\n    PMAnswer = {{ Number(Select_PMAnswer.selectedOptionValue) }},\n    Comments = {{ Input_PMComments.text }},\n    AnsweredBy = {{ appsmith.store.user?.name }},\n    Date = GETDATE()\nWHERE MicrossSalesOrderReference = {{ Select_POPM.selectedOptionValue }}",
+      "body": "BEGIN TRY\n    BEGIN TRANSACTION;\n\n    -- 🔹 UPDATE PM ANSWERS\n    UPDATE dbo.PM_Answers\n    SET\n        PMAnswer = {{ Number(Select_PMAnswer.selectedOptionValue) }},\n        Comments = '{{ Input_PMComments.text.replace(/'/g,\"''\") }}',\n        AnsweredBy = '{{ (appsmith.store.userContext?.name || \"Unknown\").replace(/'/g,\"''\") }}',\n        Date = GETDATE()\n    WHERE MicrossSalesOrderReference = '{{ Select_POPM.selectedOptionValue }}';\n\n    -- 🔥 UPDATE PO STATUS\n    UPDATE dbo.PurchaseOrderHeader\n    SET CRStatus = 'Final Acceptance'\n    WHERE MicrossSalesOrderReference = '{{ Select_POPM.selectedOptionValue }}';\n\n    COMMIT;\n\nEND TRY\nBEGIN CATCH\n    ROLLBACK;\n    SELECT ERROR_MESSAGE() AS ErrorMessage;\nEND CATCH;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

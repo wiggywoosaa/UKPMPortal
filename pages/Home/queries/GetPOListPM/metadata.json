@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "69ccf8e72446822078bf9d91_226ee607-2e5d-4112-a52b-c007637208f6",
-  "id": "Home_InsertDepartment",
+  "gitSyncId": "69ccf8e72446822078bf9d91_d3d2f88c-2404-4902-93b3-d9567f87c53c",
+  "id": "Home_GetPOListPM",
   "pluginId": "mssql-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "INSERT INTO dbo.Admin_Department (\n    Department,\n    MicrossEntity,\n\t  RunOrder\n)\nVALUES (\n    {{Table_Departments.newRow.Department}},\n    {{Table_Departments.newRow.MicrossEntity }},\n  \t{{ Number(Table_Departments.newRow.RunOrder || 0) }}\n)",
+      "body": "SELECT DISTINCT \n    poh.MicrossSalesOrderReference, \n    poh.CustomerDivision\nFROM dbo.PurchaseOrderHeader poh\nWHERE poh.MicrossSalesOrderReference IS NOT NULL  and poh.CRStatus = 'PM Verification'",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -22,13 +22,9 @@
       "name": "MICNORSQL.MICROSS.LOCAL",
       "pluginId": "mssql-plugin"
     },
-    "dynamicBindingPathList": [
-      {
-        "key": "body"
-      }
-    ],
-    "executeOnLoad": false,
-    "name": "InsertDepartment",
+    "dynamicBindingPathList": [],
+    "executeOnLoad": true,
+    "name": "GetPOListPM",
     "pageId": "Home",
     "userSetOnLoad": false
   }

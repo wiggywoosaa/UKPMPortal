@@ -7,7 +7,7 @@
   "closeOnSelection": true,
   "dateFormat": "DD/MM/YY",
   "datePickerType": "DATE_PICKER",
-  "defaultDate": "{{\nGetPMAnswers.data?.[0]?.Date || moment().format(\"YYYY-MM-DD\")\n}}",
+  "defaultDate": "{{ GetPMAnswers.data[0].Date }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -17,23 +17,17 @@
     },
     {
       "key": "defaultDate"
-    },
-    {
-      "key": "isDisabled"
     }
   ],
   "dynamicHeight": "FIXED",
   "dynamicPropertyPathList": [
     {
       "key": "defaultDate"
-    },
-    {
-      "key": "isDisabled"
     }
   ],
   "dynamicTriggerPathList": [],
   "firstDayOfWeek": 0,
-  "isDisabled": "{{ appsmith.store.isEditingPM !== true }}",
+  "isDisabled": true,
   "isLoading": false,
   "isRequired": false,
   "isVisible": true,
@@ -43,7 +37,7 @@
   "labelPosition": "Top",
   "labelTextSize": "0.875rem",
   "labelWidth": 5,
-  "leftColumn": 56,
+  "leftColumn": 58,
   "maxDate": "2121-12-31T18:29:00.000Z",
   "maxDynamicHeight": 9000,
   "minDate": "1920-12-31T18:30:00.000Z",

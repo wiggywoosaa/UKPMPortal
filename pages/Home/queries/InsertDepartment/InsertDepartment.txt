@@ -6,5 +6,5 @@ INSERT INTO dbo.Admin_Department (
 VALUES (
     {{Table_Departments.newRow.Department}},
     {{Table_Departments.newRow.MicrossEntity }},
-  	{{ Number(Table_Departments.updatedRow.RunOrder || 0) }}
+  	{{ Number(Table_Departments.newRow.RunOrder || 0) }}
 )

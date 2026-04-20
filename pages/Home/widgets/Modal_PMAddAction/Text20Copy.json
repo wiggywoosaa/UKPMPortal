@@ -41,7 +41,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 58,
   "shouldTruncate": false,
-  "text": "{{\n\"Add Action to \" + appsmith.store.selectedPMActionRow.id\n}}",
+  "text": "{{\n\"Add Sub Action to Answer ID \" + appsmith.store.selectedPMActionRow.ActionId\n}}",
   "textAlign": "LEFT",
   "textColor": "#231F20",
   "topRow": 1,

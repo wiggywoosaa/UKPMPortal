@@ -1,3 +1,6 @@
+BEGIN TRY
+    BEGIN TRANSACTION;
+
 INSERT INTO dbo.PM_Answers (
     MicrossSalesOrderReference,
     PMAnswer,
@@ -6,9 +9,25 @@ INSERT INTO dbo.PM_Answers (
     Date
 )
 VALUES (
-    {{ Select_POPM.selectedOptionValue }},
+    '{{ Select_POPM.selectedOptionValue }}',
     {{ Number(Select_PMAnswer.selectedOptionValue) }},
-    {{ Input_PMComments.text }},
-    {{ appsmith.store.user?.name }},
+    '{{ (Input_PMComments.text || "").replace(/'/g,"''") }}',
+    '{{ (appsmith.store.userContext?.name || "Unknown").replace(/'/g,"''") }}',
     GETDATE()
-)
+);
+
+    -- 🔥 STATUS UPDATE
+    IF {{ Number(Select_PMAnswer.selectedOptionValue) }} = 1
+    BEGIN
+        UPDATE dbo.PurchaseOrderHeader
+        SET CRStatus = 'Final Acceptance'
+        WHERE MicrossSalesOrderReference = '{{ Select_POPM.selectedOptionValue }}';
+    END
+
+    COMMIT;
+
+END TRY
+BEGIN CATCH
+    ROLLBACK;
+    SELECT ERROR_MESSAGE() AS ErrorMessage;
+END CATCH;

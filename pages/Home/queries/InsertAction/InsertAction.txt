@@ -20,7 +20,7 @@ VALUES (
     '{{ this.params.responsible }}',
     '{{ this.params.action }}',
     '{{ this.params.dueDate }}',
-    'Open',
+    'User Created',
     '{{ appsmith.user.name }}',
     GETDATE(),
     NEWID(),

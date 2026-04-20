@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 10,
   "boxShadow": "none",
-  "defaultText": "{{\nGetPMAnswers.data\n  ?.find(a => a.QuestionId === currentItem.id)\n  ?.Comments ?? \"\"\n}}",
+  "defaultText": "{{ GetPMAnswers.data[0].Comments }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -29,9 +29,9 @@
   "dynamicTriggerPathList": [],
   "iconAlign": "left",
   "inputType": "MULTI_LINE_TEXT",
-  "isDisabled": "{{ appsmith.store.isEditingPM !== true }}",
+  "isDisabled": "{{\nInput_PMSO_By.text != null &&\nInput_PMSO_By.text !== \"\"\n}}",
   "isLoading": false,
-  "isRequired": false,
+  "isRequired": true,
   "isVisible": true,
   "key": "lhr3hf6hz1",
   "label": "Comment",
@@ -57,7 +57,7 @@
   "renderMode": "CANVAS",
   "resetOnSubmit": true,
   "responsiveBehavior": "fill",
-  "rightColumn": 55,
+  "rightColumn": 57,
   "shouldAllowAutofill": false,
   "showStepArrows": false,
   "topRow": 2,

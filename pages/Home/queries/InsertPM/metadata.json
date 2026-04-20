@@ -5,12 +5,12 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "INSERT INTO dbo.PM_Answers (\n    MicrossSalesOrderReference,\n    PMAnswer,\n    Comments,\n    AnsweredBy,\n    Date\n)\nVALUES (\n    {{ Select_POPM.selectedOptionValue }},\n    {{ Number(Select_PMAnswer.selectedOptionValue) }},\n    {{ Input_PMComments.text }},\n    {{ appsmith.store.user?.name }},\n    GETDATE()\n)",
+      "body": "BEGIN TRY\n    BEGIN TRANSACTION;\n\nINSERT INTO dbo.PM_Answers (\n    MicrossSalesOrderReference,\n    PMAnswer,\n    Comments,\n    AnsweredBy,\n    Date\n)\nVALUES (\n    '{{ Select_POPM.selectedOptionValue }}',\n    {{ Number(Select_PMAnswer.selectedOptionValue) }},\n    '{{ (Input_PMComments.text || \"\").replace(/'/g,\"''\") }}',\n    '{{ (appsmith.store.userContext?.name || \"Unknown\").replace(/'/g,\"''\") }}',\n    GETDATE()\n);\n\n    -- 🔥 STATUS UPDATE\n    IF {{ Number(Select_PMAnswer.selectedOptionValue) }} = 1\n    BEGIN\n        UPDATE dbo.PurchaseOrderHeader\n        SET CRStatus = 'Final Acceptance'\n        WHERE MicrossSalesOrderReference = '{{ Select_POPM.selectedOptionValue }}';\n    END\n\n    COMMIT;\n\nEND TRY\nBEGIN CATCH\n    ROLLBACK;\n    SELECT ERROR_MESSAGE() AS ErrorMessage;\nEND CATCH;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
         {
-          "value": true
+          "value": false
         }
       ],
       "timeoutInMillisecond": 10000
