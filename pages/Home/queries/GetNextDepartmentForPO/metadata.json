@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT TOP 1 d.Department\nFROM dbo.Admin_Department d\nWHERE \n    d.MicrossEntity = '{{ appsmith.store.userContext.entity }}'\n\n    AND NOT EXISTS (\n        SELECT 1\n        FROM dbo.POH_DepartmentSignOff s\n        WHERE \n            s.MicrossSalesOrderReference = '{{ appsmith.store.selectedPO }}'\n            AND LOWER(LTRIM(RTRIM(s.Department))) = LOWER(LTRIM(RTRIM(d.Department)))\n            AND s.SignedOff = 1\n    )\n\nORDER BY d.RunOrder ASC",
+      "body": "SELECT TOP 1 d.Department\nFROM dbo.Admin_Department d\nWHERE \n    d.Department NOT IN ('PM Verification', 'Final Acceptance')\n    AND NOT EXISTS (\n        SELECT 1\n        FROM dbo.POH_DepartmentSignOff s\n        WHERE \n            s.MicrossSalesOrderReference = '{{ appsmith.store.selectedPO }}'\n            AND LOWER(LTRIM(RTRIM(s.Department))) = LOWER(LTRIM(RTRIM(d.Department)))\n            AND s.SignedOff = 1\n    )\nORDER BY d.RunOrder ASC",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -27,7 +27,7 @@
         "key": "body"
       }
     ],
-    "executeOnLoad": false,
+    "executeOnLoad": true,
     "name": "GetNextDepartmentForPO",
     "pageId": "Home",
     "userSetOnLoad": false

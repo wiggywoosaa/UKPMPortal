@@ -1,0 +1,16 @@
+<html>
+<body style="font-family: Arial, sans-serif; font-size: 14px; color: #333;">
+  <p>Hello,</p>
+  <p>A new Contract Review has been opened in the PM Portal.</p>
+  <ul>
+    <li><strong>Customer:</strong> {{ appsmith.store.fullPO.header.CustomerDivision }}</li>
+    <li><strong>PO Number:</strong> {{ appsmith.store.fullPO.header.CustomerPurchaseOrderNumber }}</li>
+    <li><strong>Sales Order:</strong> {{ appsmith.store.fullPO.header.MicrossSalesOrderReference }}</li>
+  </ul>
+  <p>You have been assigned the first stage of the review.</p>
+  <p>Please log into the PM Portal to complete your section.</p>
+  <br/>
+  <p>Thank you.</p>
+  <p><em>PM Portal (Automated Message)</em></p>
+</body>
+</html>

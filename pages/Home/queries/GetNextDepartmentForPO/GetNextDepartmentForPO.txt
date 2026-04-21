@@ -1,8 +1,7 @@
 SELECT TOP 1 d.Department
 FROM dbo.Admin_Department d
 WHERE 
-    d.MicrossEntity = '{{ appsmith.store.userContext.entity }}'
-
+    d.Department NOT IN ('PM Verification', 'Final Acceptance')
     AND NOT EXISTS (
         SELECT 1
         FROM dbo.POH_DepartmentSignOff s
@@ -11,5 +10,4 @@ WHERE
             AND LOWER(LTRIM(RTRIM(s.Department))) = LOWER(LTRIM(RTRIM(d.Department)))
             AND s.SignedOff = 1
     )
-
 ORDER BY d.RunOrder ASC
