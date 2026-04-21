@@ -16,6 +16,7 @@ WHERE
     a.IsLatest = 1
     AND a.YesNo = 0
     AND a.DueDate IS NOT NULL
+		AND a.Status <> 'Closed'
 
     -- 🔥 FILTER
     AND (

@@ -4,16 +4,13 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 122,
   "boxShadow": "none",
-  "defaultOptionValue": "{{ ((options, serverSideFiltering) => (  appsmith.store.selectedDepartment || \"\" ))(Select_FADepartment.options, Select_FADepartment.serverSideFiltering) }}",
+  "defaultOptionValue": "Select Department",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
     },
     {
       "key": "borderRadius"
-    },
-    {
-      "key": "defaultOptionValue"
     },
     {
       "key": "sourceData"

@@ -1,0 +1,9 @@
+UPDATE dbo.PE_LeadTimes
+SET
+    PartNumber = '{{ (Table5.updatedRow.PartNumber || "").replace(/'/g, "''") }}',
+    Supplier = '{{ (Table5.updatedRow.Supplier || "").replace(/'/g, "''") }}',
+    QuotedLeadTime = '{{ (Table5.updatedRow.QuotedLeadTime || "").replace(/'/g, "''") }}',
+    ConfirmedMaterialKitClearDate = {{ Table5.updatedRow.ConfirmedMaterialKitClearDate && Table5.updatedRow.ConfirmedMaterialKitClearDate !== "" ? "'" + Table5.updatedRow.ConfirmedMaterialKitClearDate + "'" : "NULL" }},
+    AnsweredBy = '{{ (appsmith.store.userContext?.name || "Unknown").replace(/'/g, "''") }}',
+    Date = GETDATE()
+WHERE id = {{ Table5.updatedRow.id }};

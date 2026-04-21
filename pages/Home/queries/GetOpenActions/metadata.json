@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT\n    a.MicrossSalesOrderReference,\n    a.QuestionId,\n    q.Question,\n    a.ResponsiblePerson,\n    a.Action,\n    a.DueDate,\n    a.AnsweredBy,\n    a.Status,\n\t\ta.ParentActionId,\n\t\ta.id\nFROM dbo.POH_Answers a\nJOIN dbo.Admin_Questions q\n    ON a.QuestionId = q.id\nWHERE \n    a.IsLatest = 1\n    AND a.YesNo = 0\n    AND a.DueDate IS NOT NULL\n\n    -- 🔥 FILTER\n    AND (\n    '{{ Select_ResponsibleFilter.selectedOptionValue || \"ALL\" }}' = 'ALL'\n    OR a.ResponsiblePerson = '{{ Select_ResponsibleFilter.selectedOptionValue || \"\" }}'\n)\n\nORDER BY a.DueDate ASC;",
+      "body": "SELECT\n    a.MicrossSalesOrderReference,\n    a.QuestionId,\n    q.Question,\n    a.ResponsiblePerson,\n    a.Action,\n    a.DueDate,\n    a.AnsweredBy,\n    a.Status,\n\t\ta.ParentActionId,\n\t\ta.id\nFROM dbo.POH_Answers a\nJOIN dbo.Admin_Questions q\n    ON a.QuestionId = q.id\nWHERE \n    a.IsLatest = 1\n    AND a.YesNo = 0\n    AND a.DueDate IS NOT NULL\n\t\tAND a.Status <> 'Closed'\n\n    -- 🔥 FILTER\n    AND (\n    '{{ Select_ResponsibleFilter.selectedOptionValue || \"ALL\" }}' = 'ALL'\n    OR a.ResponsiblePerson = '{{ Select_ResponsibleFilter.selectedOptionValue || \"\" }}'\n)\n\nORDER BY a.DueDate ASC;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

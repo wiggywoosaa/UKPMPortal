@@ -1,0 +1,18 @@
+INSERT INTO dbo.[YourTableName] (
+    MicrossSalesOrderReference,
+    PartNumber,
+    Supplier,
+    QuotedLeadTime,
+    ConfirmedMaterialKitClearDate,
+    AnsweredBy,
+    Date
+)
+VALUES (
+    '{{ Select_PO.selectedOptionValue }}',
+    '{{ Table5.newRow.PartNumber }}',
+    '{{ Table5.newRow.Supplier }}',
+    '{{ Table5.newRow.QuotedLeadTime }}',
+    {{ Table5.newRow.ConfirmedMaterialKitClearDate ? `'${Table5.newRow.ConfirmedMaterialKitClearDate}'` : 'NULL' }},
+    '{{ (appsmith.store.userContext?.name || "Unknown").replace(/'/g,"''") }}',
+    GETDATE()
+);
