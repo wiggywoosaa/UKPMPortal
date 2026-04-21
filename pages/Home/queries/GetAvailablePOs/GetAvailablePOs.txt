@@ -1,0 +1,15 @@
+SELECT DISTINCT p.MicrossSalesOrderReference
+FROM dbo.PurchaseOrderHeader p
+CROSS JOIN dbo.Admin_Department d
+LEFT JOIN dbo.POH_DepartmentSignOff s 
+    ON s.MicrossSalesOrderReference = p.MicrossSalesOrderReference
+    AND LOWER(LTRIM(RTRIM(s.Department))) = LOWER(LTRIM(RTRIM(d.Department)))
+WHERE 
+    d.Department NOT IN ('PM Verification', 'Final Acceptance')
+    AND LOWER(LTRIM(RTRIM(d.Department))) IN (
+        {{ appsmith.store.userContext?.departments
+            ?.filter(d => !['pm verification','final acceptance'].includes(d.toLowerCase()))
+            ?.map(dep => `'${dep.replace(/'/g,"''").toLowerCase()}'`)
+            .join(",") || "''" }}
+    )
+    AND (s.SignedOff IS NULL OR s.SignedOff = 0)

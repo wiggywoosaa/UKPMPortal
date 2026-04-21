@@ -4,7 +4,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 98,
   "boxShadow": "none",
-  "defaultOptionValue": "",
+  "defaultOptionValue": "Select Department",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -70,7 +70,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 30,
   "serverSideFiltering": false,
-  "sourceData": "{{ \nGetDepartments.data.map(p => ({\n  label: p.MicrossSalesOrderReference,\n  value: p.MicrossSalesOrderReference\n})) \n}}",
+  "sourceData": "{{ \nGetDepartments.data\n  .filter(p => {\n    const excluded = ['pm verification', 'final acceptance'];\n    if (excluded.includes(p.Department.trim().toLowerCase())) return false;\n    const userDepts = (appsmith.store.userContext?.departments || [])\n      .map(d => d.trim().toLowerCase());\n    return userDepts.includes(p.Department.trim().toLowerCase());\n  })\n  .map(p => ({\n    label: p.Department,\n    value: p.Department\n  })) \n}}",
   "topRow": 94,
   "type": "SELECT_WIDGET",
   "version": 1,
