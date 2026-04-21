@@ -1,0 +1,6 @@
+SELECT u.Email
+FROM dbo.Admin_Users u
+INNER JOIN dbo.Admin_UserDepartments ud ON ud.UserId = u.id
+WHERE ud.Department = 'PM Verification'
+AND u.Email IS NOT NULL
+AND u.Email != ''

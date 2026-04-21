@@ -1,0 +1,11 @@
+SELECT u.Email, u.Limit
+FROM dbo.Admin_Users u
+WHERE u.IsApprover = 1
+AND u.Limit >= (
+    SELECT TotalOrderValue 
+    FROM dbo.PurchaseOrderHeader 
+    WHERE MicrossSalesOrderReference = '{{ appsmith.store.selectedPO }}'
+)
+AND u.Email IS NOT NULL
+AND u.Email != ''
+ORDER BY u.Limit ASC

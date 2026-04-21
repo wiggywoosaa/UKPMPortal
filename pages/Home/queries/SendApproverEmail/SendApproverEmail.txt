@@ -1,0 +1,14 @@
+<html>
+<body style="font-family: Arial, sans-serif; font-size: 14px; color: #333;">
+  <p>Hello,</p>
+  <p>All questions for your department have been answered and the Contract Review is ready for your sign off.</p>
+  <ul>
+    <li><strong>Contract Review:</strong> {{ appsmith.store.selectedPO }}</li>
+    <li><strong>Department:</strong> {{ appsmith.store.selectedDepartment }}</li>
+  </ul>
+  <p>Please log into the PM Portal to review and sign off your department's section.</p>
+  <br/>
+  <p>Thank you.</p>
+  <p><em>PM Portal (Automated Message)</em></p>
+</body>
+</html>
