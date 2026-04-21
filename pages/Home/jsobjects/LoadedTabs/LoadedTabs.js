@@ -63,5 +63,10 @@ GetPONREFA.run();
 	 GetPMAnswersFA.run();
 
     }
+
+ if (tabName === "Archive") {
+GetPOListArchive.run();
+GetDepartments.run();
+    }
   }
 }
