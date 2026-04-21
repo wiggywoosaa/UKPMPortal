@@ -37,9 +37,9 @@
         "key": "body"
       }
     ],
-    "executeOnLoad": false,
     "name": "SendPMVerificationEmail",
     "pageId": "Home",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }
 }
