@@ -3,7 +3,7 @@
   "animateLoading": true,
   "autoFocus": false,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 20,
+  "bottomRow": 18,
   "boxShadow": "none",
   "defaultText": "{{ GetPM.data[0].MicrossQuotationReference }}",
   "dynamicBindingPathList": [
@@ -52,7 +52,7 @@
   "rightColumn": 63,
   "shouldAllowAutofill": false,
   "showStepArrows": false,
-  "topRow": 13,
+  "topRow": 11,
   "type": "INPUT_WIDGET_V2",
   "version": 2,
   "widgetId": "bgtr2xb7p7",

@@ -3,9 +3,9 @@
   "animateLoading": true,
   "autoFocus": false,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 9,
+  "bottomRow": 15,
   "boxShadow": "none",
-  "defaultText": "{{ GetPMAnswers.data[0].AnsweredBy }}",
+  "defaultText": "{{ GetPMAnswersFA.data[0].AnsweredBy }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -50,7 +50,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 18,
   "showStepArrows": false,
-  "topRow": 2,
+  "topRow": 8,
   "type": "INPUT_WIDGET_V2",
   "version": 2,
   "widgetId": "egmebvssg5",

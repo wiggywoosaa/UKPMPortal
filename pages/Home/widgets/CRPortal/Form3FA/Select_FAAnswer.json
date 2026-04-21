@@ -2,9 +2,9 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 244,
+  "bottomRow": 6,
   "boxShadow": "none",
-  "defaultOptionValue": "United Kingdom",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => (  Number(GetPMAnswersFA.data?.[0]?.PMAnswer ?? \"\") ))(Select_FAAnswer.options, Select_FAAnswer.serverSideFiltering) }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -14,51 +14,59 @@
     },
     {
       "key": "sourceData"
+    },
+    {
+      "key": "defaultOptionValue"
+    },
+    {
+      "key": "isDisabled"
     }
   ],
   "dynamicHeight": "FIXED",
   "dynamicPropertyPathList": [
     {
       "key": "sourceData"
+    },
+    {
+      "key": "isDisabled"
     }
   ],
   "dynamicTriggerPathList": [],
-  "isDisabled": true,
+  "isDisabled": "{{\nInput_FASO_By.text != null &&\nInput_FASO_By.text !== \"\"\n}}",
   "isFilterable": true,
   "isLoading": false,
-  "isRequired": true,
+  "isRequired": false,
   "isVisible": true,
-  "key": "9lfqsielpv",
+  "key": "rnnjrbdy4m",
   "labelAlignment": "left",
   "labelPosition": "Left",
-  "labelText": "Micross Entity",
+  "labelText": "Final Acceptance Approved?",
   "labelTextSize": "0.875rem",
   "labelWidth": "10",
-  "leftColumn": 34,
+  "leftColumn": 0,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
-  "mobileBottomRow": 45,
-  "mobileLeftColumn": 34,
-  "mobileRightColumn": 54,
-  "mobileTopRow": 38,
+  "mobileBottomRow": 9,
+  "mobileLeftColumn": 1,
+  "mobileRightColumn": 21,
+  "mobileTopRow": 2,
   "needsErrorInfo": false,
+  "onOptionChange": "{{}}",
   "optionLabel": "label",
   "optionValue": "value",
-  "originalBottomRow": 244,
-  "originalTopRow": 237,
-  "parentColumnSpace": 22.7791748046875,
-  "parentId": "os1mn3f0s0",
+  "parentColumnSpace": 26.4146728515625,
+  "parentId": "tcrt6lkkml",
   "parentRowSpace": 10,
   "placeholderText": "Select option",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 63,
+  "rightColumn": 18,
   "serverSideFiltering": false,
-  "sourceData": "{{ \nGetEntities.data.map(e => ({\n  label: e.MicrossEntity,\n  value: e.MicrossEntity\n})) \n}}",
-  "topRow": 237,
+  "sourceData": "{{[\n  { label: \"Approved\", value: 1 },\n  { label: \"Rejected\", value: 0 },\n\t{ label: \"\", value: ''}\n]}}",
+  "topRow": 2,
   "type": "SELECT_WIDGET",
   "version": 1,
-  "widgetId": "cwm01ccmc3",
-  "widgetName": "Select_QMicrossEntityCopy"
+  "widgetId": "nptyjyi4kn",
+  "widgetName": "Select_FAAnswer"
 }

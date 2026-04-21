@@ -3,7 +3,7 @@
   "animateLoading": true,
   "autoFocus": false,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 27,
+  "bottomRow": 25,
   "boxShadow": "none",
   "defaultText": "{{ GetPM.data[0].MicrossSalesOrderReference }}",
   "dynamicBindingPathList": [
@@ -52,7 +52,7 @@
   "rightColumn": 63,
   "shouldAllowAutofill": false,
   "showStepArrows": false,
-  "topRow": 20,
+  "topRow": 18,
   "type": "INPUT_WIDGET_V2",
   "version": 2,
   "widgetId": "k6yq5p7ram",

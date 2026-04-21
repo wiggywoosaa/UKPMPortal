@@ -1,0 +1,29 @@
+BEGIN TRY
+    BEGIN TRANSACTION;
+
+    INSERT INTO dbo.PM_Answers (
+        MicrossSalesOrderReference,
+        PMAnswer,
+        Comments,
+        AnsweredBy,
+        Date
+    )
+    VALUES (
+        '{{ Select_FA.selectedOptionValue }}',
+        {{ Number(Select_FAAnswer.selectedOptionValue) }},
+        '{{ (Input_FAComments.text || "").replace(/'/g,"''") }}',
+        '{{ (appsmith.store.userContext?.name || "Unknown").replace(/'/g,"''") }}',
+        GETDATE()
+    );
+
+    UPDATE dbo.PurchaseOrderHeader
+    SET CRStatus = 'Complete'
+    WHERE MicrossSalesOrderReference = '{{ Select_FA.selectedOptionValue }}'; -- ✅ consistent
+
+    COMMIT;
+END TRY
+BEGIN CATCH
+    ROLLBACK;
+    DECLARE @ErrMsg NVARCHAR(4000) = ERROR_MESSAGE();
+    RAISERROR(@ErrMsg, 16, 1);
+END CATCH;

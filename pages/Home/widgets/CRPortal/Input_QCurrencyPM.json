@@ -3,7 +3,7 @@
   "animateLoading": true,
   "autoFocus": false,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 37,
+  "bottomRow": 35,
   "boxShadow": "none",
   "defaultText": "{{ GetPM.data[0].Currency }}",
   "dynamicBindingPathList": [
@@ -51,7 +51,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 33,
   "showStepArrows": false,
-  "topRow": 33,
+  "topRow": 31,
   "type": "INPUT_WIDGET_V2",
   "version": 2,
   "widgetId": "rhkvh8gz31",

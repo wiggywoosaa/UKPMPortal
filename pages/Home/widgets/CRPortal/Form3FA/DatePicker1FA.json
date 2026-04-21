@@ -7,7 +7,7 @@
   "closeOnSelection": true,
   "dateFormat": "DD/MM/YY",
   "datePickerType": "DATE_PICKER",
-  "defaultDate": "{{ GetPMAnswers.data[0].Date }}",
+  "defaultDate": "{{ GetPMAnswersFA.data[0].Date }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

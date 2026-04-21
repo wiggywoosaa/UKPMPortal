@@ -3,7 +3,7 @@
   "animateLoading": true,
   "autoFocus": false,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 40,
+  "bottomRow": 38,
   "boxShadow": "none",
   "defaultText": "{{ GetPM.data[0].TotalOrderValue }}",
   "dynamicBindingPathList": [
@@ -52,7 +52,7 @@
   "rightColumn": 26,
   "shouldAllowAutofill": false,
   "showStepArrows": false,
-  "topRow": 33,
+  "topRow": 31,
   "type": "INPUT_WIDGET_V2",
   "version": 2,
   "widgetId": "uodmf1cb0g",

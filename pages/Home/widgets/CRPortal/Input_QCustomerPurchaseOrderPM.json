@@ -3,7 +3,7 @@
   "animateLoading": true,
   "autoFocus": false,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 26,
+  "bottomRow": 24,
   "boxShadow": "none",
   "defaultText": "{{ GetPM.data[0].CustomerPurchaseOrderNumber }}",
   "dynamicBindingPathList": [
@@ -51,7 +51,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 33,
   "showStepArrows": false,
-  "topRow": 19,
+  "topRow": 17,
   "type": "INPUT_WIDGET_V2",
   "version": 2,
   "widgetId": "gcgthel47p",
