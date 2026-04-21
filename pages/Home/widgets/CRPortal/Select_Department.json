@@ -36,7 +36,7 @@
       "key": "onOptionChange"
     }
   ],
-  "isDisabled": "{{ !appsmith.store.deptReady }}",
+  "isDisabled": "{{ !appsmith.store.deptReady_Questions }}",
   "isFilterable": true,
   "isLoading": false,
   "isRequired": false,
@@ -57,7 +57,7 @@
   "mobileRightColumn": 24,
   "mobileTopRow": 50,
   "needsErrorInfo": false,
-  "onOptionChange": "{{\nstoreValue(\"selectedDepartment\", Select_Department.selectedOptionValue)\n.then(() => GetQuestionsByDept.run())\n.then(() => GetDepartmentSignOff.run())\n}}",
+  "onOptionChange": "{{\nstoreValue(\"selectedDepartment_Questions\", Select_Department.selectedOptionValue)\n.then(() => GetQuestionsByDept.run())\n.then(() => GetDepartmentSignOff.run())\n}}",
   "optionLabel": "label",
   "optionValue": "value",
   "originalBottomRow": 98,

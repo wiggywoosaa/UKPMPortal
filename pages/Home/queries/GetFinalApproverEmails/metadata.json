@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT u.Email, u.Limit\nFROM dbo.Admin_Users u\nWHERE u.IsApprover = 1\nAND u.Limit >= (\n    SELECT TotalOrderValue \n    FROM dbo.PurchaseOrderHeader \n    WHERE MicrossSalesOrderReference = '{{ appsmith.store.selectedPO }}'\n)\nAND u.Email IS NOT NULL\nAND u.Email != ''\nORDER BY u.Limit ASC",
+      "body": "SELECT u.Email, u.Limit\nFROM dbo.Admin_Users u\nWHERE u.IsApprover = 1\nAND u.Limit >= (\n    SELECT TotalOrderValue \n    FROM dbo.PurchaseOrderHeader \n    WHERE MicrossSalesOrderReference = '{{ appsmith.store.selectedPO_Questions }}'\n)\nAND u.Email IS NOT NULL\nAND u.Email != ''\nORDER BY u.Limit ASC",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

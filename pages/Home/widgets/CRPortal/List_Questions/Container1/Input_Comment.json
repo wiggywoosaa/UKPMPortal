@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 6,
   "boxShadow": "none",
-  "defaultText": "{{ \nappsmith.store.answers?.[currentItem.id]?.Answer \n?? currentItem.Answer \n}}",
+  "defaultText": "{{ \nappsmith.store.answers_Questions?.[currentItem.id]?.Answer \n?? currentItem.Answer \n}}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -41,7 +41,7 @@
   "inputType": "TEXT",
   "isDisabled": false,
   "isLoading": false,
-  "isRequired": "{{\nappsmith.store.answers?.[currentItem.id]?.YesNo === 0\n}}",
+  "isRequired": "{{\nappsmith.store.answers_Questions?.[currentItem.id]?.YesNo === 0\n}}",
   "isVisible": true,
   "key": "ocjnrzt94j",
   "label": "Comment",
@@ -59,7 +59,7 @@
   "mobileRightColumn": 61,
   "mobileTopRow": 0,
   "needsErrorInfo": false,
-  "onBlur": "{{\nstoreValue(\"answers\", {\n  ...appsmith.store.answers,\n  [currentItem.id]: {\n    ...(appsmith.store.answers[currentItem.id] || {}),\n    Answer: Input_Comment.text\n  }\n})\n}}",
+  "onBlur": "{{\nstoreValue(\"answers_Questions\", {\n  ...appsmith.store.answers_Questions,\n  [currentItem.id]: {\n    ...(appsmith.store.answers_Questions[currentItem.id] || {}),\n    Answer: Input_Comment.text\n  }\n})\n}}",
   "onTextChanged": "",
   "parentColumnSpace": 23.05230712890625,
   "parentId": "47vpqtyhp6",

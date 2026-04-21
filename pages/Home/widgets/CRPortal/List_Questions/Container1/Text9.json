@@ -46,7 +46,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 18,
   "shouldTruncate": false,
-  "text": "{{\n(() => {\n\n  const answer = appsmith.store.answers?.[currentItem.id];\n\n  if (!answer?.AnsweredBy) return \"\";\n\n  return \"Answered by \" + answer.AnsweredBy +\n    \" on \" + moment(answer.AnsweredDate).format(\"DD/MM/YYYY HH:mm\");\n\n})()\n}}",
+  "text": "{{\n(() => {\n\n  const answer = appsmith.store.answers_Questions?.[currentItem.id];\n\n  if (!answer?.AnsweredBy) return \"\";\n\n  return \"Answered by \" + answer.AnsweredBy +\n    \" on \" + moment(answer.AnsweredDate).format(\"DD/MM/YYYY HH:mm\");\n\n})()\n}}",
   "textAlign": "LEFT",
   "textColor": "#a855f7",
   "topRow": 8,

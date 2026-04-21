@@ -5,14 +5,14 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "<html>\n<body style=\"font-family: Arial, sans-serif; font-size: 14px; color: #333;\">\n  <p>Hello,</p>\n  <p>A Contract Review is ready for your department to review.</p>\n  <ul>\n    <li><strong>Contract Review:</strong> {{ appsmith.store.selectedPO }}</li>\n    <li><strong>Customer:</strong> {{ appsmith.store.fullPO.header.CustomerDivision }}</li>\n    <li><strong>Stage:</strong> {{ GetNextDepartmentForPO.data[0].Department }} Review</li>\n  </ul>\n  <p>Please complete all questions assigned to your department in the PM Portal.</p>\n  <br/>\n  <p>Thank you.</p>\n  <p><em>PM Portal (Automated Message)</em></p>\n</body>\n</html>",
+      "body": "<html>\n<body style=\"font-family: Arial, sans-serif; font-size: 14px; color: #333;\">\n  <p>Hello,</p>\n  <p>A Contract Review is ready for your department to review.</p>\n  <ul>\n    <li><strong>Contract Review:</strong> {{ appsmith.store.selectedPO_Questions }}</li>\n    <li><strong>Customer:</strong> {{ appsmith.store.fullPO.header.CustomerDivision }}</li>\n    <li><strong>Stage:</strong> {{ GetNextDepartmentForPO.data[0].Department }} Review</li>\n  </ul>\n  <p>Please complete all questions assigned to your department in the PM Portal.</p>\n  <br/>\n  <p>Thank you.</p>\n  <p><em>PM Portal (Automated Message)</em></p>\n</body>\n</html>",
       "encodeParamsToggle": true,
       "formData": {
         "command": "SEND",
         "send": {
           "bodyType": "text/html",
           "from": "uk-pmportal@micross.com",
-          "subject": "{{\"Contract Review Awaiting Your Input - \" + appsmith.store.selectedPO}}",
+          "subject": "{{\"Contract Review Awaiting Your Input - \" + appsmith.store.selectedPO_Questions}}",
           "to": "{{GetNextDepartmentEmails.data.map(u => u.Email).join(\", \")}}"
         }
       },

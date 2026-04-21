@@ -43,7 +43,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 63,
   "shouldTruncate": false,
-  "text": "{{ appsmith.store.selectedPMActionRow.Question }}",
+  "text": "{{ appsmith.store.selectedPMActionRow_PM.Question }}",
   "textAlign": "LEFT",
   "textColor": "#231F20",
   "topRow": 6,

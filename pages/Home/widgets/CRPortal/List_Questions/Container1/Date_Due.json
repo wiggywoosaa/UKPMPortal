@@ -7,7 +7,7 @@
   "closeOnSelection": true,
   "dateFormat": "DD-MM-YYYY",
   "datePickerType": "DATE_PICKER",
-  "defaultDate": "{{ appsmith.store.answers?.[currentItem.id]?.DueDate }}",
+  "defaultDate": "{{ appsmith.store.answers_Questions?.[currentItem.id]?.DueDate }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -46,10 +46,10 @@
     }
   ],
   "firstDayOfWeek": 0,
-  "isDisabled": "{{ Number(appsmith.store.answers?.[currentItem.id]?.YesNo) === 1 }}",
+  "isDisabled": "{{ Number(appsmith.store.answers_Questions?.[currentItem.id]?.YesNo) === 1 }}",
   "isLoading": false,
   "isRequired": false,
-  "isVisible": "{{ Number(appsmith.store.answers?.[currentItem.id]?.YesNo) === 0 }}",
+  "isVisible": "{{ Number(appsmith.store.answers_Questions?.[currentItem.id]?.YesNo) === 0 }}",
   "key": "2mzr60fz5h",
   "label": "Due Date",
   "labelAlignment": "left",
@@ -67,7 +67,7 @@
   "mobileRightColumn": 63,
   "mobileTopRow": 6,
   "needsErrorInfo": false,
-  "onDateSelected": "{{\nstoreValue(\"answers\", {\n  ...appsmith.store.answers,\n  [currentItem.id]: {\n    ...(appsmith.store.answers[currentItem.id] || {}),\n    DueDate: Date_Due.selectedDate\n  }\n})\n}}",
+  "onDateSelected": "{{\nstoreValue(\"answers_Questions\", {\n  ...appsmith.store.answers_Questions,\n  [currentItem.id]: {\n    ...(appsmith.store.answers_Questions[currentItem.id] || {}),\n    DueDate: Date_Due.selectedDate\n  }\n})\n}}",
   "parentColumnSpace": 23.05230712890625,
   "parentId": "47vpqtyhp6",
   "parentRowSpace": 10,

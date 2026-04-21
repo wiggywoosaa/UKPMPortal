@@ -36,7 +36,7 @@
   "mobileRightColumn": 62,
   "mobileTopRow": 33,
   "needsErrorInfo": false,
-  "onClick": "{{\nInsertActionPM.run({\n  po: appsmith.store.selectedPMActionRow?.MicrossSalesOrderReference,\n  questionId: appsmith.store.selectedPMActionRow?.QuestionId,\n  responsible: Select_PMResponsiblePerson.selectedOptionValue,\n  action: Input_PMAction.text,\n  dueDate: Date_PMDue.selectedDate,\n\n  // 🔥 FIXED\n  actionId: appsmith.store.selectedPMActionRow?.ActionId\n})\n.then(() => {\n  showAlert(\"Sub Action created\", \"success\");\n  closeModal(Modal_PMAddAction.name);\n\n  return Promise.all([\n    GetPMQuestion.run()\n  ]);\n})\n.catch((err) => {\n  showAlert(\"Error creating action: \" + err.message, \"error\");\n});\n}}",
+  "onClick": "{{\nInsertActionPM.run({\n  po: appsmith.store.selectedPMActionRow_PM?.MicrossSalesOrderReference,\n  questionId: appsmith.store.selectedPMActionRow_PM?.QuestionId,\n  responsible: Select_PMResponsiblePerson.selectedOptionValue,\n  action: Input_PMAction.text,\n  dueDate: Date_PMDue.selectedDate,\n\n  // 🔥 FIXED\n  actionId: appsmith.store.selectedPMActionRow_PM?.ActionId\n})\n.then(() => {\n  showAlert(\"Sub Action created\", \"success\");\n  closeModal(Modal_PMAddAction.name);\n\n  return Promise.all([\n    GetPMQuestion.run()\n  ]);\n})\n.catch((err) => {\n  showAlert(\"Error creating action: \" + err.message, \"error\");\n});\n}}",
   "originalBottomRow": 41,
   "originalTopRow": 37,
   "parentId": "vy3cokeorl",

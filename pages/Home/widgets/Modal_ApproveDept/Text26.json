@@ -41,7 +41,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 57,
   "shouldTruncate": false,
-  "text": "{{\n\"Signing off \" + appsmith.store.selectedDepartment + \n\" for PO \" + appsmith.store.selectedPO\n}}",
+  "text": "{{\n\"Signing off \" + appsmith.store.selectedDepartment_Questions + \n\" for PO \" + appsmith.store.selectedPO_Questions\n}}",
   "textAlign": "LEFT",
   "textColor": "#231F20",
   "topRow": 1,

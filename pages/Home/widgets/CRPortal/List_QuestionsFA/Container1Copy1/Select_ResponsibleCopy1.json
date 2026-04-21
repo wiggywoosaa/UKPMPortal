@@ -4,7 +4,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 11,
   "boxShadow": "none",
-  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( \nappsmith.store.answers?.[currentItem.id]?.ResponsiblePerson || \"\"\n))(Select_ResponsibleCopy1.options, Select_ResponsibleCopy1.serverSideFiltering) }}",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( \nappsmith.store.answers_FA?.[currentItem.id]?.ResponsiblePerson || \"\"\n))(Select_ResponsibleCopy1.options, Select_ResponsibleCopy1.serverSideFiltering) }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -43,7 +43,7 @@
   "isFilterable": true,
   "isLoading": false,
   "isRequired": false,
-  "isVisible": "{{ Number(appsmith.store.answers?.[currentItem.id]?.YesNo) === 0 }}",
+  "isVisible": "{{ Number(appsmith.store.answers_FA?.[currentItem.id]?.YesNo) === 0 }}",
   "key": "yhhb01mesl",
   "labelAlignment": "left",
   "labelPosition": "Left",

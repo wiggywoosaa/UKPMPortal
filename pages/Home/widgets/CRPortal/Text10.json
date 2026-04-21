@@ -43,7 +43,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 62,
   "shouldTruncate": false,
-  "text": "{{\n(() => {\n\n  const questions = List_Questions.listData || [];\n\n  const total = questions.length;\n\n  const answered = questions.filter(q => {\n    const ans = appsmith.store.answers?.[q.id]?.YesNo;\n    return ans !== undefined && ans !== null;\n  }).length;\n\n  return `${answered} / ${total} Questions Completed`;\n\n})()\n}}",
+  "text": "{{\n(() => {\n\n  const questions = List_Questions.listData || [];\n\n  const total = questions.length;\n\n  const answered = questions.filter(q => {\n    const ans = appsmith.store.answers_Questions?.[q.id]?.YesNo;\n    return ans !== undefined && ans !== null;\n  }).length;\n\n  return `${answered} / ${total} Questions Completed`;\n\n})()\n}}",
   "textAlign": "RIGHT",
   "textColor": "#231F20",
   "topRow": 94,

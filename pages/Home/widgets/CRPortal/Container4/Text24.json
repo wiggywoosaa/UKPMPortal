@@ -43,7 +43,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 57,
   "shouldTruncate": false,
-  "text": "{{\n(() => {\n\n  const selectedDept = appsmith.store.selectedDepartment?.trim().toLowerCase();\n  const rows = GetDepartmentSignOff.data || [];\n\n  if (!selectedDept || !rows.length) return \"Not signed off\";\n\n  const data = rows.find(r =>\n    r.Department?.trim().toLowerCase() === selectedDept\n  );\n\n  if (!data) return \"Not signed off\";\n\n  const signed = Number(data.SignedOff) === 1;\n\n  if (signed) {\n    return \"Approved by \" + data.HeadOfDeptName +\n           \" on \" + moment(data.SignedDate).format(\"DD/MM/YYYY HH:mm\");\n  }\n\n  return \"Not approved\";\n\n})()\n}}",
+  "text": "{{\n(() => {\n\n  const selectedDept = appsmith.store.selectedDepartment_Questions?.trim().toLowerCase();\n  const rows = GetDepartmentSignOff.data || [];\n\n  if (!selectedDept || !rows.length) return \"Not signed off\";\n\n  const data = rows.find(r =>\n    r.Department?.trim().toLowerCase() === selectedDept\n  );\n\n  if (!data) return \"Not signed off\";\n\n  const signed = Number(data.SignedOff) === 1;\n\n  if (signed) {\n    return \"Approved by \" + data.HeadOfDeptName +\n           \" on \" + moment(data.SignedDate).format(\"DD/MM/YYYY HH:mm\");\n  }\n\n  return \"Not approved\";\n\n})()\n}}",
   "textAlign": "LEFT",
   "textColor": "#231F20",
   "topRow": 2,

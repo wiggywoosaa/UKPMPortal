@@ -1,0 +1,12 @@
+WITH RankedAnswers AS (
+    SELECT *,
+           ROW_NUMBER() OVER (
+               PARTITION BY MicrossSalesOrderReference, QuestionId
+               ORDER BY id DESC
+           ) AS rn
+    FROM dbo.POH_Answers
+    WHERE MicrossSalesOrderReference = {{ Select_Archive.selectedOptionValue }}
+)
+SELECT *
+FROM RankedAnswers
+WHERE rn = 1;

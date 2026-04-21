@@ -5,14 +5,14 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "<html>\n<body style=\"font-family: Arial, sans-serif; font-size: 14px; color: #333;\">\n  <p>Hello,</p>\n  <p>All questions for your department have been answered and the Contract Review is ready for your sign off.</p>\n  <ul>\n    <li><strong>Contract Review:</strong> {{ appsmith.store.selectedPO }}</li>\n    <li><strong>Department:</strong> {{ appsmith.store.selectedDepartment }}</li>\n  </ul>\n  <p>Please log into the PM Portal to review and sign off your department's section.</p>\n  <br/>\n  <p>Thank you.</p>\n  <p><em>PM Portal (Automated Message)</em></p>\n</body>\n</html>",
+      "body": "<html>\n<body style=\"font-family: Arial, sans-serif; font-size: 14px; color: #333;\">\n  <p>Hello,</p>\n  <p>All questions for your department have been answered and the Contract Review is ready for your sign off.</p>\n  <ul>\n    <li><strong>Contract Review:</strong> {{ appsmith.store.selectedPO_Questions }}</li>\n    <li><strong>Department:</strong> {{ appsmith.store.selectedDepartment_Questions }}</li>\n  </ul>\n  <p>Please log into the PM Portal to review and sign off your department's section.</p>\n  <br/>\n  <p>Thank you.</p>\n  <p><em>PM Portal (Automated Message)</em></p>\n</body>\n</html>",
       "encodeParamsToggle": true,
       "formData": {
         "command": "SEND",
         "send": {
           "bodyType": "text/html",
           "from": "uk-pmportal@micross.com",
-          "subject": "{{appsmith.store.selectedDepartment+ \" Questions Ready for Sign Off - \" + appsmith.store.selectedPO}}",
+          "subject": "{{appsmith.store.selectedDepartment_Questions+ \" Questions Ready for Sign Off - \" + appsmith.store.selectedPO_Questions}}",
           "to": "{{GetDepartmentApproverEmails.data.map(u => u.Email).join(\", \")}}"
         }
       },

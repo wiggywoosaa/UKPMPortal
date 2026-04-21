@@ -1,0 +1,73 @@
+{
+  "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 122,
+  "boxShadow": "none",
+  "defaultOptionValue": "Select Department",
+  "dynamicBindingPathList": [
+    {
+      "key": "accentColor"
+    },
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "sourceData"
+    }
+  ],
+  "dynamicHeight": "FIXED",
+  "dynamicPropertyPathList": [
+    {
+      "key": "sourceData"
+    },
+    {
+      "key": "onOptionChange"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onOptionChange"
+    }
+  ],
+  "isDisabled": false,
+  "isFilterable": true,
+  "isLoading": false,
+  "isRequired": false,
+  "isVisible": true,
+  "key": "sis6sbxv9h",
+  "labelAlignment": "left",
+  "labelPosition": "Left",
+  "labelStyle": "BOLD",
+  "labelText": "Department",
+  "labelTextSize": "0.875rem",
+  "labelWidth": "10",
+  "leftColumn": 4,
+  "maxDynamicHeight": 9000,
+  "minDynamicHeight": 4,
+  "minWidth": 450,
+  "mobileBottomRow": 57,
+  "mobileLeftColumn": 4,
+  "mobileRightColumn": 24,
+  "mobileTopRow": 50,
+  "needsErrorInfo": false,
+  "onOptionChange": "{{\nstoreValue(\"deptReadyArchive\", false)\n.then(() => storeValue(\"selectedDepartmentArchive\", Select_ArchiveDepartment.selectedOptionValue))\n.then(() => GetQuestionsByDeptArchive.run())\n.then(() => GetAnswersArchive.run())\n.then(() => {\n  const existing = {};\n  (GetAnswersArchive.data || []).forEach(a => {\n    existing[String(a.QuestionId)] = {\n      YesNo: a.YesNo,\n      Answer: a.Answer,\n      AnsweredBy: a.AnsweredBy,\n      AnsweredDate: a.AnsweredDate,\n      ResponsiblePerson: a.ResponsiblePerson,\n      Action: a.Action,\n      DueDate: a.DueDate\n    };\n  });\n  return storeValue(\"answers_Archive\", existing)\n    .then(() => storeValue(\"originalAnswers_Archive\", JSON.parse(JSON.stringify(existing))));\n})\n.then(() => storeValue(\"deptReadyArchive\", true))\n.catch((err) => {\n  console.error(\"Select_ArchiveDepartment failed:\", err);\n  showAlert(\"Failed to load department data\", \"error\");\n  storeValue(\"deptReadyArchive\", false);\n})\n}}",
+  "optionLabel": "label",
+  "optionValue": "value",
+  "originalBottomRow": 122,
+  "originalTopRow": 118,
+  "parentColumnSpace": 25.48046875,
+  "parentId": "p25q6wco6s",
+  "parentRowSpace": 10,
+  "placeholderText": "Select option",
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 29,
+  "serverSideFiltering": false,
+  "sourceData": "{{\nGetDepartments.data.map(d => ({\n  label: d.Department,\n  value: d.Department\n}))\n}}",
+  "topRow": 118,
+  "type": "SELECT_WIDGET",
+  "version": 1,
+  "widgetId": "arcselept01",
+  "widgetName": "Select_ArchiveDepartment"
+}

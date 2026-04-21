@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT u.Email\nFROM dbo.Admin_Users u\nINNER JOIN dbo.Admin_UserDepartments ud ON ud.UserId = u.id\nWHERE ud.Department = '{{ appsmith.store.selectedDepartment }}'\nAND u.IsApprover = 1\nAND u.Email IS NOT NULL\nAND u.Email != ''",
+      "body": "SELECT u.Email\nFROM dbo.Admin_Users u\nINNER JOIN dbo.Admin_UserDepartments ud ON ud.UserId = u.id\nWHERE ud.Department = '{{ appsmith.store.selectedDepartment_Questions }}'\nAND u.IsApprover = 1\nAND u.Email IS NOT NULL\nAND u.Email != ''",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

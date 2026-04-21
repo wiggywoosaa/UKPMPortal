@@ -50,7 +50,7 @@
   "mobileRightColumn": 23,
   "mobileTopRow": 2,
   "needsErrorInfo": false,
-  "onOptionChange": "{{\nstoreValue(\"selectedRisk\", null);\nGetRisks.run();\n}}",
+  "onOptionChange": "{{\nstoreValue(\"selectedRisk_Risk\", null);\nGetRisks.run();\n}}",
   "optionLabel": "label",
   "optionValue": "value",
   "parentColumnSpace": 25.48046875,

@@ -4,7 +4,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 6,
   "boxShadow": "none",
-  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( appsmith.store.answers?.[String(currentItem.id)]?.YesNo \n?? appsmith.store.answers?.[Number(currentItem.id)]?.YesNo))(Select_YesNoCopy1.options, Select_YesNoCopy1.serverSideFiltering) }}",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( appsmith.store.answers_FA?.[String(currentItem.id)]?.YesNo \n?? appsmith.store.answers_FA?.[Number(currentItem.id)]?.YesNo))(Select_YesNoCopy1.options, Select_YesNoCopy1.serverSideFiltering) }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

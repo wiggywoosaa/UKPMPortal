@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 6,
   "boxShadow": "none",
-  "defaultText": "{{ \nappsmith.store.answers?.[currentItem.id]?.Answer \n?? currentItem.Answer \n}}",
+  "defaultText": "{{ \nappsmith.store.answers_FA?.[currentItem.id]?.Answer \n?? currentItem.Answer \n}}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"

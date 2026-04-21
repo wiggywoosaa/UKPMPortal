@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 11,
   "boxShadow": "none",
-  "defaultText": "{{ appsmith.store.answers?.[currentItem.id]?.Action }}",
+  "defaultText": "{{ appsmith.store.answers_Questions?.[currentItem.id]?.Action }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -45,10 +45,10 @@
   ],
   "iconAlign": "left",
   "inputType": "TEXT",
-  "isDisabled": "{{ Number(appsmith.store.answers?.[currentItem.id]?.YesNo) === 1 }}",
+  "isDisabled": "{{ Number(appsmith.store.answers_Questions?.[currentItem.id]?.YesNo) === 1 }}",
   "isLoading": false,
   "isRequired": false,
-  "isVisible": "{{ Number(appsmith.store.answers?.[currentItem.id]?.YesNo) === 0 }}",
+  "isVisible": "{{ Number(appsmith.store.answers_Questions?.[currentItem.id]?.YesNo) === 0 }}",
   "key": "kszm5tk8ky",
   "label": "Action",
   "labelAlignment": "left",
@@ -65,7 +65,7 @@
   "mobileRightColumn": 61,
   "mobileTopRow": 7,
   "needsErrorInfo": false,
-  "onBlur": "{{\nstoreValue(\"answers\", {\n  ...appsmith.store.answers,\n  [currentItem.id]: {\n    ...(appsmith.store.answers[currentItem.id] || {}),\n    Action: Input_Action.text\n  }\n})\n}}",
+  "onBlur": "{{\nstoreValue(\"answers_Questions\", {\n  ...appsmith.store.answers_Questions,\n  [currentItem.id]: {\n    ...(appsmith.store.answers_Questions[currentItem.id] || {}),\n    Action: Input_Action.text\n  }\n})\n}}",
   "onTextChanged": "",
   "parentColumnSpace": 23.05230712890625,
   "parentId": "47vpqtyhp6",
