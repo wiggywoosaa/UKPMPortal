@@ -37,9 +37,9 @@
         "key": "formData.send.subject"
       }
     ],
-    "executeOnLoad": false,
     "name": "SendApproverEmail",
     "pageId": "Home",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }
 }
