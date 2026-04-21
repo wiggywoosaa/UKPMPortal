@@ -3,7 +3,7 @@
   <p>Hello,</p>
   <p>The following Contract Review has been fully approved:</p>
   <ul>
-    <li><strong>Contract Review:</strong> {{ appsmith.store.selectedPO }}</li>
+    <li><strong>Contract Review:</strong> {{ appsmith.store.selectedPO_FA }}</li>
     <li><strong>Customer:</strong> {{ appsmith.store.fullPO.header.CustomerDivision }}</li>
     <li><strong>PO Number:</strong> {{ appsmith.store.fullPO.header.CustomerPurchaseOrderNumber }}</li>
   </ul>

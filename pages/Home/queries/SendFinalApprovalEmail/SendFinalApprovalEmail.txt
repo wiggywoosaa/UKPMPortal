@@ -3,7 +3,7 @@
   <p>Hello,</p>
   <p>The following Contract Review requires final approval:</p>
   <ul>
-    <li><strong>Contract Review:</strong> {{ appsmith.store.selectedPO }}</li>
+    <li><strong>Contract Review:</strong> {{ appsmith.store.selectedPO_PM }}</li>
     <li><strong>Customer:</strong> {{ appsmith.store.fullPO.header.CustomerDivision }}</li>
     <li><strong>Order Value:</strong> £{{ appsmith.store.fullPO.header.TotalOrderValue }}</li>
   </ul>

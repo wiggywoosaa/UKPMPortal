@@ -3,7 +3,7 @@
   <p>Hello,</p>
   <p>A Contract Review is ready for your department to review.</p>
   <ul>
-    <li><strong>Contract Review:</strong> {{ appsmith.store.selectedPO }}</li>
+    <li><strong>Contract Review:</strong> {{ appsmith.store.selectedPO_Questions }}</li>
     <li><strong>Customer:</strong> {{ appsmith.store.fullPO.header.CustomerDivision }}</li>
     <li><strong>Stage:</strong> {{ GetNextDepartmentForPO.data[0].Department }} Review</li>
   </ul>

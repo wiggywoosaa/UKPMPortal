@@ -3,8 +3,8 @@
   <p>Hello,</p>
   <p>All questions for your department have been answered and the Contract Review is ready for your sign off.</p>
   <ul>
-    <li><strong>Contract Review:</strong> {{ appsmith.store.selectedPO }}</li>
-    <li><strong>Department:</strong> {{ appsmith.store.selectedDepartment }}</li>
+    <li><strong>Contract Review:</strong> {{ appsmith.store.selectedPO_Questions }}</li>
+    <li><strong>Department:</strong> {{ appsmith.store.selectedDepartment_Questions }}</li>
   </ul>
   <p>Please log into the PM Portal to review and sign off your department's section.</p>
   <br/>

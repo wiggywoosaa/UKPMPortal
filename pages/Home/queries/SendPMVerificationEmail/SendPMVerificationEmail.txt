@@ -3,7 +3,7 @@
   <p>Hello,</p>
   <p>All departmental reviews are complete for the following Contract Review:</p>
   <ul>
-    <li><strong>Contract Review:</strong> {{ appsmith.store.selectedPO }}</li>
+    <li><strong>Contract Review:</strong> {{ appsmith.store.selectedPO_Questions }}</li>
     <li><strong>Customer:</strong> {{ appsmith.store.fullPO.header.CustomerDivision }}</li>
   </ul>
   <p>Please perform PM Verification and complete the risk matrix.</p>
