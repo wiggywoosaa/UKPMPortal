@@ -1,4 +1,4 @@
-UPDATE dbo.PE_LeadTimes
+UPDATE dbo.PU_LeadTimes
 SET
     PartNumber = '{{ (Table5.updatedRow.PartNumber || "").replace(/'/g, "''") }}',
     Supplier = '{{ (Table5.updatedRow.Supplier || "").replace(/'/g, "''") }}',

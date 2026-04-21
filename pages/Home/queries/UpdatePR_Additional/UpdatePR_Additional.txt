@@ -1,0 +1,10 @@
+UPDATE dbo.PR_Additional
+SET
+    SOLineNumber = '{{ (Table6.updatedRow.SOLineNumber || "").replace(/\u0027/g, "\u0027\u0027") }}',
+    MicrossPartNoDesc = '{{ (Table6.updatedRow.MicrossPartNoDesc || "").replace(/\u0027/g, "\u0027\u0027") }}',
+    Qty = {{ parseInt(Table6.updatedRow.Qty) || 0 }},
+    CustomerRequireDate = NULLIF('{{ Table6.updatedRow.CustomerRequireDate || "" }}', ''),
+    MicrossCommitDate = NULLIF('{{ Table6.updatedRow.MicrossCommitDate || "" }}', ''),
+    AnsweredBy = '{{ (appsmith.store.userContext?.name || "Unknown").replace(/\u0027/g, "\u0027\u0027") }}',
+    Date = GETDATE()
+WHERE id = {{ Table6.updatedRow.id }};

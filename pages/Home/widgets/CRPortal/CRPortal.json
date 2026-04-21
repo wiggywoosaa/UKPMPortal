@@ -472,7 +472,7 @@
   "mobileTopRow": 2,
   "needsErrorInfo": false,
   "onTabSelected": "{{LoadedTabs.loadTabData(CRPortal.selectedTab)}}",
-  "originalBottomRow": 246,
+  "originalBottomRow": 257,
   "originalTopRow": 12,
   "parentColumnSpace": 30.25,
   "parentId": "0",

@@ -1,0 +1,20 @@
+INSERT INTO dbo.PR_Additional (
+    MicrossSalesOrderReference,
+    SOLineNumber,
+    MicrossPartNoDesc,
+    Qty,
+    CustomerRequireDate,
+    MicrossCommitDate,
+    AnsweredBy,
+    Date
+)
+VALUES (
+    '{{ Select_PO.selectedOptionValue }}',
+    '{{ (Table6.newRow.SOLineNumber || "").replace(/\u0027/g, "\u0027\u0027") }}',
+    '{{ (Table6.newRow.MicrossPartNoDesc || "").replace(/\u0027/g, "\u0027\u0027") }}',
+    {{ parseInt(Table6.newRow.Qty) || 0 }},
+    NULLIF('{{ Table6.newRow.CustomerRequireDate || "" }}', ''),
+    NULLIF('{{ Table6.newRow.MicrossCommitDate || "" }}', ''),
+    '{{ (appsmith.store.userContext?.name || "Unknown").replace(/\u0027/g, "\u0027\u0027") }}',
+    GETDATE()
+);

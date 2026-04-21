@@ -22,7 +22,8 @@ export default {
       GetPONRE.run();
       GetDepartmentSignOff.run();
       GetDepartments.run();
-			GetPELeadTimes.run();
+			GetPULeadTimes.run();
+			GetPR_Additional.run();
       GetQuestions.run();
     }
  if (tabName === "Action Tracker") {

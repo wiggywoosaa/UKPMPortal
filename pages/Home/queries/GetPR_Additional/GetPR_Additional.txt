@@ -1,0 +1,4 @@
+SELECT *
+FROM dbo.PR_Additional
+WHERE MicrossSalesOrderReference = '{{ Select_PO.selectedOptionValue }}'
+ORDER BY id ASC

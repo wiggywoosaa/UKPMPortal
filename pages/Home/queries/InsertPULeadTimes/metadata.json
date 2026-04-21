@@ -1,16 +1,16 @@
 {
   "gitSyncId": "69ccf8e72446822078bf9d91_28dea064-d600-44f8-b1ca-c83cb13ca448",
-  "id": "Home_InsertPELeadTimes",
+  "id": "Home_InsertPULeadTimes",
   "pluginId": "mssql-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "INSERT INTO dbo.[YourTableName] (\n    MicrossSalesOrderReference,\n    PartNumber,\n    Supplier,\n    QuotedLeadTime,\n    ConfirmedMaterialKitClearDate,\n    AnsweredBy,\n    Date\n)\nVALUES (\n    '{{ Select_PO.selectedOptionValue }}',\n    '{{ Table5.newRow.PartNumber }}',\n    '{{ Table5.newRow.Supplier }}',\n    '{{ Table5.newRow.QuotedLeadTime }}',\n    {{ Table5.newRow.ConfirmedMaterialKitClearDate ? `'${Table5.newRow.ConfirmedMaterialKitClearDate}'` : 'NULL' }},\n    '{{ (appsmith.store.userContext?.name || \"Unknown\").replace(/'/g,\"''\") }}',\n    GETDATE()\n);",
+      "body": "INSERT INTO dbo.PU_LeadTimes (\n    MicrossSalesOrderReference,\n    PartNumber,\n    Supplier,\n    QuotedLeadTime,\n    ConfirmedMaterialKitClearDate,\n    AnsweredBy,\n    Date\n)\nVALUES (\n    '{{ Select_PO.selectedOptionValue }}',\n    '{{ Table5.newRow.PartNumber }}',\n    '{{ Table5.newRow.Supplier }}',\n    '{{ Table5.newRow.QuotedLeadTime }}',\n    {{ Table5.newRow.ConfirmedMaterialKitClearDate ? `'${Table5.newRow.ConfirmedMaterialKitClearDate}'` : 'NULL' }},\n    '{{ (appsmith.store.userContext?.name || \"Unknown\").replace(/'/g,\"''\") }}',\n    GETDATE()\n);",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
         {
-          "value": true
+          "value": false
         }
       ],
       "timeoutInMillisecond": 10000
@@ -28,7 +28,7 @@
       }
     ],
     "executeOnLoad": false,
-    "name": "InsertPELeadTimes",
+    "name": "InsertPULeadTimes",
     "pageId": "Home",
     "userSetOnLoad": false
   }

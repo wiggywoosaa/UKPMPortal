@@ -1,4 +1,4 @@
-INSERT INTO dbo.[YourTableName] (
+INSERT INTO dbo.PU_LeadTimes (
     MicrossSalesOrderReference,
     PartNumber,
     Supplier,

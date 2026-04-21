@@ -1,16 +1,16 @@
 {
-  "gitSyncId": "69ccf8e72446822078bf9d91_b36cc636-81e3-41e4-b536-38d7fd6cd113",
-  "id": "Home_GetPELeadTimes",
+  "gitSyncId": "69ccf8e72446822078bf9d91_1a761775-3ce1-4a20-8d09-99f4e0211dba",
+  "id": "Home_GetPR_Additional",
   "pluginId": "mssql-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT * from dbo.PE_LEADTIMES\nWHERE MicrossSalesOrderReference = {{ Select_PO.selectedOptionValue }}",
+      "body": "SELECT *\nFROM dbo.PR_Additional\nWHERE MicrossSalesOrderReference = '{{ Select_PO.selectedOptionValue }}'\nORDER BY id ASC",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
         {
-          "value": true
+          "value": false
         }
       ],
       "timeoutInMillisecond": 10000
@@ -28,7 +28,7 @@
       }
     ],
     "executeOnLoad": true,
-    "name": "GetPELeadTimes",
+    "name": "GetPR_Additional",
     "pageId": "Home",
     "userSetOnLoad": false
   }

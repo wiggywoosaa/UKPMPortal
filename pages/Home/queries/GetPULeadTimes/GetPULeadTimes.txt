@@ -1,0 +1,2 @@
+SELECT * from dbo.PU_LEADTIMES
+WHERE MicrossSalesOrderReference  = '{{ Select_PO.selectedOptionValue }}'
